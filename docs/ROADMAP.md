@@ -4,6 +4,67 @@ Status: future scope, not a promise of implemented features or dates. Version 0.
 
 Version 0.6 now includes the manuscript and voice-profile workflows described in [MANUSCRIPT.md](MANUSCRIPT.md). Next refinements can include richer manuscript navigation, continuously updated review decorations, more sample formats, and per-specialist model choices. Keep sample evidence, fictional canon, and agent authority separate as those surfaces grow.
 
+## Proposed priorities
+
+The following records the September 6 discussion as proposals, not approved implementation specifications. Prioritize one complete creative workflow over adding many separate workspaces.
+
+1. Establish real writing sessions and connect character conversations in Play to manuscript scenes. Exercise that workflow with a sustained piece of writing.
+2. Add contextual offline Help and a small declarative starter/world pack format. Build optional encouragement on the session history once its measurements are trustworthy.
+3. Prototype offline merge early, before further persistence contracts harden. Select a production sync approach only after migration, recovery, and conflicting edits have been demonstrated.
+4. Evaluate one small optional game ruleset, then broader rule packs. Executable extensions and long-form narration remain later phases.
+
+Session history is a relatively small addition; a dependable dialogue-to-scene workflow and validated content packs are moderate features. Robust multi-device sync and a general TTRPG rules platform are substantial architectural phases. These relative estimates are not delivery dates.
+
+## Writing sessions, practice, and optional encouragement — TODO
+
+The current **Session word goal** compares the scene's total length against a target; it does not yet measure words written during a session. Introduce a session baseline, explicit start/pause/finish, and local daily history. Track additions, removals, net change, and time with a clear idle policy. Let authors count thinking time deliberately rather than guessing from keystrokes. Distinguish known generated insertions and imports without treating ordinary pasted text as evidence of AI authorship.
+
+Goals can span Write, the world editor, and Play: write a passage, revise dialogue, develop a belief, or spend ten minutes talking to a character. A conversation goal measures practice time, not word output or model response speed. Separate out-of-story character interviews from events that happened in the fictional world. Aggregate activity stays local, can be disabled/exported/deleted, and needs neither an LLM nor a raw keystroke log.
+
+Optional milestones should recognize revision, exploration, and returning to a project as well as new words. Avoid punitive streak loss, competitive rankings, or rewards for accepting AI text or changing canon. Begin prose statistics with word frequency, repeated phrases, and sentence lengths; evaluate parts of speech later with language support and uncertainty made clear. Measurements are descriptive, not a writing-quality score.
+
+## Character conversations into manuscript scenes — TODO
+
+The existing Play branches and manuscript branch references provide a foundation, but there is no dedicated conversation-to-scene adaptation workflow. Offer three clearly described starting points:
+
+- **Interview or rehearsal:** talk freely to a character as the author, or practice a conversation. This does not automatically become an in-world meeting or teach the character facts.
+- **Staged scene:** choose participants, setting, time, the role the author will play, and a situation to explore in a what-if branch.
+- **World exploration:** meet characters during an adventure, with branch history, viewpoint knowledge, and consequences carried forward.
+
+Allow the author to select all or part of an exchange, check speaker attribution, and choose **Keep exact dialogue** or **Adapt into a scene**. Store the source adventure, branch head, turns, and selected text with the adaptation. Current turns can mix narration and dialogue; inferred speaker labels must be reviewable. Exact dialogue stays unchanged in the first mode, while optional surrounding prose supplies viewpoint, action, and pacing. Adaptation may propose changes to dialogue, with an inspectable draft and the original still available.
+
+Reuse approved voice guidance and separate writing, continuity, prose-cue, and voice-review roles. Reviews need the selected source context and current permitted world context, not merely the existing short recent-turn excerpts. Author acceptance inserts manuscript text; canon changes remain a separate reviewable operation. A good conversation may yield one useful line, several scenes, or no manuscript text at all.
+
+Preserve the declared MCW-inspired coordination boundaries: author intent, who is speaking/playing whom, current mode, relevant knowledge, branch scope, and explicit transitions. An omniscient author interview must not silently become a character memory. The framework organizes these decisions; its presence does not establish reliable characterization or perfect canon checking.
+
+An encountered template NPC should become a distinct branch-local instance with a stable identity. Repeated encounters reuse that instance; discoveries enrich it without modifying every NPC created from the template. Offer a reviewed **Keep as a world character** operation with provenance and proposed facts. The current extraction flow does not yet create such new canonical entities automatically.
+
+## Story starters and complete world packs — TODO
+
+Extend the declarative [pack proposal](EXTENSIONS.md) to cover a small premise/scene starter through a complete playable world: characters, locations, relationships, attributed beliefs, secrets, timeline, scenarios, and optional NPC templates. A ready-made world should work for both an author exploring scenes and someone starting a solo campaign.
+
+Start by creating a separate project from a pack. Preview scope, content/spoiler guidance, author, license, and compatible format versions. Give each installation its own identities while preserving internal references, source package/version, and attribution. Keep templates distinct from instantiated characters and adventures. Existing-project imports and pack upgrades need a later merge preview; neither may overwrite the author's canon or active campaign silently. Projects remain readable and editable after a pack is removed.
+
+## Optional game mechanics and campaign-to-book writing — TODO
+
+Explore a small deterministic rules module for dice, checks, hit points, inventory, conditions, and limited resources such as spell slots. Choose a modest initial ruleset; broad compatibility with arbitrary TTRPG systems is a separate effort. Rule packs need explicit versions, supported operations, and appropriate content licenses; do not assume permission to redistribute a commercial game's rules or world.
+
+Separate rules state and adjudicated events from their prose presentation. The model proposes an action or narrates a validated outcome; application rules calculate and validate resource changes and record rolls. The reader can hide numbers while seeing their consequences. Under a selected rules mode, routine valid actions can update the adventure without an approval dialog for every roll, while promotion into shared world canon stays deliberate. Freeform play remains available without these mechanics.
+
+Use the same conversation-to-scene workflow to adapt campaign events into fiction. Preserve the event source and distinguish an intentionally rewritten outcome from what occurred during play. Resolve disagreements about character knowledge, actions, or rules through a visible decision rather than letting narration silently rewrite state.
+
+## Portable backups and multi-device sync — exploration TODO
+
+Evaluate [Automerge](https://automerge.org/) as a candidate for offline edits that merge after devices reconnect. Its [repository API](https://automerge.org/docs/reference/repositories/) separates document changes from storage and communication adapters; an Automerge `Repo` is not a Git repository. This does not by itself supply Storied's GitHub, local Git, or Google Drive integration.
+
+Keep two milestones distinct: saving versioned backups to a chosen destination, and merging independently edited projects. Explore a chosen-folder/Git adapter, a GitHub connection, and Google Drive as optional destinations. Browser folder permissions or a companion application, provider authentication, transport design, and recovery behavior need their own prototypes. Preserve concurrent versions/changes and merge through the document model; do not treat copying the live PGlite database or overwriting one shared `.storyworld` file as concurrent sync. A Git option should also offer readable exports for meaningful diffs.
+
+Prototype with one scene and a few linked world entities edited in two disconnected browser profiles, then reconnect in both orders. Evaluate Automerge documents as the authoritative editable data and PGlite as rebuildable graph/search projections, rather than maintaining two independent writable authorities. Document granularity, text edit operations, cross-document references, format migration, history growth, and export/restore remain open decisions.
+
+Automerge exposes [concurrent property conflicts](https://automerge.org/docs/reference/documents/conflicts/), and its [merge rules](https://automerge.org/docs/reference/under-the-hood/merge-rules/) establish data convergence. Application-level validity still needs deliberate handling: two offline edits can disagree about a death, or both spend the last spell slot. Preserve alternatives for author review or separate adventure branches; choose an explicit resource-authority policy before supporting concurrent game actions. A merged value must not silently count as an approved canon decision.
+
+Acceptance for a production sync design should include offline editing, restart durability, interrupted transfers, edit/delete conflicts, duplicated delivery, recovery, and preservation of source evidence and knowledge boundaries. Replace assumptions that a single numeric revision identifies all relevant changes. Revalidate pending AI proposals against merged state, and never resume paid/model operations merely because their checkpoints arrived on another device. Keep provider keys and execution leases device-local. Make cloud sync opt-in, decide access/encryption and key recovery explicitly, and retain independent backups: synchronization also propagates deletions.
+
 ## Extensibility
 
 Add validated template/scenario/theme packs before a third-party code runtime. A small pack system is moderate work; a stable executable plugin platform is a much larger effort involving capability boundaries, compatibility, and recovery. The [extension proposal](EXTENSIONS.md) identifies suitable contribution points and the authority that stays in the core. Stabilize the existing editing, provider, and backup paths before building an ecosystem.
