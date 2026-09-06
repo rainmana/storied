@@ -24,6 +24,7 @@ import { Badge, Field, PageHeading } from '../components/common'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 import { ProviderSettings } from '../components/ProviderSettings'
+import { AppearanceSettings } from '../components/AppearanceSettings'
 
 export function Settings() {
   const store = useStore(),
@@ -75,6 +76,7 @@ export function Settings() {
         title="Make yourself at home."
         description="Your tools, your worlds, your way of working."
       />
+      <AppearanceSettings />
       <ProviderSettings />
       <section className="settings-section" id="local-models">
         <div className="settings-section-title">
@@ -476,7 +478,7 @@ export function Settings() {
         </span>
         <p>Open source. Local by design. Made for the worlds only you can imagine.</p>
         <small>
-          v0.3.1 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
+          v0.4.0 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
         </small>
         <p>
           <a
@@ -488,7 +490,7 @@ export function Settings() {
             Open-source licenses
           </a>
           {' · '}
-          <a href="/storied-source-v0.3.1.zip" download className="text-button small">
+          <a href="/storied-source-v0.4.0.zip" download className="text-button small">
             Download source
           </a>
         </p>

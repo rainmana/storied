@@ -1,0 +1,122 @@
+/* Alternate palettes use the same surfaces, type, spacing, and component shapes as Moss. */
+:root[data-theme='midnight'] {
+  color-scheme: dark;
+  --background: #131b26;
+  --panel: #192434;
+  --panel-hover: #223145;
+  --foreground: #f0e8dc;
+  --muted: #b0bfce;
+  --accent: #edcf99;
+  --border: #43566e;
+  --theme-text-main: #d9e2ef;
+  --theme-text-muted: #b0bfce;
+  --theme-sidebar-surface: #0f1620;
+  --theme-input-surface: #15202e;
+  --theme-raised-surface: #26394d;
+  --theme-selected-surface: #283d54;
+  --theme-hero-surface: #203047;
+  --theme-accent-hover: #ffe0a5;
+  --theme-on-accent: #17202c;
+  --theme-control-border: #71849a;
+  --theme-focus-ring: #edcf99;
+  --theme-warning-text: #f2d3a1;
+  --theme-warning-surface: #3a3020;
+  --theme-warning-border: #a18a64;
+  --theme-danger-text: #ffd1c5;
+  --theme-danger-surface: #422725;
+  --theme-danger-border: #be8e82;
+  --theme-danger-fill: #813e35;
+  --theme-on-danger: #fff7ee;
+}
+:root[data-theme='parchment'] {
+  color-scheme: light;
+  --background: #f2e9d9;
+  --panel: #fcf7ed;
+  --panel-hover: #ece0ce;
+  --foreground: #302d29;
+  --muted: #5e5447;
+  --accent: #365775;
+  --border: #c3b59e;
+  --theme-text-main: #40392f;
+  --theme-text-muted: #5e5447;
+  --theme-sidebar-surface: #e5dac7;
+  --theme-input-surface: #fffaf2;
+  --theme-raised-surface: #e4d8c4;
+  --theme-selected-surface: #ded2bd;
+  --theme-hero-surface: #e9dec9;
+  --theme-accent-hover: #284560;
+  --theme-on-accent: #fffaf0;
+  --theme-control-border: #827566;
+  --theme-focus-ring: #365775;
+  --theme-warning-text: #724c1c;
+  --theme-warning-surface: #f1e1bf;
+  --theme-warning-border: #977849;
+  --theme-danger-text: #8a3329;
+  --theme-danger-surface: #fae5de;
+  --theme-danger-border: #af675b;
+  --theme-danger-fill: #873c31;
+  --theme-on-danger: #fff5ee;
+}
+:root[data-theme='ink'] {
+  color-scheme: dark;
+  --background: #121212;
+  --panel: #1a1a1a;
+  --panel-hover: #242424;
+  --foreground: #fff9ed;
+  --muted: #d1ccc2;
+  --accent: #f4d58b;
+  --border: #67635c;
+  --theme-text-main: #f2eee4;
+  --theme-text-muted: #d1ccc2;
+  --theme-sidebar-surface: #0b0b0b;
+  --theme-input-surface: #101010;
+  --theme-raised-surface: #292929;
+  --theme-selected-surface: #303030;
+  --theme-hero-surface: #202020;
+  --theme-accent-hover: #fff0bf;
+  --theme-on-accent: #171410;
+  --theme-control-border: #9e978b;
+  --theme-focus-ring: #f4d58b;
+  --theme-warning-text: #ffe0a2;
+  --theme-warning-surface: #30271a;
+  --theme-warning-border: #c0a16c;
+  --theme-danger-text: #ffdbd0;
+  --theme-danger-surface: #392321;
+  --theme-danger-border: #c18d80;
+  --theme-danger-fill: #75362b;
+  --theme-on-danger: #fff9ed;
+}
+:root[data-theme='midnight'],
+:root[data-theme='parchment'],
+:root[data-theme='ink'] {
+  --theme-background: var(--background);
+  --theme-panel: var(--panel);
+  --theme-panel-hover: var(--panel-hover);
+  --theme-foreground: var(--foreground);
+  --theme-accent: var(--accent);
+  --theme-border: var(--border);
+}
+
+/* Borders that define editable controls and selection need more contrast than dividers. */
+:root:not([data-theme='moss']) :is(input, textarea, select, .button-secondary) {
+  border-color: var(--theme-control-border);
+}
+:root:not([data-theme='moss']) .hero-art::before {
+  background: linear-gradient(90deg, var(--theme-hero-surface) 0%, transparent 70%);
+}
+@media (max-width: 490px) {
+  :root:not([data-theme='moss']) .hero-copy {
+    background: linear-gradient(
+      90deg,
+      var(--theme-hero-surface) 10%,
+      color-mix(in srgb, var(--theme-hero-surface) 95%, transparent) 70%,
+      color-mix(in srgb, var(--theme-hero-surface) 50%, transparent)
+    );
+  }
+}
+:root:not([data-theme='moss']) .dialog-overlay {
+  background: #000a;
+}
+:root:not([data-theme='moss']) .button-primary {
+  border-color: var(--accent);
+}

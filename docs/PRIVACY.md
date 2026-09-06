@@ -15,6 +15,8 @@ WebLLM uses its browser caches. Embeddings use the `storied-embeddings-v1` cache
 
 ## Browser storage
 
+The optional `storied-theme` localStorage entry remembers a built-in color palette on this device. It contains no project text and is excluded from native exports. Changing themes makes no network request.
+
 PGlite’s IndexedDB database contains original project data, graph/checkpoint projections, text documents, and derived vectors. App Cache Storage contains static files; separate model caches contain public model assets. localStorage contains the last-opened project ID and optional inference profile metadata. Keys use sessionStorage by default; persistent unencrypted localStorage is an explicit choice. Credentials are not part of projects, the database, or native exports. API responses use `cache: no-store`; the service worker does not cache provider responses. Default on-device operation requires no API credentials.
 
 Site data belongs to an origin and browser profile. Clearing it, storage eviction, profile deletion, or changing domains can lose access. The storage manager offers `navigator.storage.persist()` and shows usage. Independent `.storyworld` exports are the portable recovery mechanism. Projects are not encrypted by Storied; device/browser access controls protect them. Authors should not mistake local-only storage for protection against another user of the same browser profile.

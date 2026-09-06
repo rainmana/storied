@@ -1,6 +1,18 @@
-# Later-stage narration
+# Development roadmap
 
-Status: a future feature proposed by the author; no speech integration is included in v0.3.1.
+Status: future scope, not a promise of implemented features or dates. Version 0.4 adds built-in color themes; narration, extension loading, and an in-app Help workspace remain future work.
+
+## Extensibility
+
+Add validated template/scenario/theme packs before a third-party code runtime. A small pack system is moderate work; a stable executable plugin platform is a much larger effort involving capability boundaries, compatibility, and recovery. The [extension proposal](EXTENSIONS.md) identifies suitable contribution points and the authority that stays in the core. Stabilize the existing editing, provider, and backup paths before building an ecosystem.
+
+## Docs and offline Help — TODO
+
+Keep developer-facing architecture, privacy, setup, and verification docs current while behavior changes. Build the polished in-app **Help** section once the main creative workflows settle; it does not require waiting for every possible feature. Bundle searchable help with the static app so it works offline and matches the installed version. Reuse the repository's documentation as the source to avoid two drifting manuals.
+
+Cover getting started, world/character knowledge, canon review, branches/checkpoints and recovery, backup/restore, model/provider setup, offline storage, keyboard shortcuts, themes/accessibility, and common errors. Add contextual links from Settings, failed provider requests, and repair checkpoints. Author a short guided first-world walkthrough, then update screenshots and long-form tutorials nearer release. Defer a hosted docs service or chat-based support agent unless a concrete need emerges.
+
+## Later-stage narration
 
 A dedicated **Narration** workspace is a useful addition for listening to prose, revising rhythm, and hearing adventures aloud. Prioritize dependable text-provider connections, recovery/backup, and the writing/review workflow first. Narration should follow as an optional presentation feature, with generated audio having no authority over text or canon.
 

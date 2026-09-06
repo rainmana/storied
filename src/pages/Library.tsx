@@ -328,10 +328,14 @@ export function Relationships() {
           >
             <defs>
               <pattern id="graph-dots" width="24" height="24" patternUnits="userSpaceOnUse">
-                <circle cx="12" cy="12" r="0.7" fill="#354039" />
+                <circle cx="12" cy="12" r="0.7" fill="var(--theme-border, #354039)" />
               </pattern>
               <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,1 L7,4 L0,7" fill="none" stroke="#788a78" />
+                <path
+                  d="M0,1 L7,4 L0,7"
+                  fill="none"
+                  stroke="var(--theme-control-border, #788a78)"
+                />
               </marker>
             </defs>
             <rect width="900" height="500" fill="url(#graph-dots)" />
@@ -349,7 +353,11 @@ export function Relationships() {
                     y1={from.y}
                     x2={to.x - (dx / len) * 39}
                     y2={to.y - (dy / len) * 39}
-                    stroke={r.visibility === 'private' ? '#937d6b' : '#566859'}
+                    stroke={
+                      r.visibility === 'private'
+                        ? 'var(--theme-warning-border, #937d6b)'
+                        : 'var(--theme-control-border, #566859)'
+                    }
                     strokeWidth="1.2"
                     strokeDasharray={r.visibility === 'private' ? '5 5' : undefined}
                     markerEnd="url(#arrow)"
@@ -360,12 +368,12 @@ export function Relationships() {
                     width="84"
                     height="20"
                     rx="7"
-                    fill="#1c221e"
+                    fill="var(--theme-panel, #1c221e)"
                   />
                   <text
                     x={(from.x + to.x) / 2}
                     y={(from.y + to.y) / 2 + 4}
-                    fill="#a5b2a7"
+                    fill="var(--theme-text-main, #a5b2a7)"
                     textAnchor="middle"
                     fontSize="10"
                   >
@@ -397,19 +405,19 @@ export function Relationships() {
                     r="35"
                     fill={
                       e.type === 'Character'
-                        ? '#35463b'
+                        ? 'var(--theme-selected-surface, #35463b)'
                         : e.type === 'Location'
-                          ? '#30454b'
-                          : '#493e34'
+                          ? 'var(--theme-selected-surface, #30454b)'
+                          : 'var(--theme-selected-surface, #493e34)'
                     }
-                    stroke="#71846f"
+                    stroke="var(--theme-control-border, #71846f)"
                     strokeWidth="1"
                   />
                   <text
                     x={pos.x}
                     y={pos.y + 6}
                     textAnchor="middle"
-                    fill="#d7dfcd"
+                    fill="var(--theme-foreground, #d7dfcd)"
                     fontSize="18"
                     fontFamily="Newsreader,serif"
                   >
@@ -424,10 +432,16 @@ export function Relationships() {
                     y={pos.y + 40}
                     width="152"
                     height="23"
-                    fill="#1c221e"
+                    fill="var(--theme-panel, #1c221e)"
                     rx="8"
                   />
-                  <text x={pos.x} y={pos.y + 56} textAnchor="middle" fill="#dedfd6" fontSize="12">
+                  <text
+                    x={pos.x}
+                    y={pos.y + 56}
+                    textAnchor="middle"
+                    fill="var(--theme-foreground, #dedfd6)"
+                    fontSize="12"
+                  >
                     {e.name}
                   </text>
                 </g>

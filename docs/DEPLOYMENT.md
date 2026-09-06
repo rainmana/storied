@@ -35,9 +35,11 @@ A separate Cloudflare response-header rule removes `NEL` and `Report-To` **only 
 - Configuration ruleset: `97e16fa216654a33838e7d5fa0fa2dd1`
 - Script-injection configuration rule: `346e582d4e824580b4ff778a18b109f1`
 
-Each build includes `storied-source-v0.3.1.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
+Each build includes `storied-source-v0.4.0.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
 
 ## Verify the live origin
+
+Verify the complete public asset manifest against the built files before starting offline browser tests. A successful deployment response can precede edge propagation: a fresh browser opened across that boundary can load the old application and precache a different release. During the v0.4 rollout, this caused one offline reload failure; all 57 assets subsequently matched. Keep the test browser online until the release has settled, then run the suite in fresh contexts. The app's offline-ready signal describes its completed cache, not a guarantee that a deployment is no longer propagating.
 
 ```powershell
 $env:PLAYWRIGHT_BASE_URL = 'https://storied.alecakin.com'
