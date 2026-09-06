@@ -92,15 +92,20 @@ export function Field({
   label,
   children,
   hint,
+  action,
 }: {
   label: string
   children: ReactNode
   hint?: string
+  action?: ReactNode
 }) {
   const id = useId()
   return (
     <div className="field">
-      <label htmlFor={id}>{label}</label>
+      <div className="field-heading">
+        <label htmlFor={id}>{label}</label>
+        {action}
+      </div>
       {isValidElement(children)
         ? cloneElement(children as ReactElement<{ id?: string; 'aria-describedby'?: string }>, {
             id,

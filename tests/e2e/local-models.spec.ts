@@ -23,6 +23,21 @@ test('real local models: cached offline generation, retry, extraction, semantic 
   const appOrigin = new URL(testInfo.project.use.baseURL!).origin
   const external: { url: string; method: string; body: string | null }[] = []
   const errors: string[] = []
+  // Capture only model text in this disposable test context, never in production telemetry.
+  await page.addInitScript(() => {
+    const OriginalWorker = window.Worker
+    ;(window as any).__testModelOutputs = []
+    window.Worker = class extends OriginalWorker {
+      constructor(url: string | URL, options?: WorkerOptions) {
+        super(url, options)
+        if (String(url).includes('storyteller.worker'))
+          this.addEventListener('message', (event) => {
+            if (typeof event.data?.result === 'string')
+              (window as any).__testModelOutputs.push(event.data.result.slice(0, 20000))
+          })
+      }
+    }
+  })
   context.on('request', (r) => {
     if (r.url().startsWith('https://') && new URL(r.url()).origin !== appOrigin)
       external.push({ url: r.url(), method: r.method(), body: r.postData() })
@@ -123,6 +138,69 @@ test('real local models: cached offline generation, retry, extraction, semantic 
   await page.getByRole('button', { name: 'Search', exact: true }).click()
   await expect(page.locator('.search-result')).toHaveCount(1)
   await expect(page.locator('.search-result')).toContainText('blue cord')
+  await navigate(page, 'World')
+  await page.getByRole('button', { name: /Mara Vale/ }).click()
+  const originalDescription = await page
+    .getByLabel('In-world description', { exact: true })
+    .inputValue()
+  await page.getByRole('button', { name: 'Explore In-world description', exact: true }).click()
+  const authorDialog = page.getByRole('dialog', {
+    name: 'Explore In-world description',
+    exact: true,
+  })
+  await authorDialog
+    .getByLabel('What would you like to explore?', { exact: true })
+    .fill('Suggest one short sentence about a habit. Keep her existing role. Return one idea.')
+  await authorDialog.getByRole('button', { name: 'Find possibilities' }).click()
+  const authorAttemptErrors: string[] = []
+  const authorResult = authorDialog.getByLabel('Edit idea 1', { exact: true })
+  await expect(authorResult.or(authorDialog.getByRole('alert')).first()).toBeVisible({
+    timeout: 120000,
+  })
+  // Small models can produce invalid structures. Exercise one explicit author-directed recovery;
+  // never retry silently or discard the failed attempt from the evidence.
+  if (await authorDialog.getByRole('alert').isVisible()) {
+    authorAttemptErrors.push(await authorDialog.getByRole('alert').innerText())
+    const returnedText = await page.evaluate(() => (window as any).__testModelOutputs.at(-1))
+    writeFileSync(
+      testInfo.outputPath('author-invalid-reply.json'),
+      JSON.stringify({ error: authorAttemptErrors[0], returnedText }, null, 2),
+    )
+    await expect(page.getByLabel('In-world description', { exact: true })).toHaveValue(
+      originalDescription,
+    )
+    await authorDialog
+      .getByLabel('What would you like to explore?', { exact: true })
+      .fill(
+        'One idea only. Title: Habit. Text: one sentence about counting ships, under 100 characters.',
+      )
+    await authorDialog.getByRole('button', { name: 'Find possibilities' }).click()
+    await expect(authorResult.or(authorDialog.getByRole('alert')).first()).toBeVisible({
+      timeout: 120000,
+    })
+  }
+  await expect(authorDialog.getByRole('alert')).toHaveCount(0, { timeout: 1000 })
+  await expect(authorDialog.getByLabel('Edit idea 1', { exact: true })).toBeVisible({
+    timeout: 120000,
+  })
+  const authorIdeas = await authorDialog
+    .locator('.assistant-idea textarea')
+    .evaluateAll((elements) => elements.map((e) => (e as HTMLTextAreaElement).value))
+  expect(authorIdeas[0].length).toBeGreaterThan(10)
+  expect(authorIdeas.join(' ')).not.toMatch(
+    /extinguished the lantern deliberately|protect the people beneath/i,
+  )
+  const authorAccepted =
+    'Mara keeps a spare notebook in her coat and writes down the names of passing ships.'
+  await authorDialog.getByLabel('Edit idea 1', { exact: true }).fill(authorAccepted)
+  await authorDialog
+    .getByRole('region', { name: 'Idea 1', exact: true })
+    .getByRole('button', { name: 'Replace field' })
+    .click()
+  await expect(page.getByLabel('In-world description', { exact: true })).toHaveValue(authorAccepted)
+  console.info(
+    'Real author suggestions generated, reviewed, and inserted with networking disabled.',
+  )
   await page.getByRole('button', { name: 'Settings', exact: true }).click()
   await saved(page)
   const downloading = page.waitForEvent('download')
@@ -151,6 +229,10 @@ test('real local models: cached offline generation, retry, extraction, semantic 
         retry,
         accepted,
         extracted,
+        authorIdeas,
+        authorAttemptErrors,
+        authorAccepted,
+        offlineAuthoring: true,
         offlineInference: true,
         offlineSemanticSearch: true,
         offlineRestore: true,

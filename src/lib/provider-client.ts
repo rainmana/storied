@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { writingSystem } from '../domain/writing-style'
 
 export const providerIds = [
   'openai',
@@ -164,10 +165,7 @@ export function completionRequest(
   schema?: Record<string, unknown>,
 ) {
   const limit = outputTokenLimit(c)
-  const system =
-    role === 'extractor'
-      ? 'Extract only explicitly supported proposals. Return JSON only. Do not invent facts. The author must approve all changes.'
-      : 'You are a careful creative writing assistant. Follow the supplied task and respect the author’s agency.'
+  const system = writingSystem(role)
   const input = schema
     ? `${prompt}\nReturn only a JSON object matching this schema:\n${JSON.stringify(schema)}`
     : prompt

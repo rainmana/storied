@@ -304,7 +304,7 @@ svg {
   font-size: 12px;
   min-width: 0;
 }
-.field > label {
+.field-heading > label {
   font-weight: 500;
   color: var(--theme-text-main, #bbc5b5);
 }
@@ -4017,5 +4017,101 @@ kbd {
   }
   .provider-form .settings-fields {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Field assistance shares the studio's palettes and keeps the author's field visible behind review. */
+.field-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.author-assist-actions {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+}
+.author-assist-actions .button {
+  padding: 4px 7px;
+  min-height: 28px;
+  font-size: 11px;
+}
+.author-assistant {
+  width: min(720px, calc(100vw - 32px));
+}
+.author-assistant pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  max-height: 260px;
+  overflow: auto;
+  background: var(--theme-input-surface, #171b1a);
+  color: var(--theme-text-main, #d5dccf);
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+.author-assistant summary {
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--theme-accent, #b7cda6);
+  padding: 5px 0;
+}
+.assistant-original {
+  max-height: 180px;
+  overflow: auto;
+  overflow-wrap: anywhere;
+  padding-top: 10px;
+}
+.assistant-context,
+.assistant-idea {
+  padding: 16px;
+  background: var(--theme-panel, #1d2220);
+  border: 1px solid var(--theme-border, #30382f);
+  border-radius: 10px;
+}
+.assistant-context {
+  display: grid;
+  gap: 10px;
+}
+.assistant-idea {
+  display: grid;
+  gap: 12px;
+}
+.assistant-idea h3 {
+  font-size: 23px;
+}
+.assistant-history {
+  margin: 12px 0;
+  font-size: 12px;
+  display: grid;
+  gap: 8px;
+}
+.assistant-selected {
+  padding: 10px 12px;
+  background: var(--theme-selected-surface, #283129);
+  border-radius: 6px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.assistant-style-note {
+  color: var(--theme-warning-text, #dfc592);
+  margin: 8px 0;
+}
+.author-assistant .button-row {
+  flex-wrap: wrap;
+}
+@media (max-width: 600px) {
+  .author-assistant {
+    padding: 18px;
+  }
+  .assistant-context,
+  .assistant-idea {
+    padding: 12px;
+  }
+  .field-heading {
+    flex-wrap: wrap;
   }
 }

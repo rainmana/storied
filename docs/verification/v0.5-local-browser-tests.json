@@ -1,0 +1,756 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\walec\\Development\\storied\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\walec\\Development\\storied\\playwright.config.ts",
+    "rootDir": "C:/Users/walec/Development/storied/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/walec/Development/storied/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/walec/Development/storied/tests/e2e",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [["list"], ["json"]],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "authoring.spec.ts",
+      "file": "authoring.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "field brainstorming uses world context, refines an editable idea, inserts and undoes only on request",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3314,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:22.956Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-ef61b559b91f8dd4e5c8",
+          "file": "authoring.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "new belief systems start with human direction, use the chosen API, and support blank attributes on mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4675,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:26.452Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-ff157c11beba190cbda3",
+          "file": "authoring.spec.ts",
+          "line": 92,
+          "column": 1
+        },
+        {
+          "title": "malformed replies and stopped requests preserve the field and never retry automatically",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2817,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:31.133Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "ffbac78a90ea7b98869d-c87b8338be7a3bb23cee",
+          "file": "authoring.spec.ts",
+          "line": 167,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "coordination.spec.ts",
+      "file": "coordination.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "v1 migration, draft checkpoint reload, source preservation, and stale-world synchronization",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8819,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:34.032Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "696d536da9aca9b373d4-129ad792799bce22fb26",
+          "file": "coordination.spec.ts",
+          "line": 32,
+          "column": 1
+        },
+        {
+          "title": "consequential ambiguity is repaired before model capability failure, and both survive reload",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7003,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:42.859Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "696d536da9aca9b373d4-78bb903ac50e913a82c6",
+          "file": "coordination.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "changing scene time excludes and reveals an explicitly dated discovery in the actual inspector",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2366,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:49.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "696d536da9aca9b373d4-e6b4f000cc4020bf4734",
+          "file": "coordination.spec.ts",
+          "line": 136,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "local-endpoint.spec.ts",
+      "file": "local-endpoint.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "loopback HTTP with real CORS, optional persistent key, and manual Story mode",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6309,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:52.262Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c92920952577a690c5a2-6a75d141006463d63dcf",
+          "file": "local-endpoint.spec.ts",
+          "line": 5,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "local-models.spec.ts",
+      "file": "local-models.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real local models: cached offline generation, retry, extraction, semantic search, and restore",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 43542,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Local model assets cached. Disabling browser networking before reload and inference.\n"
+                    },
+                    {
+                      "text": "Offline generation completed from the reloaded model cache.\n"
+                    },
+                    {
+                      "text": "Offline retry and constrained extraction completed; reviewing a real proposal.\n"
+                    },
+                    {
+                      "text": "Real author suggestions generated, reviewed, and inserted with networking disabled.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:54:58.584Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7de3dc0f3acece0de3b9-b97e87ee13c3fb1277ef",
+          "file": "local-models.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "providers.spec.ts",
+      "file": "providers.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "opt-in API inference keeps credentials out of projects, filters context, and retains canon review",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6982,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:55:42.155Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a30b1f7cf05b0df12cb-16390515ce2a86595488",
+          "file": "providers.spec.ts",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "provider errors stop without retry or fallback and the connection form fits mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4019,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:55:49.144Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a30b1f7cf05b0df12cb-39feef785d5df0a4556b",
+          "file": "providers.spec.ts",
+          "line": 133,
+          "column": 1
+        },
+        {
+          "title": "discover OpenAI models before choosing one and generate/extract with chat-latest without a token limit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7056,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:55:53.169Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a30b1f7cf05b0df12cb-0f1526d8b4e2c6c7b15f",
+          "file": "providers.spec.ts",
+          "line": 176,
+          "column": 1
+        },
+        {
+          "title": "failed model discovery permits manual selection and changing credentials clears results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2534,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:00.233Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4a30b1f7cf05b0df12cb-ecc01fc6c7bdbc9a6f05",
+          "file": "providers.spec.ts",
+          "line": 263,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "storied.spec.ts",
+      "file": "storied.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "the vertical slice: create, connect, keep a secret, author, branch, commit, export, delete, restore offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2770,
+                  "error": {
+                    "message": "Error: locator.fill: Error: strict mode violation: getByRole('dialog').getByLabel('In a few words') resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Explore In a few words\" class=\"button button-ghost button-small\">…</button> aka getByRole('button', { name: 'Explore In a few words' })\n    2) <textarea rows=\"4\" id=\"_r_d_\" aria-describedby=\"_r_d_-hint\" placeholder=\"What makes this part of your world interesting?\"></textarea> aka getByRole('textbox', { name: 'In a few words' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByLabel('In a few words')\u001b[22m\n",
+                    "stack": "Error: locator.fill: Error: strict mode violation: getByRole('dialog').getByLabel('In a few words') resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Explore In a few words\" class=\"button button-ghost button-small\">…</button> aka getByRole('button', { name: 'Explore In a few words' })\n    2) <textarea rows=\"4\" id=\"_r_d_\" aria-describedby=\"_r_d_-hint\" placeholder=\"What makes this part of your world interesting?\"></textarea> aka getByRole('textbox', { name: 'In a few words' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByLabel('In a few words')\u001b[22m\n\n    at createEntity (C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts:24:6)\n    at C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts:48:3",
+                    "location": {
+                      "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts",
+                      "column": 6,
+                      "line": 24
+                    },
+                    "snippet": "  22 |   await dialog\n  23 |     .getByLabel('In a few words')\n> 24 |     .fill(`A ${type.toLowerCase()} at the beginning of a story.`)\n     |      ^\n  25 |   await dialog.getByRole('button', { name: 'Add to world' }).click()\n  26 |   await saved(page)\n  27 | }"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts",
+                        "column": 6,
+                        "line": 24
+                      },
+                      "message": "Error: locator.fill: Error: strict mode violation: getByRole('dialog').getByLabel('In a few words') resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Explore In a few words\" class=\"button button-ghost button-small\">…</button> aka getByRole('button', { name: 'Explore In a few words' })\n    2) <textarea rows=\"4\" id=\"_r_d_\" aria-describedby=\"_r_d_-hint\" placeholder=\"What makes this part of your world interesting?\"></textarea> aka getByRole('textbox', { name: 'In a few words' })\n\nCall log:\n\u001b[2m  - waiting for getByRole('dialog').getByLabel('In a few words')\u001b[22m\n\n\n  22 |   await dialog\n  23 |     .getByLabel('In a few words')\n> 24 |     .fill(`A ${type.toLowerCase()} at the beginning of a story.`)\n     |      ^\n  25 |   await dialog.getByRole('button', { name: 'Add to world' }).click()\n  26 |   await saved(page)\n  27 | }\n    at createEntity (C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts:24:6)\n    at C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts:48:3"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:02.785Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\storied-the-vertical-slice-42efc-port-delete-restore-offline\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\storied-the-vertical-slice-42efc-port-delete-restore-offline\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\storied-the-vertical-slice-42efc-port-delete-restore-offline\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\storied.spec.ts",
+                    "column": 6,
+                    "line": 24
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "37e2843ccf1dafdf33cb-29d78636420b427b5d0b",
+          "file": "storied.spec.ts",
+          "line": 28,
+          "column": 1
+        },
+        {
+          "title": "starter world, writing, local search, and screenshot evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3975,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:06.975Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e2843ccf1dafdf33cb-bc2dd25233ca69d119be",
+          "file": "storied.spec.ts",
+          "line": 126,
+          "column": 1
+        },
+        {
+          "title": "malformed imports fail safely and a second tab cannot overwrite the writer",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2531,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:11.107Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e2843ccf1dafdf33cb-12b562170b49b8418a63",
+          "file": "storied.spec.ts",
+          "line": 153,
+          "column": 1
+        },
+        {
+          "title": "mobile layout, navigation, and command palette",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2238,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:13.645Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "37e2843ccf1dafdf33cb-3730abf3c3a52883a9ec",
+          "file": "storied.spec.ts",
+          "line": 171,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "themes.spec.ts",
+      "file": "themes.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "themes remain readable across workspaces, persist offline, and support keyboard selection",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5314,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T05:56:15.904Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d9a1a05a5866edb60a2f-c432bde3b8f2a7b9cf7a",
+          "file": "themes.spec.ts",
+          "line": 59,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-06T05:54:22.457Z",
+    "duration": 119002.923,
+    "expected": 16,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

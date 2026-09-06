@@ -20,7 +20,7 @@ async function createEntity(page: Page, name: string, type: string) {
   await dialog.getByLabel('What are you making?').selectOption(type)
   await dialog.getByLabel('Name', { exact: true }).fill(name)
   await dialog
-    .getByLabel('In a few words')
+    .getByLabel('In a few words', { exact: true })
     .fill(`A ${type.toLowerCase()} at the beginning of a story.`)
   await dialog.getByRole('button', { name: 'Add to world' }).click()
   await saved(page)

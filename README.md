@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.4.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.5.0.zip).
+
+Version 0.5 adds **Explore** beside story-bible fields: start with your words, refine editable suggestions using world context, then insert or undo explicitly. Local and API models share prose preferences. See [field assistance and context scope](docs/AUTHORING.md).
 
 Version 0.3 adds optional OpenAI, Anthropic, OpenRouter, Venice, LM Studio, Ollama, and custom API connections. On-device inference remains the default. Configure your own endpoint/key/model in **Settings → Choose your storyteller**; see [provider setup and key handling](docs/PROVIDERS.md).
 
@@ -94,6 +96,7 @@ Use the example [static headers](public/_headers) when supported by your host. T
 - [Project file format](docs/PROJECT_FORMAT.md)
 - [Local models](docs/LOCAL_MODELS.md)
 - [API connections and model discovery](docs/PROVIDERS.md)
+- [Field assistance and prose preferences](docs/AUTHORING.md)
 - [Appearance and color themes](docs/APPEARANCE.md)
 - [Roadmap: help, narration, and extensibility](docs/ROADMAP.md)
 - [Extension-system proposal](docs/EXTENSIONS.md)

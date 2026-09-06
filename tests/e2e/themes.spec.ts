@@ -30,7 +30,7 @@ async function readableText(page: Page) {
     }
     return [
       ...document.querySelectorAll(
-        'main h1, main h2, main h3, main p, main button, .field > label, main input:not([type=checkbox]):not([type=radio]), main textarea, .sidebar nav button, .badge, .save-status, .theme-choice-copy > span',
+        'main h1, main h2, main h3, main p, main button, .field-heading > label, main input:not([type=checkbox]):not([type=radio]), main textarea, .sidebar nav button, .badge, .save-status, .theme-choice-copy > span',
       ),
     ]
       .filter(

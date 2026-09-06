@@ -241,7 +241,7 @@ export default function App() {
               <SettingsIcon size={17} />
               Settings
             </button>
-            <span>v0.4.0</span>
+            <span>v0.5.0</span>
           </div>
           <div className="sidebar-note">
             Your world. Your words.

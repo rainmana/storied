@@ -22,6 +22,7 @@ import {
 import { useStore } from '../lib/store'
 import { cancelInference, useInferenceStatus } from '../lib/inference'
 import { compileContext, type CompiledContext } from '../domain/context'
+import { writingNotes } from '../domain/writing-style'
 import { addBoundary, createWorkflow, workflowIsStale } from '../domain/coordination'
 import { acceptWorkflowNarrative } from '../domain/execution-graph'
 import { operationFindings, reviewTicket } from '../domain/canon-rules'
@@ -348,6 +349,12 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                 maxLength={500000}
                 rows={Math.max(6, Math.min(18, draft.length / 70))}
               />
+              {draftIntent !== 'Story' &&
+                writingNotes(draft).map((note) => (
+                  <p className="small assistant-style-note" key={note}>
+                    {note}
+                  </p>
+                ))}
               <div className="draft-actions">
                 <Button
                   size="sm"

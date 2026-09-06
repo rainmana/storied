@@ -15,6 +15,8 @@ WebLLM uses its browser caches. Embeddings use the `storied-embeddings-v1` cache
 
 ## Browser storage
 
+Field-assistance conversations remain in panel memory until closed; only text the author inserts reaches project storage. Its author-view compiler includes public story-bible context by default, with an explicit private-context choice. The selected field is always part of the requested input, even when it contains private notes. This does not change Play's character-view restrictions. See [field-assistance context and lifecycle](AUTHORING.md).
+
 The optional `storied-theme` localStorage entry remembers a built-in color palette on this device. It contains no project text and is excluded from native exports. Changing themes makes no network request.
 
 PGlite’s IndexedDB database contains original project data, graph/checkpoint projections, text documents, and derived vectors. App Cache Storage contains static files; separate model caches contain public model assets. localStorage contains the last-opened project ID and optional inference profile metadata. Keys use sessionStorage by default; persistent unencrypted localStorage is an explicit choice. Credentials are not part of projects, the database, or native exports. API responses use `cache: no-store`; the service worker does not cache provider responses. Default on-device operation requires no API credentials.

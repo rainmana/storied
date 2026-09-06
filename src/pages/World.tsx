@@ -27,7 +27,7 @@ import {
   type Relationship,
 } from '../domain/schema'
 import { useStore } from '../lib/store'
-import { completeWithInference, useInferenceStatus } from '../lib/inference'
+import { AuthorAssist } from '../components/AuthorAssist'
 import { Badge, Empty, EntityIcon, Field, PageHeading } from '../components/common'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
@@ -134,12 +134,9 @@ export function World({ onCreate }: { onCreate: () => void }) {
 }
 function EntityPage({ entity: e }: { entity: Entity }) {
   const store = useStore(),
-    p = store.project!,
-    inference = useInferenceStatus()
+    p = store.project!
   const [adding, setAdding] = useState<'fact' | 'relationship' | 'knowledge' | null>(null),
-    [fieldName, setFieldName] = useState(''),
-    [aiText, setAiText] = useState(''),
-    [busy, setBusy] = useState(false)
+    [fieldName, setFieldName] = useState('')
   const imageInput = useRef<HTMLInputElement>(null)
   const update = (fn: (e: Entity) => void) =>
     store.mutate((p) => {
@@ -148,21 +145,18 @@ function EntityPage({ entity: e }: { entity: Entity }) {
       target.updatedAt = now()
     })
   const relations = p.relationships.filter((r) => r.from === e.id || r.to === e.id)
-  async function help() {
-    setBusy(true)
-    try {
-      setAiText(
-        await completeWithInference(
-          `Help the author deepen this fictional ${e.type}. Give three distinct possibilities and one useful unanswered question. Do not assert new canon.\nName: ${e.name}\nSummary: ${e.summary}\nAuthor notes: ${e.notes}`,
-          'worldbuilder',
-        ),
-      )
-    } catch (error) {
-      store.notify(String(error))
-    } finally {
-      setBusy(false)
-    }
-  }
+  const assist = (
+    field: string,
+    value: string,
+    apply: (text: string) => boolean,
+    maxLength = 500000,
+    privateField = false,
+  ) => (
+    <AuthorAssist
+      target={{ entityId: e.id, name: e.name, type: e.type, field, value, maxLength, privateField }}
+      onApply={apply}
+    />
+  )
   async function importImage(file: File) {
     if (
       file.size > 6 * 1024 * 1024 ||
@@ -199,6 +193,11 @@ function EntityPage({ entity: e }: { entity: Entity }) {
       <>
         <Field
           label="In-world description"
+          action={assist('In-world description', e.summary, (text) =>
+            update((e) => {
+              e.summary = text
+            }),
+          )}
           hint="Only this description, name, aliases, and tags describe the entity to the storyteller. Keep hidden motives in private notes or facts."
         >
           <textarea
@@ -241,7 +240,20 @@ function EntityPage({ entity: e }: { entity: Entity }) {
       <>
         <div className="attribute-grid">
           {Object.entries(e.fields).map(([key, value]) => (
-            <Field key={key} label={key}>
+            <Field
+              key={key}
+              label={key}
+              action={assist(
+                key,
+                value,
+                (text) =>
+                  update((e) => {
+                    e.fields[key] = text
+                  }),
+                500,
+                true,
+              )}
+            >
               <input
                 value={value}
                 onChange={(v) =>
@@ -414,6 +426,16 @@ function EntityPage({ entity: e }: { entity: Entity }) {
     notes: (
       <Field
         label="Only for the author"
+        action={assist(
+          'Only for the author',
+          e.notes,
+          (text) =>
+            update((e) => {
+              e.notes = text
+            }),
+          500000,
+          true,
+        )}
         hint="These notes are never included in a player’s story context."
       >
         <textarea
@@ -532,26 +554,8 @@ function EntityPage({ entity: e }: { entity: Entity }) {
             }}
           />
         </div>
-        <Button
-          variant="secondary"
-          onClick={help}
-          disabled={!inference.ready || busy || inference.busy}
-          title={
-            !inference.ready
-              ? 'Choose a storyteller in Settings to explore possibilities'
-              : 'Get editable suggestions'
-          }
-        >
-          <Sparkles size={16} />
-          {busy ? 'Thinking…' : 'Explore possibilities'}
-        </Button>
+        <p className="small muted">Use Explore beside a field when you want a new direction.</p>
       </div>
-      {inference.remote && (
-        <p className="inference-notice small">
-          Explore possibilities sends this entity’s name, description, and author notes to{' '}
-          {inference.origin}.
-        </p>
-      )}
       <div className="entity-status-row">
         <label>
           World status
@@ -605,28 +609,6 @@ function EntityPage({ entity: e }: { entity: Entity }) {
                 {c.name}
               </label>
             ))}
-        </div>
-      )}
-      {aiText && (
-        <div className="proposal-card">
-          <h3>A few possibilities</h3>
-          <p className="preserve-lines">{aiText}</p>
-          <div className="button-row">
-            <Button
-              size="sm"
-              onClick={() => {
-                update((e) => {
-                  e.notes += `\n\nPossibilities (not canon):\n${aiText}`
-                })
-                setAiText('')
-              }}
-            >
-              Keep in author notes
-            </Button>
-            <Button size="sm" variant="ghost" onClick={() => setAiText('')}>
-              Discard
-            </Button>
-          </div>
         </div>
       )}
       <div className="entity-panels">
@@ -850,6 +832,25 @@ function AddDetail({
               : kind === 'relationship'
                 ? 'A little context (optional)'
                 : 'The fact'
+          }
+          action={
+            <AuthorAssist
+              target={{
+                entityId: entity.id,
+                name: entity.name,
+                type: entity.type,
+                field:
+                  kind === 'knowledge'
+                    ? 'What do they believe?'
+                    : kind === 'relationship'
+                      ? 'A little context (optional)'
+                      : 'The fact',
+                value,
+                maxLength: 500,
+                privateField: kind === 'knowledge' || visibility === 'private',
+              }}
+              onApply={setValue}
+            />
           }
         >
           <textarea

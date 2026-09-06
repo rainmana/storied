@@ -1,0 +1,22 @@
+{
+  "browser": "msedge",
+  "first": "I ask Nera to give me the blue cord, and step onto her ferry.\nYou step into the harbor, feeling alive as you look out at the waves that roll by. The water around you is a gentle whisper, almost imperceptible against the stillness of the night. Suddenly, you hear the sound of your destination—sheer silence. A moment later, you see her - a figure so small it’s hard to make out, yet unmistakably there.\n\nYou step forward, guiding her across the harbor. Her eyes are closed, but they seem to be filled with something deep and ancient. As she steps closer, the realization dawns on you that she has been here before, many times, without you even knowing. You know she was born here, and that she will never leave, not again. Your heart swells with an immense sadness for having left behind her, yet also with a deep longing for what she might have once known. It feels like an eternity since you first saw her, and now you find yourself passing through the harbor, thinking about her. \n\nYou step forward, guided by a sense of responsibility, but also by the comfort of familiarity. Your journey takes you from one unknown place to another, but every step brings you closer to the memories of that one place. As you pass through the harbor, the last thing you can hear is the distant cries of the waves, and the soft murmurs of the moon overhead, making the water feel like a stilling ocean. You are in this harbor, and you belong here, and it feels like an eternity since you first passed through it.",
+  "retry": "You arrive in Bellwether, the harbor town at low tide. The harbor is quiet but not completely still; a faint echo of waves and boats can be heard from afar. Nera Moss waits beside her ferry, holding a blue cord she has found on the water.\n\n[Player: Do]  \n\"I ask Nera to give me the blue cord, and step onto her ferry.\"",
+  "accepted": "Nera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.",
+  "extracted": [
+    "pendingFrom this branchRead the source passageNera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.Open source checkpointKind of changeTimeline eventWorld fact / inventory / stateRelationshipSomething learnedWho or what?Mara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyConnected toChoose an elementMara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyThe detailBellwetherLabel (for example, owns, status, lives in)Who can know this?Only this viewpoint characterPublic knowledgeAccept into canonKeep narrative-only",
+    "pendingFrom this branchRead the source passageNera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.Open source checkpointKind of changeTimeline eventWorld fact / inventory / stateRelationshipSomething learnedWho or what?Mara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyThe detailblue cordLabel (for example, owns, status, lives in)Accept into canonKeep narrative-only"
+  ],
+  "authorIdeas": [
+    "She looks at the lighthouse, her eyes falling on a detail that is unfamiliar. It's not clear, but she knows it’s important enough for her.",
+    "As she wanders, she hears the sound of waves, and the direction she takes hints of something significant."
+  ],
+  "authorAccepted": "Mara keeps a spare notebook in her coat and writes down the names of passing ships.",
+  "offlineAuthoring": true,
+  "offlineInference": true,
+  "offlineSemanticSearch": true,
+  "offlineRestore": true,
+  "modelAssetRequests": 31,
+  "requestsDuringOfflineWork": 0,
+  "pageErrors": []
+}

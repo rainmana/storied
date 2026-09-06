@@ -7,6 +7,7 @@ import {
 } from '@mlc-ai/web-llm'
 import { STORY_MODELS } from '../lib/model-catalog'
 import { installAssetGate } from './network-policy'
+import { writingSystem } from '../domain/writing-style'
 
 const gate = installAssetGate()
 const appConfig = {
@@ -72,10 +73,7 @@ self.onmessage = async ({
         messages: [
           {
             role: 'system',
-            content:
-              payload.role === 'extractor'
-                ? 'Extract only explicitly supported proposals. Return JSON only. Do not invent facts. The author must approve all changes.'
-                : 'You are a careful local creative writing assistant. Follow the supplied task and respect the author’s agency.',
+            content: writingSystem(payload.role || 'storyteller'),
           },
           { role: 'user', content: payload.prompt || '' },
         ],
