@@ -4,6 +4,8 @@ import { now, uid, type Project } from '../domain/schema'
 import { parseProject, restorableJSON } from '../domain/project-file'
 import { materialState } from '../domain/world-graph'
 import { synchronizeImportedWorkflows } from '../domain/coordination'
+import { pauseSessions, recordPracticeEdits } from '../domain/practice'
+import type { EditOrigin } from '../domain/practice-schema'
 
 export type Page =
   | 'Home'
@@ -16,6 +18,7 @@ export type Page =
   | 'Search'
   | 'Settings'
   | 'Voice'
+  | 'Progress'
 type State = {
   project: Project | null
   projects: Project[]
@@ -30,7 +33,7 @@ type State = {
   toast: string
   boot: () => Promise<void>
   navigate: (page: Page, id?: string) => void
-  mutate: (fn: (p: Project) => void) => boolean
+  mutate: (fn: (p: Project) => void, origin?: EditOrigin) => boolean
   openProject: (p: Project) => Promise<void>
   deleteProject: () => Promise<void>
   switchProject: (id: string) => Promise<void>
@@ -114,6 +117,7 @@ export const useStore = create<State>((set, get) => ({
         return
       }
       const projects = (await database.list()).map((p) => parseProject(JSON.stringify(p)))
+      for (const p of projects) pauseSessions(p, 'Welcome back. Resume when you are ready.')
       const last = localStorage.getItem('storied-active-project')
       set({
         projects,
@@ -131,12 +135,13 @@ export const useStore = create<State>((set, get) => ({
       ...(page === 'Write' && id ? { selectedScene: id } : {}),
       ...(page === 'Play' && id ? { selectedAdventure: id } : {}),
     }),
-  mutate: (fn) => {
+  mutate: (fn, origin = 'author') => {
     const current = get().project
     if (!current) return false
     const p = structuredClone(current)
     try {
       fn(p)
+      recordPracticeEdits(current, p, origin)
       if (materialState(p) !== materialState(current)) p.worldRevision = current.worldRevision + 1
       p.updatedAt = now()
       // Never persist a world that this version cannot export and restore.
@@ -150,8 +155,10 @@ export const useStore = create<State>((set, get) => ({
     }
   },
   openProject: async (p) => {
+    if (get().project) get().mutate((p) => pauseSessions(p, 'Project changed.'), 'none')
     await flushSaves()
     p = structuredClone(p)
+    pauseSessions(p, 'Imported sessions are paused. Resume explicitly.')
     synchronizeImportedWorkflows(p)
     if (get().projects.some((v) => v.id === p.id))
       p = { ...p, id: uid(), title: `${p.title} (imported copy)` }
@@ -185,6 +192,7 @@ export const useStore = create<State>((set, get) => ({
     get().notify('Project removed from this device.')
   },
   switchProject: async (id) => {
+    get().mutate((p) => pauseSessions(p, 'Project changed.'), 'none')
     await flushSaves()
     const p = get().projects.find((p) => p.id === id)
     if (p) {

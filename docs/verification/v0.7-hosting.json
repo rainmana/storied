@@ -1,0 +1,78 @@
+{
+  "settings": {
+    "result": {
+      "placement": {},
+      "compatibility_date": "2026-09-05",
+      "compatibility_flags": [],
+      "usage_model": "standard",
+      "tags": [],
+      "tail_consumers": [],
+      "logpush": false,
+      "annotations": {
+        "workers/triggered_by": "upload"
+      },
+      "bindings": []
+    },
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "status": 200
+  },
+  "latestDeployment": {
+    "id": "50b28779-3fe4-44bb-9269-f8b9f61a1d92",
+    "source": "api",
+    "strategy": "percentage",
+    "author_email": "w.alec.akin@gmail.com",
+    "annotations": {
+      "workers/message": "Automatic deployment on upload.",
+      "workers/triggered_by": "upload"
+    },
+    "versions": [
+      {
+        "version_id": "800d0a8b-7017-421e-9b7a-d05dc34739a5",
+        "percentage": 100
+      }
+    ],
+    "created_on": "2026-09-06T09:42:19.752195Z"
+  },
+  "subdomain": {
+    "result": {
+      "enabled": false,
+      "previews_enabled": false
+    },
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "status": 200
+  },
+  "upload": {
+    "result": {
+      "created_on": "2026-09-06T02:33:33.900944Z",
+      "modified_on": "2026-09-06T09:42:19.752195Z",
+      "id": "storied",
+      "tag": "615c84410a7041b2b0348abddc028d72",
+      "tags": null,
+      "deployment_id": "800d0a8b7017421e9b7ad05dc34739a5",
+      "tail_consumers": null,
+      "logpush": false,
+      "observability": {
+        "enabled": false,
+        "head_sampling_rate": null
+      },
+      "has_assets": true,
+      "has_modules": false,
+      "etag": "",
+      "handlers": ["fetch"],
+      "last_deployed_from": "",
+      "compatibility_date": "2026-09-05",
+      "usage_model": "standard",
+      "startup_time_ms": 0
+    },
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "status": 200
+  },
+  "checkedAt": "2026-09-06T09:42:32.666Z",
+  "url": "https://storied.alecakin.com"
+}

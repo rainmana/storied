@@ -1,0 +1,243 @@
+.practice-card {
+  padding: 18px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  min-width: 0;
+}
+.practice-card h3,
+.practice-week h3,
+.practice-history h3,
+.conversation-sources h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+}
+.practice-card .section-heading h3 {
+  margin: 0;
+  font-size: 17px;
+}
+.practice-card .button-row {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.practice-card .practice-title {
+  font-size: 16px;
+  margin: 16px 0 8px;
+  color: var(--foreground);
+}
+.practice-numbers {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.practice-numbers strong {
+  font-variant-numeric: tabular-nums;
+  font-size: 30px;
+  color: var(--accent);
+}
+.practice-numbers span {
+  font-size: 12px;
+}
+.practice-card progress {
+  width: 100%;
+  height: 7px;
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--border);
+  margin: 8px 0 12px;
+}
+.practice-card progress::-webkit-progress-bar {
+  background: var(--border);
+}
+.practice-card progress::-webkit-progress-value {
+  background: var(--accent);
+}
+.practice-card progress::-moz-progress-bar {
+  background: var(--accent);
+}
+.practice-achieved {
+  color: var(--accent);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+}
+.practice-card .studio-check {
+  margin-top: 12px;
+  line-height: 1.5;
+}
+.progress-page {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+.progress-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 310px;
+  gap: 32px;
+  align-items: start;
+}
+.progress-grid > * {
+  min-width: 0;
+}
+.practice-week,
+.practice-history {
+  border: 1px solid var(--border);
+  background: var(--panel);
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.practice-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+.practice-days > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: center;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.practice-days small {
+  color: var(--muted);
+}
+.practice-bar-track {
+  height: 110px;
+  background: var(--background);
+  display: flex;
+  align-items: end;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.practice-bar-track i {
+  width: 100%;
+  background: var(--accent);
+  min-height: 2px;
+}
+.practice-history article {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.practice-history article > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+.practice-history-totals {
+  font-size: 12px;
+  text-align: right;
+}
+.practice-method {
+  line-height: 1.8;
+  color: var(--muted);
+}
+.practice-method p {
+  margin: 12px 0;
+}
+.conversation-mode-note {
+  font-size: 13px;
+  line-height: 1.7;
+  padding: 14px 16px;
+  border-left: 2px solid var(--accent);
+  background: var(--panel);
+  margin: 8px 0 20px;
+}
+.conversation-picker {
+  max-height: 330px;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  overscroll-behavior: contain;
+}
+.conversation-picker section + section {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 16px;
+}
+.conversation-picker textarea {
+  width: 100%;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  margin-top: 6px;
+}
+.conversation-selection {
+  margin: 24px 0;
+}
+.conversation-selection article {
+  padding: 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 12px 0;
+}
+.conversation-selection .field-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+}
+.conversation-selection .preserve-lines {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin: 12px 0 0;
+}
+.conversation-sources {
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+.conversation-sources details {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.conversation-sources .preserve-lines {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.story-stage-header {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.story-stage-header > .button-row {
+  flex-wrap: wrap;
+}
+@media (max-width: 1050px) {
+  .progress-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .progress-grid > aside {
+    grid-row: 1;
+  }
+}
+@media (max-width: 600px) {
+  .practice-week,
+  .practice-history {
+    padding: 16px;
+  }
+  .practice-days {
+    gap: 5px;
+  }
+  .practice-history article {
+    flex-direction: column;
+  }
+  .practice-history-totals {
+    text-align: left;
+  }
+  .conversation-picker .section-heading {
+    align-items: start;
+    flex-wrap: wrap;
+  }
+}

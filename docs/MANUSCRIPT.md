@@ -1,5 +1,7 @@
 # Writing a manuscript
 
+Version 0.7 connects Play conversations to Write. Use **Bring to manuscript** to keep selected wording exactly or prepare an adaptation, with original excerpts preserved beside the scene. [Practice and conversations](PRACTICE.md) covers character interviews, staged scenes, session goals, and source handling.
+
 Open **Write** and use **Scene setup** beside the page title. Give the scene a purpose, choose its participants, viewpoint, setting, and time, and optionally select an existing adventure branch and a voice profile. Scene and chapter arrows control manuscript order. Markdown and plain-text exports follow the outline.
 
 An adventure connection uses the branch head you explicitly chose; it does not follow whichever branch is later active in Play. Temporal facts require an ordered scene event. If time is unknown, restricted facts and discoveries are withheld. The assistant reports its omissions in the request inspector.

@@ -4,6 +4,8 @@ Status: future scope, not a promise of implemented features or dates. Version 0.
 
 Version 0.6 now includes the manuscript and voice-profile workflows described in [MANUSCRIPT.md](MANUSCRIPT.md). Next refinements can include richer manuscript navigation, continuously updated review decorations, more sample formats, and per-specialist model choices. Keep sample evidence, fictional canon, and agent authority separate as those surfaces grow.
 
+Version 0.7 implements the first practice/conversation slice described in [PRACTICE.md](PRACTICE.md): real sessions with local history, interviews and staged scenes, exact conversation clips, and source-aware manuscript adaptation. Rewards, prose statistics, NPC instantiation, packs, mechanics, and sync remain future work.
+
 ## Proposed priorities
 
 The following records the September 6 discussion as proposals, not approved implementation specifications. Prioritize one complete creative workflow over adding many separate workspaces.
@@ -15,17 +17,17 @@ The following records the September 6 discussion as proposals, not approved impl
 
 Session history is a relatively small addition; a dependable dialogue-to-scene workflow and validated content packs are moderate features. Robust multi-device sync and a general TTRPG rules platform are substantial architectural phases. These relative estimates are not delivery dates.
 
-## Writing sessions, practice, and optional encouragement — TODO
+## Writing sessions and optional encouragement
 
-The current **Session word goal** compares the scene's total length against a target; it does not yet measure words written during a session. Introduce a session baseline, explicit start/pause/finish, and local daily history. Track additions, removals, net change, and time with a clear idle policy. Let authors count thinking time deliberately rather than guessing from keystrokes. Distinguish known generated insertions and imports without treating ordinary pasted text as evidence of AI authorship.
+Implemented in 0.7: goals start at zero, with explicit start/pause/finish and local daily history. Word-count increases/decreases, net change, edit counts, and time follow a documented idle policy; quiet thinking time is an explicit choice. Known generated insertions and imports are separated without treating ordinary pasted text as evidence of AI authorship. Richer analytics and optional rewards remain proposals.
 
 Goals can span Write, the world editor, and Play: write a passage, revise dialogue, develop a belief, or spend ten minutes talking to a character. A conversation goal measures practice time, not word output or model response speed. Separate out-of-story character interviews from events that happened in the fictional world. Aggregate activity stays local, can be disabled/exported/deleted, and needs neither an LLM nor a raw keystroke log.
 
 Optional milestones should recognize revision, exploration, and returning to a project as well as new words. Avoid punitive streak loss, competitive rankings, or rewards for accepting AI text or changing canon. Begin prose statistics with word frequency, repeated phrases, and sentence lengths; evaluate parts of speech later with language support and uncertainty made clear. Measurements are descriptive, not a writing-quality score.
 
-## Character conversations into manuscript scenes — TODO
+## Character conversations into manuscript scenes
 
-The existing Play branches and manuscript branch references provide a foundation, but there is no dedicated conversation-to-scene adaptation workflow. Offer three clearly described starting points:
+Implemented in 0.7: a dedicated conversation-to-scene workflow with exact source clips and the existing specialist manuscript graph. Three starting modes are available:
 
 - **Interview or rehearsal:** talk freely to a character as the author, or practice a conversation. This does not automatically become an in-world meeting or teach the character facts.
 - **Staged scene:** choose participants, setting, time, the role the author will play, and a situation to explore in a what-if branch.
@@ -37,7 +39,7 @@ Reuse approved voice guidance and separate writing, continuity, prose-cue, and v
 
 Preserve the declared MCW-inspired coordination boundaries: author intent, who is speaking/playing whom, current mode, relevant knowledge, branch scope, and explicit transitions. An omniscient author interview must not silently become a character memory. The framework organizes these decisions; its presence does not establish reliable characterization or perfect canon checking.
 
-An encountered template NPC should become a distinct branch-local instance with a stable identity. Repeated encounters reuse that instance; discoveries enrich it without modifying every NPC created from the template. Offer a reviewed **Keep as a world character** operation with provenance and proposed facts. The current extraction flow does not yet create such new canonical entities automatically.
+Still TODO: an encountered template NPC should become a distinct branch-local instance with a stable identity. Repeated encounters should reuse that instance; discoveries should enrich it without modifying every NPC created from the template. Offer a reviewed **Keep as a world character** operation with provenance and proposed facts. The current extraction flow does not yet create such new canonical entities automatically.
 
 ## Story starters and complete world packs — TODO
 

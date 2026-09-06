@@ -20,6 +20,7 @@ import type { ManuscriptFinding, ManuscriptRun, StudioSource } from '../domain/m
 import { Button } from './ui/button'
 import { Dialog } from './ui/dialog'
 import { Field } from './common'
+import { ConversationSources } from './ConversationBridge'
 
 export const layerNames = { canon: 'Story continuity', prose: 'Prose rules', voice: 'Your voice' }
 function SourceEvidence({ source }: { source: StudioSource }) {
@@ -172,7 +173,11 @@ export function ManuscriptStudio({
     p = store.project!,
     inference = useInferenceStatus(),
     activity = useStudioActivity()
-  const [mode, setMode] = useState<RunOptions['mode']>('opening'),
+  const clips = p.studio.clips.filter((c) => c.sceneId === scene.id)
+  const [clipId, setClipId] = useState(clips.at(-1)?.id || '')
+  const [mode, setMode] = useState<RunOptions['mode']>(
+      clips.some((c) => c.method === 'adapt') ? 'adapt' : 'opening',
+    ),
     [direction, setDirection] = useState(''),
     [privateContext, setPrivate] = useState(false),
     [samples, setSamples] = useState(false),
@@ -204,6 +209,7 @@ export function ManuscriptStudio({
       includePrivate: privateContext,
       includeSamples: samples,
       layers,
+      clipId: mode === 'adapt' ? clipId : undefined,
     }
   }
   useEffect(() => {
@@ -271,9 +277,24 @@ export function ManuscriptStudio({
           <option value="continue">Continue at cursor</option>
           <option value="dialogue">Explore dialogue</option>
           <option value="revise">Revise selection</option>
+          {clips.length > 0 && <option value="adapt">Adapt a conversation</option>}
           <option value="review">Review passage</option>
         </select>
       </Field>
+      {mode === 'adapt' && (
+        <>
+          <Field label="Conversation to adapt">
+            <select value={clipId} onChange={(e) => setClipId(e.target.value)}>
+              {clips.map((c) => (
+                <option value={c.id} key={c.id}>
+                  {c.title}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <ConversationSources sceneId={scene.id} />
+        </>
+      )}
       <p className="selection-note">
         {selection.end > selection.start
           ? `${selection.end - selection.start} characters selected`
@@ -457,7 +478,7 @@ export function ManuscriptStudio({
                 size="sm"
                 disabled={stale || run.status !== 'review' || !!activity.runId || !draft.trim()}
                 onClick={() => {
-                  if (store.mutate((p) => acceptManuscript(p, run.id, draft)))
+                  if (store.mutate((p) => acceptManuscript(p, run.id, draft), 'assisted'))
                     store.notify('Draft inserted. The previous manuscript is saved in History.')
                 }}
               >
@@ -617,7 +638,7 @@ export function FindingDialog({
                     text: `Replaced ${f.quote}\nwith ${replacement}`,
                     createdAt: now(),
                   })
-                })
+                }, 'assisted')
               )
                 onClose()
             }}
@@ -947,7 +968,7 @@ export function ManuscriptHistory({ scene, onClose }: { scene: Scene; onClose: (
                   checkpointScene(p, s, 'Before restoring a revision')
                   s.text = r.text
                   s.updatedAt = now()
-                })
+                }, 'imported')
               ) {
                 store.notify('Previous text restored.')
                 onClose()

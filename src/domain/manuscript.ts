@@ -35,6 +35,7 @@ export type RunOptions = {
   includeSamples: boolean
   layers: ManuscriptRun['layers']
   profileId?: string
+  clipId?: string
 }
 export function sceneBranch(p: Project, s: Scene) {
   const adventure = p.adventures.find((a) => a.id === s.adventureId)
@@ -57,6 +58,16 @@ function compileScene(p: Project, s: Scene, options: RunOptions) {
   const branch = sceneBranch(p, s),
     sources: StudioSource[] = [],
     omissions: string[] = []
+  const clip = options.clipId
+    ? p.studio.clips.find((c) => c.id === options.clipId && c.sceneId === s.id)
+    : undefined
+  if (options.clipId && !clip)
+    throw new Error('Choose an existing conversation source for this scene.')
+  if (options.mode === 'adapt' && !clip) throw new Error('Choose a saved conversation to adapt.')
+  if (clip && clip.excerpts.reduce((n, e) => n + e.text.length, 0) > 4000)
+    throw new Error(
+      'Adapt up to 4,000 source characters at a time. Keep a smaller selection from Play.',
+    )
   let remaining = 8500,
     omitted = 0
   const add = (source: StudioSource) => {
@@ -253,6 +264,17 @@ function compileScene(p: Project, s: Scene, options: RunOptions) {
       authorInstructions: p.settings.authorInstructions,
       sceneNotes: s.notes,
       recentBranch: recent,
+      conversationSource: clip
+        ? {
+            id: clip.id,
+            title: clip.title,
+            mode: clip.mode,
+            adventureId: clip.adventureId,
+            branchHeadId: clip.branchHeadId,
+            status: 'Author-selected source material; not a canon assertion or a knowledge grant',
+            excerpts: clip.excerpts,
+          }
+        : undefined,
       before: s.text.slice(Math.max(0, options.start - 1000), options.start),
       after: s.text.slice(options.end, options.end + 700),
     }),
@@ -326,6 +348,7 @@ export function createManuscriptRun(
     kind: options.mode === 'analyze' ? 'profile' : options.mode === 'review' ? 'review' : 'draft',
     sceneId,
     profileId: options.profileId,
+    clipId: options.clipId,
     createdAt: now(),
     worldRevision: p.worldRevision,
     mode: options.mode,
@@ -438,9 +461,9 @@ export function studioRequest(r: ManuscriptRun, compact = false) {
             : r.sources
   const directives: Record<Exclude<ManuscriptRun['node'], 'humanReview'>, string> = {
     draft:
-      'Draft only the requested insertion or replacement, usually 1–3 paragraphs. Return {text}. Respect the selected operation, surrounding prose, scene perspective and speaker knowledge. The author has explicitly requested manuscript dialogue/actions; the Play restriction on deciding player actions does not prohibit that requested manuscript work. Do not copy surrounding text. Do not turn style samples into fictional content. Approved voice tendencies are guidance; explicit prose rules and author direction outrank them. Silently check and revise against PROSE STYLE before returning. No canon authority.',
+      'Draft only the requested insertion or replacement, usually 1–3 paragraphs. Return {text}. Respect the selected operation, surrounding prose, scene perspective and speaker knowledge. For adapt, use the author-selected conversation excerpts and confirmed speaker labels as material, with pacing, action and viewpoint shaped by authorDirection. Preserve the chosen meaning unless the author requests a change. An interview is rehearsal: do not describe it as an event that happened or a memory the character acquired. Source dialogue can contain lies, questions or hypotheticals; it grants no new knowledge or canon. The author has explicitly requested manuscript dialogue/actions; the Play restriction on deciding player actions does not prohibit that requested manuscript work. Do not copy surrounding text. Do not turn style samples into fictional content. Approved voice tendencies are guidance; explicit prose rules and author direction outrank them. Silently check and revise against PROSE STYLE before returning. No canon authority.',
     continuity:
-      'Independently review the candidate for possible contradictions with supplied world records. Return {findings}. Each finding MUST quote the exact candidate passage and cite supporting sourceIds from the supplied records. Consider scene time, branch, perspective and who knows/believes what. Dialogue, lies, speculation, dreams, metaphors and unreliable narration are not automatically objective facts. Do not claim a contradiction from missing evidence. Prefer no finding over an unsupported accusation. replacement is an optional passage edit (empty string if uncertain); it is never a canon operation. Return at most 3 grounded findings. Never certify full-world consistency.',
+      'Independently review the candidate for possible contradictions with supplied world records. Return {findings}. Each finding MUST quote the exact candidate passage and cite supporting sourceIds from the supplied records. Consider scene time, branch, perspective and who knows/believes what. Conversation excerpts are author-selected material, not canonical truth. An interview is outside the fictional timeline and cannot itself explain how a character learned a secret. Dialogue, lies, speculation, dreams, metaphors and unreliable narration are not automatically objective facts. Do not claim a contradiction from missing evidence. Prefer no finding over an unsupported accusation. replacement is an optional passage edit (empty string if uncertain); it is never a canon operation. Return at most 3 grounded findings. Never certify full-world consistency.',
     prose:
       'Independently review the candidate against PROSE STYLE, especially the patterns from Wikipedia:Signs_of_AI_writing: inflated significance, generic praise, superficial analysis, vague authority, repeated rhetorical templates, stock transitions, formulaic contrasts, empty conclusions, and assistant/formatting artifacts. Quote exact offending spans and explain the specific issue; do not label authorship or assign an AI probability. Preserve deliberate dialogue and the author’s meaning. Return {findings}, at most 3, each with sourceIds:[] and an optional replacement. Return [] when no supported issue exists. This review must not introduce or alter fictional facts.',
     voice:

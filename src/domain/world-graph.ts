@@ -349,6 +349,7 @@ export function materialState(p: Project) {
     voiceProfiles: p.studio.profiles,
     writingSamples: p.studio.samples,
     scenes: p.scenes,
+    conversationClips: p.studio.clips,
     adventures: p.adventures.map((a) => ({
       id: a.id,
       scenario: a.scenario,

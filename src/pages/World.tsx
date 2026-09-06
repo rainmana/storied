@@ -31,6 +31,7 @@ import { AuthorAssist } from '../components/AuthorAssist'
 import { Badge, Empty, EntityIcon, Field, PageHeading } from '../components/common'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
+import type { EditOrigin } from '../domain/practice-schema'
 
 export function World({ onCreate }: { onCreate: (type: EntityType) => void }) {
   const store = useStore(),
@@ -139,12 +140,12 @@ function EntityPage({ entity: e }: { entity: Entity }) {
   const [adding, setAdding] = useState<'fact' | 'relationship' | 'knowledge' | null>(null),
     [fieldName, setFieldName] = useState('')
   const imageInput = useRef<HTMLInputElement>(null)
-  const update = (fn: (e: Entity) => void) =>
+  const update = (fn: (e: Entity) => void, origin: EditOrigin = 'author') =>
     store.mutate((p) => {
       const target = p.entities.find((v) => v.id === e.id)!
       fn(target)
       target.updatedAt = now()
-    })
+    }, origin)
   const relations = p.relationships.filter((r) => r.from === e.id || r.to === e.id)
   const assist = (
     field: string,
@@ -197,7 +198,7 @@ function EntityPage({ entity: e }: { entity: Entity }) {
           action={assist('In-world description', e.summary, (text) =>
             update((e) => {
               e.summary = text
-            }),
+            }, 'assisted'),
           )}
           hint="Only this description, name, aliases, and tags describe the entity to the storyteller. Keep hidden motives in private notes or facts."
         >
@@ -250,7 +251,7 @@ function EntityPage({ entity: e }: { entity: Entity }) {
                 (text) =>
                   update((e) => {
                     e.fields[key] = text
-                  }),
+                  }, 'assisted'),
                 500,
                 true,
               )}
@@ -433,7 +434,7 @@ function EntityPage({ entity: e }: { entity: Entity }) {
           (text) =>
             update((e) => {
               e.notes = text
-            }),
+            }, 'assisted'),
           500000,
           true,
         )}

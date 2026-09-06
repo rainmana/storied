@@ -83,7 +83,7 @@ test('v1 migration, draft checkpoint reload, source preservation, and stale-worl
   await page.getByRole('button', { name: 'Accept passage', exact: true }).click()
   await saved(page)
   const exported = await exportProject(page)
-  expect(exported.schemaVersion).toBe(3)
+  expect(exported.schemaVersion).toBe(4)
   expect(exported.facts).toEqual(demo.facts)
   const w = exported.workflows[0]
   expect(w.boundaries.some((b: { text: string }) => b.text === original)).toBe(true)

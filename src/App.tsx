@@ -22,6 +22,7 @@ import {
   ShieldCheck,
   Sparkles,
   StickyNote,
+  Clock3,
   X,
   type LucideIcon,
 } from 'lucide-react'
@@ -41,6 +42,9 @@ import { Play } from './pages/Play'
 import { Journal, Relationships, Search, Timeline } from './pages/Library'
 import { Settings } from './pages/Settings'
 import { Voice } from './pages/Voice'
+import { Progress } from './pages/Progress'
+import { usePracticeClock } from './components/Practice'
+import './practice.css'
 
 const navigation: { page: Page; icon: LucideIcon }[] = [
   { page: 'Home', icon: HomeIcon },
@@ -52,12 +56,14 @@ const navigation: { page: Page; icon: LucideIcon }[] = [
   { page: 'Journal', icon: StickyNote },
   { page: 'Search', icon: SearchIcon },
   { page: 'Voice', icon: Feather },
+  { page: 'Progress', icon: Clock3 },
 ]
 type InstallEvent = Event & {
   prompt: () => Promise<void>
   userChoice: Promise<{ outcome: string }>
 }
 export default function App() {
+  usePracticeClock()
   const store = useStore(),
     inference = useInferenceStatus()
   const [create, setCreate] = useState<EntityType | null>(null),
@@ -149,6 +155,7 @@ export default function App() {
     { label: 'Choose a local storyteller', action: () => store.navigate('Settings') },
   ]
   const pages: Record<Page, React.ReactNode> = {
+    Progress: <Progress />,
     Home: <Home onCreate={(type) => setCreate(type || 'Character')} />,
     World: <World onCreate={setCreate} />,
     Write: <Write key={store.project?.id} />,
@@ -244,7 +251,7 @@ export default function App() {
               <SettingsIcon size={17} />
               Settings
             </button>
-            <span>v0.6.0</span>
+            <span>v0.7.0</span>
           </div>
           <div className="sidebar-note">
             Your world. Your words.

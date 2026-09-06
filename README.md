@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.6.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.7.0.zip).
+
+Version 0.7 adds opt-in local practice sessions and history, character interviews and staged scenes, and selected conversation excerpts that can be kept exactly or adapted into a manuscript. See [Practice and conversations](docs/PRACTICE.md).
 
 Version 0.6 adds the **manuscript studio** and **Your voice**: plan and order scenes, draft openings or dialogue, review exact passages with separate specialists, approve canon changes with retained history, and build editable voice preferences from your own writing samples. See the [manuscript guide](docs/MANUSCRIPT.md) and [specialist/voice architecture](docs/adr/0004-manuscript-and-voice-graphs.md).
 

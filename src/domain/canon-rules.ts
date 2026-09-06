@@ -45,6 +45,10 @@ export function validateOperation(p: Project, input: Proposal): Proposal {
     a = p.adventures.find((a) => a.id === v.adventureId)
   if (!a || !a.turns.some((t) => t.id === v.turnId))
     throw new Error('The proposal has no source story turn.')
+  if (a.scenario.practiceMode === 'interview')
+    throw new Error(
+      'An interview is rehearsal. Develop a chosen idea in the world editor or manuscript canon review instead of treating the conversation as an event.',
+    )
   if (v.status !== 'pending') throw new Error('This proposal has already been reviewed.')
   if (!branchPath(a).some((t) => t.id === v.turnId))
     throw new Error('Switch to the source branch before reviewing this change.')

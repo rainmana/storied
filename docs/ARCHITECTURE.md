@@ -1,5 +1,7 @@
 # Architecture
 
+Version 0.7 adds opt-in session aggregates and conversation source clips in project format 4. Session clock updates never advance the world revision. The application pauses tracking on background/idle and browser startup, and stores no raw keystrokes. Scenario modes distinguish interview rehearsal from staged scenes and exploration. Interview acceptance skips episodic memory and extraction; the canon validator rejects direct event promotion from interviews. Exact manuscript import validates source text and ancestry, while adaptation runs reuse the existing writer/reviewer graph with a pinned source snapshot and human insertion. See [the workflow guide](PRACTICE.md).
+
 Version 0.6 adds manuscript and voice-evidence graphs at the existing editor, completion, and persistence boundaries. [ADR 0004](adr/0004-manuscript-and-voice-graphs.md) defines specialist contexts, node authority, immutable source evidence, explicit canon approval, and the declared MCW-inspired multi-agent extension. [The manuscript guide](MANUSCRIPT.md) describes the author workflow and current limits.
 
 Storied follows a local-first web-app architecture: static assets, a browser UI, local project storage/search, and browser-local inference by default. Version 0.3 adds optional direct provider connections at the existing completion port; see [ADR 0003](adr/0003-optional-inference-providers.md). A Vite preview server is a development convenience, not an application backend.

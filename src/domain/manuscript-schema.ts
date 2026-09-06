@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { conversationClipSchema } from './practice-schema'
 
 const id = z.string().min(1).max(100)
 const short = z.string().max(500)
@@ -70,9 +71,10 @@ export const manuscriptRunSchema = z
     sceneId: id.optional(),
     profileId: id.optional(),
     parentId: id.optional(),
+    clipId: id.optional(),
     createdAt: short,
     worldRevision: z.number().int().nonnegative(),
-    mode: z.enum(['opening', 'continue', 'dialogue', 'revise', 'review', 'analyze']),
+    mode: z.enum(['opening', 'continue', 'dialogue', 'revise', 'adapt', 'review', 'analyze']),
     direction: z.string().max(5000),
     sceneText: text,
     start: z.number().int().nonnegative(),
@@ -125,6 +127,7 @@ export const manuscriptRunSchema = z
   .strict()
 export const studioSchema = z
   .object({
+    clips: z.array(conversationClipSchema).max(1000).default([]),
     samples: z
       .array(
         z
@@ -179,6 +182,7 @@ export const studioSchema = z
   })
   .strict()
 export const emptyStudio = (): z.infer<typeof studioSchema> => ({
+  clips: [],
   samples: [],
   profiles: [],
   runs: [],

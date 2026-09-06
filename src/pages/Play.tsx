@@ -18,6 +18,7 @@ import {
   Sparkles,
   Square,
   X,
+  BookOpen,
 } from 'lucide-react'
 import { useStore } from '../lib/store'
 import { cancelInference, useInferenceStatus } from '../lib/inference'
@@ -43,6 +44,9 @@ import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 import { Badge, Empty, Field, PageHeading } from '../components/common'
 import { Prose } from './Write'
+import { SessionPanel } from '../components/Practice'
+import { ConversationBridge } from '../components/ConversationBridge'
+import { practiceLabels, practiceModes, type PracticeMode } from '../domain/practice-schema'
 
 export function Play() {
   const store = useStore(),
@@ -116,7 +120,9 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
   const store = useStore(),
     p = store.project!,
     inference = useInferenceStatus()
-  const [intent, setIntent] = useState<Turn['intent']>('Do'),
+  const [intent, setIntent] = useState<Turn['intent']>(
+      a.scenario.practiceMode === 'interview' ? 'Say' : 'Do',
+    ),
     [input, setInput] = useState(''),
     [working, setWorking] = useState(false),
     [error, setError] = useState(''),
@@ -126,6 +132,8 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
     [edit, setEdit] = useState<Turn | null>(null),
     [annotation, setAnnotation] = useState<Turn | null>(null),
     [initialGoal, setInitialGoal] = useState('')
+  const [bridge, setBridge] = useState(false)
+  const interview = a.scenario.practiceMode === 'interview'
   const path = branchPath(a),
     ancestors = new Set(path.map((t) => t.id))
   const workflow = p.workflows
@@ -193,7 +201,11 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
     )
       return
     setInput('')
-    store.notify('Passage accepted. Your world’s canon is unchanged.')
+    store.notify(
+      interview
+        ? 'Interview reply kept for rehearsal. No world event or memory was created.'
+        : 'Passage accepted. Your world’s canon is unchanged.',
+    )
     await resume(workflow.id)
   }
   function propose(turn: Turn) {
@@ -218,8 +230,19 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
           <div>
             <span className="eyebrow">{a.scenario.tone}</span>
             <h2>{a.title}</h2>
+            <span className="small muted">
+              {practiceLabels[a.scenario.practiceMode || 'explore']}
+            </span>
           </div>
           <div className="button-row">
+            <Button
+              size="sm"
+              variant="secondary"
+              disabled={!path.length}
+              onClick={() => setBridge(true)}
+            >
+              <BookOpen size={15} /> Bring to manuscript
+            </Button>
             <button
               className="icon-button"
               aria-label="Undo story turn"
@@ -273,7 +296,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               <div className="turn-tools">
                 <span className="turn-number">
                   {String(i + 1).padStart(2, '0')} ·{' '}
-                  {turn.model === 'Author' ? 'Written by you' : 'Accepted local generation'}
+                  {turn.model === 'Author' ? 'Written by you' : 'Accepted AI passage'}
                 </span>
                 <button
                   className={`icon-button ${turn.bookmark ? 'is-bookmarked' : ''}`}
@@ -323,10 +346,12 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                 >
                   <Eye size={14} />
                 </button>
-                <button className="text-button small" onClick={() => propose(turn)}>
-                  <Plus size={13} />
-                  Propose change
-                </button>
+                {!interview && (
+                  <button className="text-button small" onClick={() => propose(turn)}>
+                    <Plus size={13} />
+                    Propose change
+                  </button>
+                )}
               </div>
               {turn.annotation && <div className="turn-annotation">{turn.annotation}</div>}
             </article>
@@ -499,8 +524,11 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
           </div>
           {inference.remote && (
             <p className="inference-notice small">
-              AI actions send context to {inference.origin}. Accepting an AI passage also requests
-              extraction there. Story mode stays local.
+              AI actions send context to {inference.origin}.{' '}
+              {interview
+                ? 'Interview replies do not request world-change extraction.'
+                : 'Accepting an AI passage also requests extraction there.'}{' '}
+              Story mode stays local.
             </p>
           )}
           {error && (
@@ -511,6 +539,14 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
         </div>
       </section>
       <aside className="story-aside">
+        <SessionPanel kind="conversation" adventureId={a.id} characterId={a.scenario.characterId} />
+        {interview && (
+          <p className="conversation-mode-note">
+            You are interviewing {character?.name} as the author. This is rehearsal, outside the
+            fictional timeline. Keep useful lines for your manuscript; this conversation does not
+            create character memories.
+          </p>
+        )}
         {workflow ? (
           <WorkflowPanel
             key={workflow.id}
@@ -542,7 +578,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                 .slice(0, 2)}
             </span>
             <div>
-              <small>YOU ARE</small>
+              <small>{interview ? 'YOU ARE TALKING TO' : 'YOU ARE'}</small>
               <button onClick={() => store.navigate('World', character?.id)}>
                 {character?.name}
               </button>
@@ -586,26 +622,30 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
             ))}
           </div>
         </section>
-        <section className="story-world-changes">
-          <div className="section-heading">
-            <h3>World changes</h3>
-            <Badge variant={pending.length ? 'proposed' : ''}>{pending.length}</Badge>
-          </div>
-          {inference.busy && !generating && <p role="status">Looking for changes worth keeping…</p>}
-          <p>
-            The story can change the world.
-            <br />
-            You decide what stays.
-          </p>
-          <Button
-            variant={pending.length ? 'default' : 'secondary'}
-            size="sm"
-            onClick={() => setReview(true)}
-          >
-            <Check size={14} />
-            {pending.length ? 'Review & commit to world' : 'Review canon'}
-          </Button>
-        </section>
+        {!interview && (
+          <section className="story-world-changes">
+            <div className="section-heading">
+              <h3>World changes</h3>
+              <Badge variant={pending.length ? 'proposed' : ''}>{pending.length}</Badge>
+            </div>
+            {inference.busy && !generating && (
+              <p role="status">Looking for changes worth keeping…</p>
+            )}
+            <p>
+              The story can change the world.
+              <br />
+              You decide what stays.
+            </p>
+            <Button
+              variant={pending.length ? 'default' : 'secondary'}
+              size="sm"
+              onClick={() => setReview(true)}
+            >
+              <Check size={14} />
+              {pending.length ? 'Review & commit to world' : 'Review canon'}
+            </Button>
+          </section>
+        )}
         <section className="branch-panel">
           <h3>
             <GitBranch size={16} />
@@ -631,7 +671,9 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
             ))}
           </select>
           <small className="muted">
-            Branches stay in this adventure until you choose to promote their changes.
+            {interview
+              ? 'Interview branches preserve rehearsal. They cannot be promoted as events.'
+              : 'Branches stay in this adventure until you choose to promote their changes.'}
           </small>
         </section>
         <details className="story-memory">
@@ -725,7 +767,8 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
           </details>
         </div>
       </Dialog>
-      {review && <CanonReview adventure={a} onClose={() => setReview(false)} />}
+      {bridge && <ConversationBridge adventure={a} onClose={() => setBridge(false)} />}
+      {review && !interview && <CanonReview adventure={a} onClose={() => setReview(false)} />}
       <Dialog
         open={!!edit}
         onOpenChange={() => setEdit(null)}
@@ -755,14 +798,15 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                       context: edit.context,
                       model: 'Author',
                     })
-                    p.memories.push({
-                      id: uid(),
-                      adventureId: a.id,
-                      turnId: t.id,
-                      characterId: a.scenario.characterId,
-                      text: text.slice(0, 1200),
-                      createdAt: now(),
-                    })
+                    if (!interview)
+                      p.memories.push({
+                        id: uid(),
+                        adventureId: a.id,
+                        turnId: t.id,
+                        characterId: a.scenario.characterId,
+                        text: text.slice(0, 1200),
+                        createdAt: now(),
+                      })
                   })
                   setEdit(null)
                 }}
@@ -819,6 +863,8 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
     [tone, setTone] = useState('Vivid, thoughtful, open to possibility'),
     [instructions, setInstructions] = useState(''),
     [perspective, setPerspective] = useState<Scenario['perspective']>('second')
+  const [practiceMode, setPracticeMode] = useState<PracticeMode>('explore'),
+    [activeEntityIds, setActiveEntityIds] = useState<string[]>([])
   return (
     <Dialog
       open
@@ -842,16 +888,50 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
             instructions,
             perspective,
             activeEntityIds: [],
+            practiceMode,
           }
+          s.activeEntityIds = activeEntityIds.filter((id) => id !== characterId)
           const a = startAdventure(s)
-          store.mutate((p) => {
-            p.scenarios.push(s)
-            p.adventures.push(a)
-          })
+          if (
+            !store.mutate((p) => {
+              p.scenarios.push(s)
+              p.adventures.push(a)
+            })
+          )
+            return
           store.navigate('Play', a.id)
           onClose()
         }}
       >
+        <Field label="How would you like to begin?">
+          <select
+            value={practiceMode}
+            onChange={(e) => {
+              const mode = e.target.value as PracticeMode
+              setPracticeMode(mode)
+              setTitle(
+                mode === 'interview'
+                  ? 'A conversation with my character'
+                  : mode === 'staged'
+                    ? 'A scene to explore'
+                    : 'A new beginning',
+              )
+            }}
+          >
+            {practiceModes.map((mode) => (
+              <option key={mode} value={mode}>
+                {practiceLabels[mode]}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <p className="small muted">
+          {practiceMode === 'interview'
+            ? 'Ask questions as the author. Responses use the selected character’s knowledge; this rehearsal creates no world events or memories.'
+            : practiceMode === 'staged'
+              ? 'Choose who you play, add other participants, and try a situation on its own branch.'
+              : 'Explore your world as a character, with choices and encounters carried along this branch.'}
+        </p>
         <Field label="Adventure title">
           <input
             value={title}
@@ -861,7 +941,11 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
           />
         </Field>
         <div className="field-row">
-          <Field label="Who will you be?">
+          <Field
+            label={
+              practiceMode === 'interview' ? 'Who would you like to talk to?' : 'Who will you be?'
+            }
+          >
             <select value={characterId} onChange={(e) => setCharacterId(e.target.value)} required>
               <option value="" disabled>
                 Choose a character
@@ -875,10 +959,16 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
                 ))}
             </select>
           </Field>
-          <Field label="Where are you?">
-            <select value={locationId} onChange={(e) => setLocationId(e.target.value)} required>
-              <option value="" disabled>
-                Choose a place
+          <Field
+            label={practiceMode === 'interview' ? 'Imagined setting (optional)' : 'Where are you?'}
+          >
+            <select
+              value={locationId}
+              onChange={(e) => setLocationId(e.target.value)}
+              required={practiceMode !== 'interview'}
+            >
+              <option value="" disabled={practiceMode !== 'interview'}>
+                {practiceMode === 'interview' ? 'No setting' : 'Choose a place'}
               </option>
               {p.entities
                 .filter((e) => e.type === 'Location')
@@ -890,10 +980,39 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
             </select>
           </Field>
         </div>
-        {(!characterId || !locationId) && (
+        {(!characterId || (!locationId && practiceMode !== 'interview')) && (
           <p className="small muted">Add a character and a location in World, then return here.</p>
         )}
-        <Field label="The opening situation">
+        {practiceMode !== 'interview' && (
+          <fieldset className="scene-participants">
+            <legend>Other participants</legend>
+            {p.entities
+              .filter((e) => e.type === 'Character' && e.id !== characterId)
+              .map((e) => (
+                <label key={e.id}>
+                  <input
+                    type="checkbox"
+                    checked={activeEntityIds.includes(e.id)}
+                    onChange={(v) =>
+                      setActiveEntityIds(
+                        v.target.checked
+                          ? [...activeEntityIds, e.id]
+                          : activeEntityIds.filter((id) => id !== e.id),
+                      )
+                    }
+                  />
+                  {e.name}
+                </label>
+              ))}
+          </fieldset>
+        )}
+        <Field
+          label={
+            practiceMode === 'interview'
+              ? 'What would you like to explore?'
+              : 'The opening situation'
+          }
+        >
           <textarea
             rows={4}
             value={opening}
@@ -934,9 +1053,13 @@ function ScenarioDialog({ onClose }: { onClose: () => void }) {
           <Button type="button" variant="ghost" onClick={onClose}>
             Cancel
           </Button>
-          <Button disabled={!characterId || !locationId}>
+          <Button disabled={!characterId || (!locationId && practiceMode !== 'interview')}>
             <Compass size={16} />
-            Begin adventure
+            {practiceMode === 'interview'
+              ? 'Begin interview'
+              : practiceMode === 'staged'
+                ? 'Begin staged scene'
+                : 'Begin adventure'}
           </Button>
         </div>
       </form>

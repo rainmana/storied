@@ -20,13 +20,14 @@ export function CreateEntity({
     [name, setName] = useState(''),
     [summary, setSummary] = useState('')
   const store = useStore()
+  const [assisted, setAssisted] = useState(false)
   function save(event: React.FormEvent) {
     event.preventDefault()
     if (!name.trim()) return
     const entity = newEntity(type, name, summary)
     const template = store.project?.templates.find((t) => t.type === type)
     if (template) entity.fields = Object.fromEntries(template.fields.map((f) => [f, '']))
-    store.mutate((p) => p.entities.unshift(entity))
+    if (!store.mutate((p) => p.entities.unshift(entity), assisted ? 'assisted' : 'author')) return
     store.navigate('World', entity.id)
     store.notify(`${name} added to your world.`)
     onClose()
@@ -75,7 +76,10 @@ export function CreateEntity({
             <AuthorAssist
               key={type + '-summary'}
               target={{ name, type, field: 'In a few words', value: summary, maxLength: 500000 }}
-              onApply={setSummary}
+              onApply={(text) => {
+                setSummary(text)
+                setAssisted(true)
+              }}
             />
           }
           hint="This summary is in-world information. Private notes and secrets have their own space."

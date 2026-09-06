@@ -33,6 +33,8 @@ import {
   ManuscriptStudio,
 } from '../components/ManuscriptStudio'
 import { runIsStale } from '../domain/manuscript'
+import { SessionPanel } from '../components/Practice'
+import { ConversationSources } from '../components/ConversationBridge'
 
 export function Prose({
   text,
@@ -333,6 +335,9 @@ export function Write() {
     setReviewId('')
     setFindingId('')
     setShowMentions(false)
+    setAssist(
+      p.studio.clips.some((c) => c.sceneId === scene?.id && c.method === 'adapt') && !scene?.text,
+    )
   }, [scene?.id])
   const review = p.studio.runs.find(
     (r) => r.id === reviewId && r.sceneId === scene?.id && r.kind === 'review',
@@ -712,6 +717,8 @@ export function Write() {
       ) : (
         <aside className="writing-notes">
           <div className="eyebrow">Beside the page</div>
+          <SessionPanel />
+          <ConversationSources sceneId={scene.id} onAdapt={() => setAssist(true)} />
           <section>
             <h3>In this scene</h3>
             <button className="text-button small" onClick={() => setSetup(true)}>
@@ -750,37 +757,8 @@ export function Write() {
                   onChange={(e) => update({ chapter: e.target.value })}
                 />
               </Field>
-              <Field label="Session word goal">
-                <input
-                  type="number"
-                  min={0}
-                  max={10000000}
-                  value={p.settings.wordGoal}
-                  onChange={(e) =>
-                    store.mutate((p) => {
-                      p.settings.wordGoal = Number(e.target.value)
-                    })
-                  }
-                />
-              </Field>
             </div>
           </details>
-          <div className="word-goal">
-            <span>
-              {Math.min(
-                100,
-                Math.round((wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100),
-              )}
-              % of your {p.settings.wordGoal.toLocaleString()} word goal
-            </span>
-            <div>
-              <i
-                style={{
-                  width: `${Math.min(100, (wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100)}%`,
-                }}
-              />
-            </div>
-          </div>
         </aside>
       )}
       {selection.end > selection.start && !currentReview && !preview && (

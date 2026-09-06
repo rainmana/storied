@@ -80,6 +80,14 @@ export function createWorkflow(
     trace: [],
   }
   const boundary = addBoundary(w, 'human', 'input', input)
+  if (a.scenario.practiceMode)
+    addBoundary(
+      w,
+      'application',
+      'directive',
+      `Session mode: ${a.scenario.practiceMode}. ${a.scenario.practiceMode === 'interview' ? 'The human is the author; the selected character is the interviewee. This conversation cannot establish world events or character memories.' : 'The human plays the viewpoint character. Fictional outcomes stay on this adventure branch until reviewed.'}`,
+      'session-mode',
+    )
   for (const item of coordination.items) if (item.kind === 'intent') item.active = false
   coordination.interpretations = []
   coordination.items.push({

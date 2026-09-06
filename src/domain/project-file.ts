@@ -1,8 +1,15 @@
 import { projectSchema, type Project } from './schema'
 import { studioSchema } from './manuscript-schema'
+import { activitySchema } from './practice-schema'
+import { branchPath } from './story'
 
 export const MAX_PROJECT_BYTES = 32 * 1024 * 1024
 export function restorableJSON(project: Project): string {
+  const activity = activitySchema.safeParse(project.activity)
+  if (!activity.success)
+    throw new Error(
+      'The session history exceeds the supported project format. Export and clear history before continuing.',
+    )
   const studio = studioSchema.safeParse(project.studio)
   if (!studio.success)
     throw new Error(
@@ -37,6 +44,8 @@ export function validateReferences(p: Project): Project {
     p.studio.runs,
     p.studio.revisions,
     p.studio.canonChanges,
+    p.studio.clips,
+    p.activity.sessions,
   ]) {
     if (new Set(collection.map((x) => x.id)).size !== collection.length)
       throw new Error('This project contains duplicate identifiers.')
@@ -94,11 +103,12 @@ export function validateReferences(p: Project): Project {
   })
   const checkScenario = (s: Project['scenarios'][number]) => {
     requireEntity(s.characterId)
-    requireEntity(s.locationId)
+    if (s.locationId || s.practiceMode !== 'interview') requireEntity(s.locationId)
     s.activeEntityIds.forEach(requireEntity)
     if (
       p.entities.find((e) => e.id === s.characterId)?.type !== 'Character' ||
-      p.entities.find((e) => e.id === s.locationId)?.type !== 'Location'
+      ((s.locationId || s.practiceMode !== 'interview') &&
+        p.entities.find((e) => e.id === s.locationId)?.type !== 'Location')
     )
       throw new Error('A scenario needs a character and a location.')
   }
@@ -184,7 +194,39 @@ export function validateReferences(p: Project): Project {
           throw new Error('Voice evidence is not grounded in its sample.')
   }
   const earlierRuns = new Set<string>()
+  if (p.activity.sessions.filter((s) => s.status !== 'finished').length > 1)
+    throw new Error('Only one practice session may be open in a project.')
+  for (const session of p.activity.sessions)
+    if (new Set(session.days.map((d) => d.date)).size !== session.days.length)
+      throw new Error('Duplicate session day.')
+  for (const clip of p.studio.clips) {
+    if (!p.scenes.some((s) => s.id === clip.sceneId))
+      throw new Error('Missing conversation destination scene.')
+    const adventure = p.adventures.find((a) => a.id === clip.adventureId)
+    if (!adventure || !adventure.turns.some((t) => t.id === clip.branchHeadId))
+      throw new Error('Missing conversation branch.')
+    if ((adventure.scenario.practiceMode || 'explore') !== clip.mode)
+      throw new Error('Conversation mode does not match its source.')
+    const turns = branchPath(adventure, clip.branchHeadId)
+    for (const excerpt of clip.excerpts) {
+      const turn = turns.find((t) => t.id === excerpt.turnId)
+      if (
+        !turn ||
+        excerpt.end > turn[excerpt.field].length ||
+        excerpt.end <= excerpt.start ||
+        turn[excerpt.field].slice(excerpt.start, excerpt.end) !== excerpt.text
+      )
+        throw new Error('A conversation excerpt does not match its source branch.')
+      const origin = excerpt.field === 'input' || turn.model === 'Author' ? 'author' : 'assisted'
+      if (excerpt.origin !== origin)
+        throw new Error('Conversation attribution does not match its source.')
+    }
+    if (clip.excerpts.reduce((n, e) => n + e.text.length, 0) > 8000)
+      throw new Error('Conversation selection is too long.')
+  }
   for (const run of p.studio.runs) {
+    if (run.clipId && !p.studio.clips.some((c) => c.id === run.clipId && c.sceneId === run.sceneId))
+      throw new Error('Missing manuscript conversation source.')
     if (run.sceneId && !p.scenes.some((s) => s.id === run.sceneId))
       throw new Error('Missing manuscript run scene.')
     if (run.profileId && !p.studio.profiles.some((v) => v.id === run.profileId))
@@ -255,6 +297,9 @@ export function parseProject(text: string): Project {
   // v3 adds manuscript review and voice evidence without altering existing prose or canon.
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 2)
     input = { ...input, schemaVersion: 3 }
+  // v4 adds opt-in practice history and source-linked conversation excerpts.
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 3)
+    input = { ...input, schemaVersion: 4 }
   const parsed = projectSchema.safeParse(input)
   if (!parsed.success)
     throw new Error(

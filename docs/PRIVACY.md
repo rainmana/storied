@@ -15,6 +15,8 @@ WebLLM uses its browser caches. Embeddings use the `storied-embeddings-v1` cache
 
 ## Browser storage
 
+Optional practice history stores session intentions, dates, duration, word-count changes, and edit counts in the project. It stores no raw keystroke log or copied writing in its counters, makes no network request, and can be disabled, exported, or cleared independently in Progress. Conversation clips preserve the selected source text and attribution beside a manuscript scene; adapting one sends it only through an explicitly requested AI operation. See [practice and conversations](PRACTICE.md).
+
 Manuscript runs, writing samples, approved voice profiles, exact specialist requests/responses, revisions, and canon approvals are saved locally and included in project exports. Sample import/paste makes no inference request. Analysis sends only the previewed excerpts to the explicitly selected destination; manuscript generation sends approved preferences, with sample excerpts separately opt-in. Samples never enter fictional canon or the world search index. Old run histories can retain excerpts even after their original sample is removed. See [manuscript context and recovery](MANUSCRIPT.md).
 
 Field-assistance conversations remain in panel memory until closed; only text the author inserts reaches project storage. Its author-view compiler includes public story-bible context by default, with an explicit private-context choice. The selected field is always part of the requested input, even when it contains private notes. This does not change Play's character-view restrictions. See [field-assistance context and lifecycle](AUTHORING.md).

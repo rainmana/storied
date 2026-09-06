@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-09-06T09:46:44.732Z",
+  "browser": "Microsoft Edge",
+  "isolatedTestContext": true,
+  "environment": "Local service-worker upgrade replay",
+  "previousSourceCommit": "3161a85",
+  "previousVersion": "0.6.0",
+  "currentVersion": "0.7.0",
+  "beforeSchema": 3,
+  "afterSchema": 4,
+  "projectIdPreserved": true,
+  "creativeRecordCollectionsCompared": [
+    "entities",
+    "relationships",
+    "facts",
+    "knowledge",
+    "scenes",
+    "scenarios",
+    "adventures",
+    "events",
+    "memories",
+    "proposals",
+    "assets",
+    "journal",
+    "templates",
+    "workflows",
+    "approvals"
+  ],
+  "manuscriptStudioPreserved": true,
+  "disabledEmptyActivity": true,
+  "offlineReloadPreserved": true,
+  "initialPublicCheck": {
+    "updatedApplicationReached": true,
+    "completedRecordComparison": false,
+    "stoppedAt": "Outdated exact version selector v0.7; actual badge was v0.7.0."
+  }
+}

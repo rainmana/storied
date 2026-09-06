@@ -1,5 +1,21 @@
 # Verification and MVP limits
 
+## Version 0.7 practice and conversation sources
+
+Deployed at **https://storied.alecakin.com**, Worker version `800d0a8b-7017-421e-9b7a-d05dc34739a5`, rollout `50b28779-3fe4-44bb-9269-f8b9f61a1d92` at 100%. All **57 assets (52,548,264 bytes)** match the tested release, including the source ZIP: [asset hashes and headers](verification/v0.7-deployment-assets.json), [hosting receipt](verification/v0.7-hosting.json). Hosting remains assets-only, with no application bindings or observability, and without browser error-reporting headers.
+
+All **29 ordinary browser workflows passed on the public origin** in 3.0 minutes: [production results](verification/v0.7-production-browser-tests.json). The optional hardware/model-download workflow was skipped. [Progress](screenshots/practice-progress.png) and [mobile conversation selection](screenshots/conversation-mobile.png) screenshots were refreshed from this run.
+
+This release adds optional local practice sessions and daily history, character interviews, staged scenes, and exact or adapted conversation excerpts for manuscripts. The [practice guide](PRACTICE.md) describes timing, word accounting, source attribution, and canon boundaries. Existing projects migrate from format 3 to 4 with tracking disabled and empty clip history; earlier migrations remain supported.
+
+The domain suite passes **137 tests** across ten files. New coverage exercises zero-baseline goals, separate assisted/imported counts, deletions and revisions, one unfinished session, midnight splitting and suspended-clock limits, migration/export, exact source ranges and branches, interview knowledge filtering, and the prohibition on interview memory/extraction/canon promotion. Clock changes do not invalidate manuscript runs.
+
+Four new browser workflows exercise session pause/resume and persistence, idle/thinking policy, disabling and clearing tracking, mobile exact imports, and partial dialogue adaptation through separate writer/continuity/prose contexts with explicit author insertion. The adaptation provider is synthetic. Partial text selection uses the browser's native selection range API and the real Keep button; this does not establish keyboard or touch-selection parity across browsers. The model runtimes are unchanged and the optional hardware test is not part of this release's ordinary regression run; earlier real-model observations and limits remain below.
+
+All **29 ordinary local browser workflows passed** in 2.1 minutes: [local browser results](verification/v0.7-local-browser-tests.json). TypeScript, the production build, formatting, and diff whitespace checks pass. The build retains the existing upstream PGlite eval warnings. The source ZIP is the packaging-time snapshot; later live receipts and screenshots are retained in the workspace.
+
+An isolated browser accepted the live service-worker update and displayed v0.7.0 with the existing project. Its helper stopped at an outdated exact badge selector (`v0.7`), before comparing exported records. A corrected local service-worker replay used the committed v0.6 source (`3161a85`) and the deployed v0.7 build. It preserved project identity, manuscript text, all tested creative collections and studio records, then reopened the manuscript offline: [upgrade comparison](verification/v0.7-in-place-upgrade.json). The local replay is not an additional live-origin deployment test.
+
 ## Version 0.6 manuscripts and author voice
 
 Deployed at **https://storied.alecakin.com**, Worker version `cce70c66-52b7-42c7-9467-78b5d3d6baee`, rollout `be34f94d-0f52-416c-894d-c666dcd250ae` at 100%. All **57 assets (52,156,964 bytes)** match the release build, including the source archive: [asset hashes and headers](verification/v0.6-deployment-assets.json), [hosting receipt](verification/v0.6-hosting.json). The service remains assets-only, without application bindings or observability. Browser error-reporting headers remain absent.

@@ -255,7 +255,7 @@ export async function stepWorkflow(
       case 'extractProposedChanges': {
         if (!w.turnId) throw new Error('Accept the narrative before extracting world proposals.')
         const turn = a.turns.find((t) => t.id === w.turnId)!
-        if (w.intent === 'Story') {
+        if (w.intent === 'Story' || a.scenario.practiceMode === 'interview') {
           w.node = 'updateMemory'
           break
         }
@@ -376,14 +376,15 @@ export function acceptWorkflowNarrative(p: Project, id: string, text: string) {
   w.status = 'ready'
   w.worldRevision = p.worldRevision + 1
   traceNode(w, 'acceptNarrative', 'Human accepted this exact text; canon unchanged')
-  p.memories.push({
-    id: uid(),
-    adventureId: a.id,
-    turnId: turn.id,
-    characterId: a.scenario.characterId,
-    text: turn.text.slice(0, 1200),
-    createdAt: now(),
-  })
+  if (a.scenario.practiceMode !== 'interview')
+    p.memories.push({
+      id: uid(),
+      adventureId: a.id,
+      turnId: turn.id,
+      characterId: a.scenario.characterId,
+      text: turn.text.slice(0, 1200),
+      createdAt: now(),
+    })
   return turn
 }
 
