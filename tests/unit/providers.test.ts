@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import {
   completionRequest,
   defaultConnection,
+  connectionSchema,
   modelIds,
   providerIds,
   providerRequest,
@@ -11,6 +12,53 @@ import {
 } from '../../src/lib/provider-client'
 
 describe('optional inference providers', () => {
+  it('upgrades saved profiles to Automatic and omits limits for OpenAI chat-latest aliases', () => {
+    for (const model of ['chat-latest', 'gpt-5.3-chat-latest']) {
+      const { tokenLimit: _oldMissing, ...legacy } = { ...defaultConnection('openai'), model }
+      const c = connectionSchema.parse(legacy)
+      expect(c.tokenLimit).toBe('auto')
+      const body = completionRequest(c, 'passage', 'storyteller').body
+      expect(body).not.toHaveProperty('max_output_tokens')
+      expect(body).not.toHaveProperty('max_tokens')
+      expect(body).not.toHaveProperty('max_completion_tokens')
+      expect(
+        completionRequest({ ...c, tokenLimit: 'custom', maxTokens: 4096 }, 'p', 'storyteller').body,
+      ).toHaveProperty('max_output_tokens', 4096)
+    }
+  })
+  it('omits output limits for either optional protocol and retains required Messages limits', () => {
+    for (const protocol of ['chat', 'responses'] as const) {
+      const c = {
+        ...defaultConnection('custom'),
+        baseUrl: 'https://example.test/v1',
+        model: 'm',
+        protocol,
+        tokenLimit: 'provider' as const,
+      }
+      const body = completionRequest(validateConnection(c, ''), 'source', 'extractor', {
+        type: 'object',
+      }).body
+      expect(body).not.toHaveProperty('max_tokens')
+      expect(body).not.toHaveProperty('max_output_tokens')
+      expect(body).not.toHaveProperty('max_completion_tokens')
+    }
+    expect(
+      completionRequest(defaultConnection('anthropic'), 'p', 'storyteller').body,
+    ).toHaveProperty('max_tokens', 2048)
+    expect(() =>
+      validateConnection(
+        { ...defaultConnection('anthropic'), model: 'm', tokenLimit: 'provider' },
+        'fake',
+      ),
+    ).toThrow('requires an output-token limit')
+    expect(
+      completionRequest(
+        { ...defaultConnection('openai'), model: 'other-model' },
+        'p',
+        'storyteller',
+      ).body,
+    ).toHaveProperty('max_output_tokens', 2048)
+  })
   it.each(providerIds)('validates the %s preset and its protocol', (provider) => {
     const c = { ...defaultConnection(provider), model: 'chosen-model' }
     if (provider === 'custom') c.baseUrl = 'https://example.test/api/v1'

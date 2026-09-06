@@ -59,15 +59,18 @@ test('opt-in API inference keeps credentials out of projects, filters context, a
   await section.getByLabel('Provider', { exact: true }).selectOption('custom')
   await section.getByLabel('API base URL', { exact: true }).fill('https://provider.example.test/v1')
   await section.getByLabel('API key', { exact: true }).fill('fixture-user-key-never-export')
-  await section.getByLabel('Model ID', { exact: true }).fill('fixture-model')
   expect(calls).toHaveLength(0)
   await expect(
     section.getByRole('button', { name: 'Use this connection', exact: true }),
   ).toBeDisabled()
-  await section.getByRole('button', { name: 'Load model list', exact: true }).click()
+  await section.getByRole('button', { name: 'Fetch models', exact: true }).click()
   await expect(
-    section.getByText('1 model IDs loaded. Select an exact model ID above.', { exact: true }),
+    section.getByText('1 models found. Choose one below, or enter a model ID yourself.', {
+      exact: true,
+    }),
   ).toBeVisible()
+  await section.getByLabel('Available models', { exact: true }).selectOption('fixture-model')
+  await expect(section.getByLabel('Model ID', { exact: true })).toHaveValue('fixture-model')
   expect(calls[0]).toMatchObject({
     method: 'GET',
     body: null,
@@ -167,5 +170,126 @@ test('provider errors stop without retry or fallback and the connection form fit
   await expect(page.getByRole('alert')).toContainText('Provider returned HTTP 401')
   await expect(page.getByRole('alert')).not.toContainText('secret-key')
   await expect(page.getByRole('button', { name: 'Retry failed step', exact: true })).toBeVisible()
+  expect(calls).toBe(1)
+})
+
+test('discover OpenAI models before choosing one and generate/extract with chat-latest without a token limit', async ({
+  page,
+}, info) => {
+  const calls: { method: string; body: any }[] = []
+  const headers = {
+    'access-control-allow-origin': new URL(info.project.use.baseURL!).origin,
+    'access-control-allow-headers': 'authorization,content-type',
+    'content-type': 'application/json',
+  }
+  await page.route('https://api.openai.com/v1/**', async (route) => {
+    const r = route.request()
+    if (r.method() === 'OPTIONS') return route.fulfill({ status: 204, headers })
+    const body = r.postDataJSON()
+    calls.push({ method: r.method(), body })
+    if (r.method() === 'GET')
+      return route.fulfill({
+        headers,
+        body: JSON.stringify({ data: [{ id: 'other-model' }, { id: 'chat-latest' }] }),
+      })
+    if (['max_tokens', 'max_completion_tokens', 'max_output_tokens'].some((key) => key in body))
+      return route.fulfill({
+        status: 400,
+        headers,
+        body: JSON.stringify({ error: { message: 'Unsupported output limit' } }),
+      })
+    const text = body.instructions.includes('Extract only')
+      ? '{"proposals":[]}'
+      : 'Mara steps onto the ferry.'
+    return route.fulfill({
+      headers,
+      body: JSON.stringify({
+        output: [{ type: 'message', content: [{ type: 'output_text', text }] }],
+      }),
+    })
+  })
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Explore The Quiet Tide', exact: true }).click()
+  await saved(page)
+  const section = await connections(page)
+  await expect(section.getByRole('button', { name: 'Fetch models', exact: true })).toBeDisabled()
+  await section.getByLabel('API key', { exact: true }).fill('synthetic-openai-key')
+  await expect(section.getByLabel('Model ID', { exact: true })).toHaveValue('')
+  // Discovery remains independent of an unfinished generation setting.
+  await section.getByLabel('Maximum output tokens', { exact: true }).fill('')
+  expect(calls).toHaveLength(0)
+  await section.getByRole('button', { name: 'Fetch models', exact: true }).click()
+  await section.getByLabel('Filter models', { exact: true }).fill('chat')
+  await expect(
+    section.getByLabel('Available models', { exact: true }).locator('option'),
+  ).toHaveCount(2)
+  await section.getByLabel('Available models', { exact: true }).selectOption('chat-latest')
+  await expect(section.getByLabel('Maximum output tokens', { exact: true })).toHaveCount(0)
+  await expect(
+    section.getByText('No token-limit parameter will be sent.', { exact: false }),
+  ).toBeVisible()
+  await page.screenshot({
+    path: 'docs/screenshots/provider-model-picker.png',
+    animations: 'disabled',
+  })
+  await section.getByRole('checkbox', { name: /I allow AI actions/ }).check()
+  await section.getByRole('button', { name: 'Use this connection', exact: true }).click()
+  await nav(page, 'Play')
+  await page.getByLabel('Your next move', { exact: true }).fill('I board the ferry.')
+  await page.getByRole('button', { name: 'Send', exact: true }).click()
+  await expect(page.getByLabel('Story draft', { exact: true })).toHaveValue(
+    'Mara steps onto the ferry.',
+  )
+  await page.getByRole('button', { name: 'Accept passage', exact: true }).click()
+  await expect.poll(() => calls.length).toBe(3)
+  expect(calls[0]).toEqual({ method: 'GET', body: null })
+  for (const { body } of calls.slice(1)) {
+    expect(body.model).toBe('chat-latest')
+    expect(body).not.toHaveProperty('max_output_tokens')
+  }
+  await saved(page)
+  await page.reload()
+  await page.getByRole('button', { name: 'Settings', exact: true }).click()
+  await expect(page.getByLabel('Model ID', { exact: true })).toHaveValue('chat-latest')
+  await expect(page.getByLabel('Output limit', { exact: true })).toHaveValue('auto')
+  await page.getByLabel('Output limit', { exact: true }).selectOption('provider')
+  await page.getByRole('checkbox', { name: /I allow AI actions/ }).check()
+  await page.getByRole('button', { name: 'Use this connection', exact: true }).click()
+  await page.reload()
+  await page.getByRole('button', { name: 'Settings', exact: true }).click()
+  await expect(page.getByLabel('Output limit', { exact: true })).toHaveValue('provider')
+})
+
+test('failed model discovery permits manual selection and changing credentials clears results', async ({
+  page,
+}) => {
+  let calls = 0
+  await page.route('https://api.openai.com/v1/models', async (route) => {
+    if (route.request().method() === 'OPTIONS')
+      return route.fulfill({
+        status: 204,
+        headers: { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*' },
+      })
+    calls++
+    return route.fulfill({
+      status: 404,
+      headers: { 'access-control-allow-origin': '*' },
+      body: 'private echoed error',
+    })
+  })
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Explore The Quiet Tide', exact: true }).click()
+  await saved(page)
+  const section = await connections(page)
+  await section.getByLabel('API key', { exact: true }).fill('synthetic-key')
+  await section.getByRole('button', { name: 'Fetch models', exact: true }).click()
+  await expect(section.getByRole('alert')).toContainText('enter a model ID manually')
+  await expect(section.getByRole('alert')).not.toContainText('private echoed error')
+  await section.getByLabel('Model ID', { exact: true }).fill('chat-latest')
+  await section.getByRole('checkbox', { name: /I allow AI actions/ }).check()
+  await section.getByRole('button', { name: 'Use this connection', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'API connected', exact: true })).toBeVisible()
+  await section.getByLabel('API key', { exact: true }).fill('replacement-synthetic-key')
+  await expect(section.getByRole('alert')).toHaveCount(0)
   expect(calls).toBe(1)
 })

@@ -3879,6 +3879,18 @@ kbd {
 .provider-settings details > summary {
   cursor: pointer;
 }
+.provider-model-browser {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.provider-model-browser select {
+  min-width: 0;
+  text-overflow: ellipsis;
+}
 @media (max-width: 700px) {
   .provider-current {
     flex-direction: column;

@@ -60,7 +60,12 @@ export function cancelInference() {
   useModels.getState().cancel()
 }
 export async function listProviderModels(connection: Connection, key: string) {
-  const c = validateConnection(connection, key.trim(), false)
+  // Discovery needs an endpoint and credentials, not a chosen model or valid generation settings.
+  const c = validateConnection(
+    { ...connection, model: '', maxTokens: 2048, tokenLimit: 'auto', structured: 'prompt' },
+    key.trim(),
+    false,
+  )
   const data = await providerRequest(
     c,
     key.trim(),

@@ -64,6 +64,7 @@ export const connectionSchema = z
     model: z.string().trim().max(200),
     protocol: z.enum(['responses', 'messages', 'chat']),
     maxTokens: z.number().int().min(128).max(32768),
+    tokenLimit: z.enum(['auto', 'custom', 'provider']).default('auto'),
     structured: z.enum(['prompt', 'json_object', 'json_schema']),
   })
   .strict()
@@ -75,6 +76,7 @@ export function defaultConnection(provider: ProviderId): Connection {
     protocol: providers[provider].protocol,
     model: '',
     maxTokens: 2048,
+    tokenLimit: 'auto',
     structured: 'prompt',
   }
 }
@@ -86,7 +88,12 @@ export function validateConnection(
   key: string,
   requireModel = true,
 ): Connection {
-  const c = connectionSchema.parse(input)
+  const unusedLimit = outputTokenLimit(input) === undefined
+  const validNumber =
+    Number.isInteger(input.maxTokens) && input.maxTokens >= 128 && input.maxTokens <= 32768
+  const c = connectionSchema.parse(
+    unusedLimit && !validNumber ? { ...input, maxTokens: 2048 } : input,
+  )
   let url: URL
   try {
     url = new URL(c.baseUrl.trim())
@@ -115,6 +122,10 @@ export function validateConnection(
     throw new Error('Enter your API key for this provider.')
   if (c.protocol === 'messages' && c.structured !== 'prompt')
     throw new Error('The Messages adapter uses JSON instructions with local validation.')
+  if (requireModel && c.protocol === 'messages' && c.tokenLimit === 'provider')
+    throw new Error(
+      'Anthropic Messages requires an output-token limit. Choose Automatic or Custom.',
+    )
   return { ...c, baseUrl: url.href.replace(/\/+$/, '') }
 }
 export function connectionLabel(c: Connection) {
@@ -122,6 +133,19 @@ export function connectionLabel(c: Connection) {
 }
 export function connectionOrigin(c: Connection) {
   return new URL(c.baseUrl).origin
+}
+export function outputTokenLimit(c: Connection): number | undefined {
+  if (c.protocol === 'messages') return c.maxTokens
+  if (c.tokenLimit === 'provider') return undefined
+  // Accommodate chat-latest endpoints that reject explicit output limits, including saved v0.3 profiles.
+  if (
+    c.tokenLimit !== 'custom' &&
+    c.provider === 'openai' &&
+    typeof c.model === 'string' &&
+    /(^|-)chat-latest$/.test(c.model.trim())
+  )
+    return undefined
+  return c.maxTokens
 }
 export function requestHeaders(c: Connection, key: string): Record<string, string> {
   return c.protocol === 'messages'
@@ -139,6 +163,7 @@ export function completionRequest(
   role: string,
   schema?: Record<string, unknown>,
 ) {
+  const limit = outputTokenLimit(c)
   const system =
     role === 'extractor'
       ? 'Extract only explicitly supported proposals. Return JSON only. Do not invent facts. The author must approve all changes.'
@@ -170,7 +195,7 @@ export function completionRequest(
         model: c.model,
         instructions: system,
         input,
-        max_output_tokens: c.maxTokens,
+        ...(limit === undefined ? {} : { max_output_tokens: limit }),
         store: false,
         stream: false,
         ...(format
@@ -193,7 +218,7 @@ export function completionRequest(
         { role: 'system', content: system },
         { role: 'user', content: input },
       ],
-      max_tokens: c.maxTokens,
+      ...(limit === undefined ? {} : { max_tokens: limit }),
       stream: false,
       ...(format ? { response_format: format } : {}),
       ...(c.provider === 'venice'

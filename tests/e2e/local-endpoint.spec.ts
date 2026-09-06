@@ -54,13 +54,14 @@ test('loopback HTTP with real CORS, optional persistent key, and manual Story mo
     await section
       .getByLabel('API base URL', { exact: true })
       .fill(`http://127.0.0.1:${(server.address() as AddressInfo).port}/v1`)
+    await expect(section.getByLabel('API key', { exact: true })).toHaveValue('')
+    await section.getByRole('button', { name: 'Fetch models', exact: true }).click()
+    await expect(section.getByRole('status')).toContainText('1 models found')
+    await section.getByLabel('Available models', { exact: true }).selectOption('local-fixture')
     await section.getByLabel('API key', { exact: true }).fill('synthetic-local-key')
-    await section.getByLabel('Model ID', { exact: true }).fill('local-fixture')
     await section
       .getByRole('checkbox', { name: 'Remember this key on this device', exact: true })
       .check()
-    await section.getByRole('button', { name: 'Load model list', exact: true }).click()
-    await expect(section.getByRole('status')).toContainText('1 model IDs loaded')
     await section.getByRole('checkbox', { name: /I allow AI actions/ }).check()
     await section.getByRole('button', { name: 'Use this connection', exact: true }).click()
     expect(await page.evaluate(() => localStorage.getItem('storied-provider-key:lmstudio'))).toBe(
@@ -85,7 +86,7 @@ test('loopback HTTP with real CORS, optional persistent key, and manual Story mo
       'A local server answers from the ferry.',
     )
     expect(received).toEqual([
-      { method: 'GET', url: '/v1/models', origin: appOrigin, key: 'Bearer synthetic-local-key' },
+      { method: 'GET', url: '/v1/models', origin: appOrigin, key: undefined },
       {
         method: 'POST',
         url: '/v1/chat/completions',

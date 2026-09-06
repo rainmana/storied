@@ -476,7 +476,7 @@ export function Settings() {
         </span>
         <p>Open source. Local by design. Made for the worlds only you can imagine.</p>
         <small>
-          v0.3.0 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
+          v0.3.1 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
         </small>
         <p>
           <a
@@ -488,7 +488,7 @@ export function Settings() {
             Open-source licenses
           </a>
           {' · '}
-          <a href="/storied-source-v0.3.0.zip" download className="text-button small">
+          <a href="/storied-source-v0.3.1.zip" download className="text-button small">
             Download source
           </a>
         </p>

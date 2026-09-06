@@ -8,6 +8,8 @@ import {
   connectionLabel,
   connectionOrigin,
   isLoopback,
+  outputTokenLimit,
+  validateConnection,
   type Connection,
   type ProviderId,
 } from '../lib/provider-client'
@@ -26,6 +28,9 @@ export function ProviderSettings() {
     [remember, setRemember] = useState(settings.profiles[initial]?.remember || false),
     [consent, setConsent] = useState(false),
     [models, setModels] = useState<string[]>([]),
+    [modelFilter, setModelFilter] = useState(''),
+    [modelError, setModelError] = useState(''),
+    [modelNotice, setModelNotice] = useState(''),
     [loading, setLoading] = useState(false),
     [error, setError] = useState(''),
     [notice, setNotice] = useState('')
@@ -35,6 +40,9 @@ export function ProviderSettings() {
     setRemember(settings.profiles[provider]?.remember || false)
     setConsent(false)
     setModels([])
+    setModelFilter('')
+    setModelError('')
+    setModelNotice('')
     setError('')
     setNotice('')
   }
@@ -48,6 +56,21 @@ export function ProviderSettings() {
     /* Inline validation on activation. */
   }
   const disabled = inference.busy || loading
+  let canDiscover = false
+  try {
+    validateConnection(
+      { ...draft, model: '', maxTokens: 2048, tokenLimit: 'auto', structured: 'prompt' },
+      key.trim(),
+      false,
+    )
+    canDiscover = true
+  } catch {
+    /* Keep discovery disabled until the endpoint and credentials are ready. */
+  }
+  const filteredModels = models.filter((id) =>
+    id.toLowerCase().includes(modelFilter.toLowerCase().trim()),
+  )
+  const limit = outputTokenLimit(draft)
   return (
     <section className="settings-section provider-settings" aria-label="Storyteller connections">
       <div className="settings-section-title">
@@ -128,6 +151,9 @@ export function ProviderSettings() {
                   setKey('')
                   setConsent(false)
                   setModels([])
+                  setModelFilter('')
+                  setModelError('')
+                  setModelNotice('')
                 }}
                 placeholder="https://your-server.example/v1"
               />
@@ -143,6 +169,10 @@ export function ProviderSettings() {
                     ...draft,
                     protocol: e.target.value as Connection['protocol'],
                     structured: 'prompt',
+                    tokenLimit:
+                      draft.tokenLimit === 'provider' && e.target.value === 'messages'
+                        ? 'auto'
+                        : draft.tokenLimit,
                   })
                   setConsent(false)
                 }}
@@ -172,9 +202,93 @@ export function ProviderSettings() {
               onChange={(e) => {
                 setKey(e.target.value)
                 setConsent(false)
+                setModels([])
+                setModelFilter('')
+                setModelError('')
+                setModelNotice('')
               }}
             />
           </Field>
+          <div className="provider-model-browser">
+            <div className="button-row">
+              <Button
+                type="button"
+                variant="secondary"
+                disabled={disabled || !canDiscover}
+                onClick={async () => {
+                  setLoading(true)
+                  setModels([])
+                  setModelFilter('')
+                  setModelError('')
+                  setModelNotice('')
+                  try {
+                    const ids = await listProviderModels(draft, key)
+                    setModels(ids)
+                    setModelNotice(
+                      `${ids.length} models found. Choose one below, or enter a model ID yourself.`,
+                    )
+                  } catch (e) {
+                    setModelError(e instanceof Error ? e.message : 'Could not load model IDs.')
+                  } finally {
+                    setLoading(false)
+                  }
+                }}
+              >
+                {loading ? <LoaderCircle className="spin" size={14} /> : <Cable size={14} />}
+                {loading ? 'Fetching models…' : 'Fetch models'}
+              </Button>
+              <span className="small muted">
+                {providers[draft.provider].keyRequired && !key.trim()
+                  ? 'Enter your API key to list available models.'
+                  : `Contacts ${destination}${key.trim() ? ' with your key' : ' without a key'}; sends no story text.`}
+              </span>
+            </div>
+            {modelNotice && (
+              <p role="status" className="small">
+                {modelNotice}
+              </p>
+            )}
+            {modelError && (
+              <p role="alert" className="error-message">
+                {modelError} You can still enter a model ID manually.
+              </p>
+            )}
+            {models.length > 0 && (
+              <>
+                <Field label="Filter models">
+                  <input
+                    type="search"
+                    value={modelFilter}
+                    disabled={disabled}
+                    placeholder="Search model names"
+                    onChange={(e) => setModelFilter(e.target.value)}
+                  />
+                </Field>
+                <Field
+                  label="Available models"
+                  hint={`${filteredModels.length} of ${models.length} shown. Availability does not guarantee support for text generation.`}
+                >
+                  <select
+                    disabled={disabled || !filteredModels.length}
+                    value={filteredModels.includes(draft.model) ? draft.model : ''}
+                    onChange={(e) => {
+                      setDraft({ ...draft, model: e.target.value })
+                      setConsent(false)
+                    }}
+                  >
+                    <option value="" disabled>
+                      {filteredModels.length ? 'Choose a model' : 'No matching models'}
+                    </option>
+                    {filteredModels.map((id) => (
+                      <option key={id} value={id}>
+                        {id}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </>
+            )}
+          </div>
           <label className="provider-checkbox">
             <input
               type="checkbox"
@@ -194,60 +308,54 @@ export function ProviderSettings() {
             <Field label="Model ID" hint="Use the exact ID from your provider or local server.">
               <input
                 value={draft.model}
-                list="provider-model-ids"
                 required
                 maxLength={200}
                 disabled={disabled}
-                placeholder="Enter a model ID, or load the list"
+                placeholder="Choose above, or enter a model ID"
                 onChange={(e) => {
                   setDraft({ ...draft, model: e.target.value })
                   setConsent(false)
                 }}
               />
             </Field>
-            <Field label="Maximum output tokens">
-              <input
-                type="number"
-                min={128}
-                max={32768}
-                required
-                disabled={disabled}
-                value={draft.maxTokens}
-                onChange={(e) => setDraft({ ...draft, maxTokens: Number(e.target.value) })}
-              />
-            </Field>
-          </div>
-          <datalist id="provider-model-ids">
-            {models.map((id) => (
-              <option key={id} value={id} />
-            ))}
-          </datalist>
-          <div className="button-row">
-            <Button
-              type="button"
-              variant="secondary"
-              disabled={disabled || !draft.baseUrl}
-              onClick={async () => {
-                setLoading(true)
-                setError('')
-                setNotice('')
-                try {
-                  const ids = await listProviderModels(draft, key)
-                  setModels(ids)
-                  setNotice(`${ids.length} model IDs loaded. Select an exact model ID above.`)
-                } catch (e) {
-                  setError(e instanceof Error ? e.message : 'Could not load model IDs.')
-                } finally {
-                  setLoading(false)
-                }
-              }}
+            <Field
+              label="Output limit"
+              hint={
+                draft.protocol === 'messages'
+                  ? 'Anthropic Messages requires an explicit token limit.'
+                  : limit === undefined
+                    ? 'No token-limit parameter will be sent. The provider controls response length and usage.'
+                    : 'Automatic omits the limit for OpenAI chat-latest aliases; other models use the limit below.'
+              }
             >
-              {loading ? <LoaderCircle className="spin" size={14} /> : <Cable size={14} />}Load
-              model list
-            </Button>
-            <span className="small muted">
-              Contacts {destination} with your key; sends no story text.
-            </span>
+              <select
+                value={draft.tokenLimit}
+                disabled={disabled}
+                onChange={(e) => {
+                  setDraft({ ...draft, tokenLimit: e.target.value as Connection['tokenLimit'] })
+                  setConsent(false)
+                }}
+              >
+                <option value="auto">Automatic</option>
+                <option value="provider" disabled={draft.protocol === 'messages'}>
+                  Provider default — omit limit
+                </option>
+                <option value="custom">Custom token limit</option>
+              </select>
+            </Field>
+            {limit !== undefined && (
+              <Field label="Maximum output tokens">
+                <input
+                  type="number"
+                  min={128}
+                  max={32768}
+                  required
+                  disabled={disabled}
+                  value={draft.maxTokens}
+                  onChange={(e) => setDraft({ ...draft, maxTokens: Number(e.target.value) })}
+                />
+              </Field>
+            )}
           </div>
           <details>
             <summary>Structured extraction</summary>

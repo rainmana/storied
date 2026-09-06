@@ -1,5 +1,13 @@
 # Verification and MVP limits
 
+## Version 0.3.1 model discovery and output limits
+
+Deployed at **https://storied.alecakin.com**, deployment `56d1c229734c4f9dbb5e300ae048d6f8`. All **56 assets (48,523,301 bytes)** match the built files, with existing privacy/security headers preserved: [asset report](verification/v0.3.1-deployment-assets.json). The full ordinary browser suite passed against the public origin: **12 passed, zero failures, one opt-in hardware test skipped**, in 84.7 seconds. [Machine-readable browser results](verification/v0.3.1-browser-tests.json) record the run. The model-picker screenshot was inspected from that public run. The source ZIP preserves the packaging-time source and docs; these subsequent verification records remain in the workspace.
+
+TypeScript, production build, formatting, and **98 unit tests** pass. All **five focused provider browser workflows** passed locally (27.4 seconds): discovery before model selection, filtered model selection, actual loopback HTTP discovery with no API key, manual entry after discovery failure, secret handling, and generation/extraction with an OpenAI-compatible Responses fixture that rejects every explicit token-limit parameter. The OpenAI fixture uses the exact `chat-latest` ID. Saved output mode survives reload; unit tests cover legacy profile defaults, explicit overrides, both optional protocols, and Anthropic's required output limit.
+
+Tests use synthetic provider replies and credentials; they do not establish live paid-account compatibility. The unchanged on-device runtimes were last exercised with real offline models in the v0.3 run below. [Provider instructions](PROVIDERS.md) describe the new controls. [Narration](ROADMAP.md) is recorded as a future phase, with no speech API/runtime added in this patch.
+
 ## Version 0.3 optional inference verification
 
 Version 0.3 is deployed at **https://storied.alecakin.com**, deployment `2b64473d8381426faa96e62dd8be15cf`. All **56 assets (48,496,036 bytes)** match the tested build, including the GPL source ZIP. Cloudflare confirms an assets-only service without an application module and with observability disabled. Privacy/security headers remain active. The in-app browser upgraded from v0.2 to v0.3 through **Update ready**, retained its existing world, displayed every provider choice, and reported no console warnings/errors. [Asset verification](verification/v0.3-deployment-assets.json) records hashes and response headers. The published source ZIP contains the packaging-time source/documentation snapshot; subsequent deployment verification records remain in the workspace.
