@@ -79,15 +79,13 @@ describe('world graph consistency and temporal epistemics', () => {
     const p = createDemo(),
       base = p.relationships[0]
     p.entities = Array.from({ length: 140 }, (_, i) => newEntity('Location', `Place ${i}`))
-    p.relationships = p.entities
-      .slice(0, -1)
-      .map((e, i) => ({
-        ...base,
-        id: uid(),
-        from: e.id,
-        to: p.entities[i + 1].id,
-        relationType: 'containment',
-      }))
+    p.relationships = p.entities.slice(0, -1).map((e, i) => ({
+      ...base,
+      id: uid(),
+      from: e.id,
+      to: p.entities[i + 1].id,
+      relationType: 'containment',
+    }))
     expect(graphFindings(p).some((f) => f.id === 'review-limit')).toBe(true)
   })
   it('flags participation after an explicitly recorded death without mutating fiction', () => {

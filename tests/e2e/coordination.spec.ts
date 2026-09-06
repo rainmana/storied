@@ -3,14 +3,24 @@ import { readFileSync } from 'node:fs'
 import { createDemo } from '../../src/domain/seed'
 import { uid } from '../../src/domain/schema'
 
-const navigate = (page: Page, name: string) =>
-  page
+async function openNavigation(page: Page) {
+  const menu = page.getByRole('button', { name: 'Open navigation', exact: true })
+  if (await menu.isVisible()) await menu.click()
+}
+const navigate = async (page: Page, name: string) => {
+  const button = page
     .getByRole('navigation', { name: 'Main navigation' })
     .getByRole('button', { name, exact: true })
-    .click()
+  await expect(button).toBeEnabled()
+  await openNavigation(page)
+  await button.click()
+}
 const saved = (page: Page) =>
-  expect(page.getByRole('banner').getByRole('status')).toHaveText('Saved on this device')
+  expect(page.getByRole('banner').getByRole('status', { includeHidden: true })).toHaveText(
+    'Saved on this device',
+  )
 async function exportProject(page: Page) {
+  await openNavigation(page)
   await page.getByRole('button', { name: 'Settings', exact: true }).click()
   await saved(page)
   const downloading = page.waitForEvent('download')
@@ -25,21 +35,19 @@ test('v1 migration, draft checkpoint reload, source preservation, and stale-worl
 }) => {
   const demo = createDemo()
   await page.goto('/')
-  await page
-    .getByLabel('Import project', { exact: true })
-    .setInputFiles({
-      name: 'legacy.storyworld',
-      mimeType: 'application/json',
-      buffer: Buffer.from(
-        JSON.stringify({
-          ...demo,
-          schemaVersion: 1,
-          worldRevision: undefined,
-          workflows: undefined,
-          approvals: undefined,
-        }),
-      ),
-    })
+  await page.getByLabel('Import project', { exact: true }).setInputFiles({
+    name: 'legacy.storyworld',
+    mimeType: 'application/json',
+    buffer: Buffer.from(
+      JSON.stringify({
+        ...demo,
+        schemaVersion: 1,
+        worldRevision: undefined,
+        workflows: undefined,
+        approvals: undefined,
+      }),
+    ),
+  })
   await navigate(page, 'Play')
   const original = '  The bells ring quietly.\nNobody speaks.  '
   await page.getByRole('button', { name: 'Story', exact: true }).click()
@@ -50,6 +58,8 @@ test('v1 migration, draft checkpoint reload, source preservation, and stale-worl
     .getByLabel('Story draft', { exact: true })
     .fill('An edited draft that must remain in the record.')
   await saved(page)
+  // The public origin needs time to precache its WASM assets before losing the network.
+  await expect(page.getByText('Ready for offline use', { exact: true })).toBeVisible()
   await context.setOffline(true)
   await page.reload()
   await navigate(page, 'Play')
@@ -141,13 +151,11 @@ test('changing scene time excludes and reveals an explicitly dated discovery in 
     stance: 'suspects',
   })
   await page.goto('/')
-  await page
-    .getByLabel('Import project', { exact: true })
-    .setInputFiles({
-      name: 'chronology.storyworld',
-      mimeType: 'application/json',
-      buffer: Buffer.from(JSON.stringify(p)),
-    })
+  await page.getByLabel('Import project', { exact: true }).setInputFiles({
+    name: 'chronology.storyworld',
+    mimeType: 'application/json',
+    buffer: Buffer.from(JSON.stringify(p)),
+  })
   await navigate(page, 'Play')
   await page.getByRole('button', { name: 'Context', exact: true }).click()
   await expect(page.getByRole('dialog')).not.toContainText('silver compass')
