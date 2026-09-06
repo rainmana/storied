@@ -1,5 +1,27 @@
 # Verification and MVP limits
 
+## Version 0.6 manuscripts and author voice
+
+Deployed at **https://storied.alecakin.com**, Worker version `cce70c66-52b7-42c7-9467-78b5d3d6baee`, rollout `be34f94d-0f52-416c-894d-c666dcd250ae` at 100%. All **57 assets (52,156,964 bytes)** match the release build, including the source archive: [asset hashes and headers](verification/v0.6-deployment-assets.json), [hosting receipt](verification/v0.6-hosting.json). The service remains assets-only, without application bindings or observability. Browser error-reporting headers remain absent.
+
+The served source archive is the packaging-time source/docs snapshot. Post-deployment verification records and screenshots were added afterward; the deployed application code and assets were not rebuilt during live verification.
+
+All **25 ordinary browser workflows were verified on the public origin**. The [initial public run](verification/v0.6-production-browser-tests.json) completed 24 and stopped the theme workflow on a local Windows screenshot-write error (`UNKNOWN`, opening `theme-midnight-relationships.png`), rather than an application assertion. The unchanged [theme recheck](verification/v0.6-production-theme-recheck.json) passed in 10.5 seconds, including contrast checks, keyboard selection, and offline persistence. [Public contrast observations](verification/v0.6-production-theme-contrast.json) retain the measurements. The real-model workflow was run locally as documented below and skipped in the ordinary public run.
+
+The release adds scene setup and ordering, selection/cursor assistance, separate writer/continuity/prose/voice/analysis roles, exact-span review highlights, explicit canon preview and approval, manuscript revisions, and evidence-backed voice profiles. Format-1 and format-2 migrations preserve prior writing and world records. [The guide](MANUSCRIPT.md) and [ADR 0004](adr/0004-manuscript-and-voice-graphs.md) define scope, authority, and the MCW-inspired multi-agent extension.
+
+The domain suite passes **127 tests** across nine files. New coverage checks visibility, branch/time gating, attributed beliefs, separate reviewer contexts, approved voice evidence, exact quote occurrences, invalid/cyclic imports, immutable evidence links, context/output bounds, changed-source invalidation, human-only insertion, canon corrections, and temporal changes.
+
+Six new isolated browser workflows cover samples from unrelated topics, profile approval, all specialist roles, edited insertion and restoration, source-linked canon changes, offline export/import, mobile annotations, malformed evidence, explicit retry, cancellation/reload without replay, and late-response protection. Provider responses in these six tests are synthetic. No live paid cloud-provider quality claim is made.
+
+The full local regression suite passed **25 ordinary browser workflows** in 2.6 minutes: [local results](verification/v0.6-local-browser-tests.json). After the compact-contract and interface refinements, the six new browser workflows plus the real offline model workflow passed together: [final focused results](verification/v0.6-final-focused-tests.json). TypeScript, production build, formatting, and diff whitespace checks pass.
+
+The compact local run produced valid review JSON but cited text absent from the candidate. Evidence validation correctly paused that pass and applied no findings. Its manuscript draft was accepted offline, and the workflow again recorded zero offline requests and zero page errors. [Compact model evidence](verification/v0.6-compact-local-model-evidence.json) and [exported project](verification/v0.6-compact-local-model-world.storyworld) preserve the result. This is a concrete limitation of the tested 0.5B model, not a passing semantic-quality evaluation.
+
+The initial real Qwen 0.5B/MiniLM run passed the full offline workflow, including manuscript generation and author acceptance, in 2.5 minutes. It recorded **zero requests during offline work and zero uncaught page errors**. Its continuity reviewer ran past the output budget and produced invalid JSON, which was retained with a visible pause; no review or canon change was accepted. [Initial model evidence](verification/v0.6-local-model-evidence.json), [hardware report](verification/v0.6-local-hardware-tests.json), and [exported project](verification/v0.6-local-model-world.storyworld) retain that outcome. This prompted a compact on-device response contract; successful generation is not evidence of reliable semantic review by the smallest model.
+
+Review annotations are an explicit review view, not continuously remapped live spellchecking. Samples support TXT/Markdown and paste, not DOCX/PDF extraction. Specialists share the selected model with separate contexts; per-role model routing is future work. Evidence validation establishes span/source identity, not semantic truth, complete canon consistency, author-voice fidelity, or MCW effectiveness.
+
 ## Version 0.5.1 creation and scrolling fixes
 
 Deployed at **https://storied.alecakin.com**, deployment `b47e64b1d6cc4e45ad2ec5df7a85d7ef`. All **57 assets (51,564,215 bytes)** match the release build, including the source archive. Static-only hosting and existing privacy/security headers are verified in the [asset report](verification/v0.5.1-deployment-assets.json).

@@ -172,7 +172,12 @@ export const useModels = create<ModelState>((set, get) => ({
 }))
 export async function completeLocally(
   prompt: string,
-  role: 'storyteller' | 'extractor' | 'summarizer' | 'worldbuilder' = 'storyteller',
+  role:
+    | 'storyteller'
+    | 'extractor'
+    | 'summarizer'
+    | 'worldbuilder'
+    | import('../domain/manuscript-schema').StudioRole = 'storyteller',
   responseSchema?: Record<string, unknown>,
 ): Promise<string> {
   if (!useModels.getState().loadedId)

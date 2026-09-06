@@ -1,0 +1,341 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\walec\\Development\\storied\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/local-models.spec.ts",
+      "tests/e2e/manuscript.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\walec\\Development\\storied\\playwright.config.ts",
+    "rootDir": "C:/Users/walec/Development/storied/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/walec/Development/storied/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/walec/Development/storied/tests/e2e",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [["list"], ["json"]],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "local-models.spec.ts",
+      "file": "local-models.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "real local models: cached offline generation, retry, extraction, semantic search, and restore",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 115472,
+                  "errors": [],
+                  "stdout": [
+                    {
+                      "text": "Local model assets cached. Disabling browser networking before reload and inference.\n"
+                    },
+                    {
+                      "text": "Offline generation completed from the reloaded model cache.\n"
+                    },
+                    {
+                      "text": "Offline retry and constrained extraction completed; reviewing a real proposal.\n"
+                    },
+                    {
+                      "text": "Real author suggestions generated, reviewed, and inserted with networking disabled.\n"
+                    },
+                    {
+                      "text": "Real manuscript draft accepted offline; specialist review finished or preserved an explicit validation pause.\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:29:06.539Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7de3dc0f3acece0de3b9-b97e87ee13c3fb1277ef",
+          "file": "local-models.spec.ts",
+          "line": 14,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "manuscript.spec.ts",
+      "file": "manuscript.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "samples build an approved voice graph; independent specialists draft and review; insertion has a restorable revision",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7018,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:02.483Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-681e15a97281f59a51d8",
+          "file": "manuscript.spec.ts",
+          "line": 129,
+          "column": 1
+        },
+        {
+          "title": "source-linked canon highlights permit explicit correction, preserve old canon, and survive offline export and restore",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7216,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:09.516Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-ba2677902bfaa2977d90",
+          "file": "manuscript.spec.ts",
+          "line": 206,
+          "column": 1
+        },
+        {
+          "title": "mobile local prose checks need no model; exact highlights can be revised and scene metadata remains editable",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:16.745Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-c3bd3de95d6a2817fa17",
+          "file": "manuscript.spec.ts",
+          "line": 260,
+          "column": 1
+        },
+        {
+          "title": "invalid evidence pauses only the failed specialist and stale text cannot receive its results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5192,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:21.376Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-d3cb505c12e4b2f01b4d",
+          "file": "manuscript.spec.ts",
+          "line": 286,
+          "column": 1
+        },
+        {
+          "title": "stopping and reloading preserve the request without replay; resumption is explicit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7221,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:26.583Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-df003b88a11dc8df0b89",
+          "file": "manuscript.spec.ts",
+          "line": 342,
+          "column": 1
+        },
+        {
+          "title": "a late model response is retained as evidence but cannot overwrite an author edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4765,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-06T07:31:33.817Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "72b4d9116b18770c6388-9f9ef976f15863b2c0f5",
+          "file": "manuscript.spec.ts",
+          "line": 393,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-06T07:29:06.005Z",
+    "duration": 153274.584,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

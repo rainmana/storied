@@ -40,6 +40,7 @@ import { Write } from './pages/Write'
 import { Play } from './pages/Play'
 import { Journal, Relationships, Search, Timeline } from './pages/Library'
 import { Settings } from './pages/Settings'
+import { Voice } from './pages/Voice'
 
 const navigation: { page: Page; icon: LucideIcon }[] = [
   { page: 'Home', icon: HomeIcon },
@@ -50,6 +51,7 @@ const navigation: { page: Page; icon: LucideIcon }[] = [
   { page: 'Relationships', icon: GitFork },
   { page: 'Journal', icon: StickyNote },
   { page: 'Search', icon: SearchIcon },
+  { page: 'Voice', icon: Feather },
 ]
 type InstallEvent = Event & {
   prompt: () => Promise<void>
@@ -149,13 +151,14 @@ export default function App() {
   const pages: Record<Page, React.ReactNode> = {
     Home: <Home onCreate={(type) => setCreate(type || 'Character')} />,
     World: <World onCreate={setCreate} />,
-    Write: <Write />,
+    Write: <Write key={store.project?.id} />,
     Play: <Play />,
     Timeline: <Timeline />,
     Relationships: <Relationships />,
     Journal: <Journal />,
     Search: <Search />,
     Settings: <Settings />,
+    Voice: <Voice key={store.project?.id} />,
   }
   return (
     <div className={`app-shell ${menu ? 'mobile-menu-open' : ''}`}>
@@ -209,7 +212,7 @@ export default function App() {
               className={`${store.page === page ? 'active' : ''} ${i === 4 ? 'nav-break' : ''}`}
             >
               <Icon size={18} strokeWidth={1.6} />
-              <span>{page}</span>
+              <span>{page === 'Voice' ? 'Your voice' : page}</span>
               {page === 'Search' && <kbd>⌘ K</kbd>}
               {store.page === page && <span className="nav-active-dot" />}
             </button>
@@ -241,7 +244,7 @@ export default function App() {
               <SettingsIcon size={17} />
               Settings
             </button>
-            <span>v0.5.1</span>
+            <span>v0.6.0</span>
           </div>
           <div className="sidebar-note">
             Your world. Your words.

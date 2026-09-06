@@ -15,6 +15,7 @@ export type Page =
   | 'Journal'
   | 'Search'
   | 'Settings'
+  | 'Voice'
 type State = {
   project: Project | null
   projects: Project[]

@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   AlignLeft,
   ArrowDownToLine,
@@ -11,14 +11,28 @@ import {
   Link2,
   Plus,
   X,
+  Sparkles,
+  History,
+  ArrowUp,
+  ArrowDown,
+  SlidersHorizontal,
 } from 'lucide-react'
 import { useStore } from '../lib/store'
-import { uid, now, type Entity } from '../domain/schema'
+import { uid, now, type Entity, type Scene } from '../domain/schema'
 import { download, wordCount } from '../lib/utils'
 import { manuscriptExport } from '../domain/project-file'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 import { Empty, EntityIcon, Field } from '../components/common'
+import {
+  AnnotatedPassage,
+  CanonDialog,
+  FindingDialog,
+  FindingList,
+  ManuscriptHistory,
+  ManuscriptStudio,
+} from '../components/ManuscriptStudio'
+import { runIsStale } from '../domain/manuscript'
 
 export function Prose({
   text,
@@ -87,6 +101,216 @@ export function Prose({
     </div>
   )
 }
+function SceneSetup({ scene, onClose }: { scene: Scene; onClose: () => void }) {
+  const store = useStore(),
+    p = store.project!
+  const update = (values: Partial<Scene>) =>
+    store.mutate((p) =>
+      Object.assign(
+        p.scenes.find((s) => s.id === scene.id)!,
+        values,
+        { updatedAt: now() },
+      ),
+    )
+  const chapterKey = (s: Scene) => JSON.stringify([s.book, s.chapter])
+  const chapters = [...new Set(p.scenes.map(chapterKey))],
+    chapterIndex = chapters.indexOf(chapterKey(scene))
+  const moveChapter = (delta: number) =>
+    store.mutate((p) => {
+      const keys = [...new Set(p.scenes.map(chapterKey))],
+        a = keys.indexOf(chapterKey(scene)),
+        b = a + delta
+      if (b < 0 || b >= keys.length) return
+      ;[keys[a], keys[b]] = [keys[b], keys[a]]
+      p.scenes = keys.flatMap((k) => p.scenes.filter((s) => chapterKey(s) === k))
+    })
+  return (
+    <Dialog
+      open
+      onOpenChange={(v) => {
+        if (!v) onClose()
+      }}
+      title="Set the scene"
+      description="Choose the context available to the writer and continuity reviewer."
+    >
+      <div className="form-stack">
+        <div className="field-row">
+          <Field label="Book title">
+            <input
+              value={scene.book}
+              maxLength={500}
+              onChange={(e) => update({ book: e.target.value })}
+            />
+          </Field>
+          <Field label="Chapter title">
+            <input
+              value={scene.chapter}
+              maxLength={500}
+              onChange={(e) => update({ chapter: e.target.value })}
+            />
+          </Field>
+        </div>
+        <div className="button-row">
+          <Button
+            size="sm"
+            variant="secondary"
+            disabled={chapterIndex === 0}
+            onClick={() => moveChapter(-1)}
+          >
+            <ArrowUp size={13} />
+            Move chapter earlier
+          </Button>
+          <Button
+            size="sm"
+            variant="secondary"
+            disabled={chapterIndex === chapters.length - 1}
+            onClick={() => moveChapter(1)}
+          >
+            <ArrowDown size={13} />
+            Move chapter later
+          </Button>
+        </div>
+        <Field label="What needs to happen in this scene?">
+          <textarea
+            value={scene.purpose || ''}
+            maxLength={500}
+            rows={3}
+            onChange={(e) => update({ purpose: e.target.value })}
+          />
+        </Field>
+        <div className="field-row">
+          <Field label="Scene viewpoint">
+            <select
+              value={scene.viewpointId || ''}
+              onChange={(e) => update({ viewpointId: e.target.value || undefined })}
+            >
+              <option value="">No viewpoint selected</option>
+              {p.entities
+                .filter((e) => e.type === 'Character')
+                .map((e) => (
+                  <option value={e.id} key={e.id}>
+                    {e.name}
+                  </option>
+                ))}
+            </select>
+          </Field>
+          <Field label="Narrative perspective">
+            <select
+              value={scene.perspective || 'third'}
+              onChange={(e) => update({ perspective: e.target.value as Scene['perspective'] })}
+            >
+              <option value="third">Third person, limited</option>
+              <option value="first">First person</option>
+              <option value="omniscient">Omniscient author narration</option>
+            </select>
+          </Field>
+        </div>
+        <Field label="Scene setting">
+          <select
+            value={scene.locationId || ''}
+            onChange={(e) => update({ locationId: e.target.value || undefined })}
+          >
+            <option value="">No setting selected</option>
+            {p.entities
+              .filter((e) => e.type === 'Location')
+              .map((e) => (
+                <option value={e.id} key={e.id}>
+                  {e.name}
+                </option>
+              ))}
+          </select>
+        </Field>
+        <Field label="Scene time">
+          <select
+            value={scene.eventId || ''}
+            onChange={(e) => update({ eventId: e.target.value || undefined })}
+          >
+            <option value="">Unspecified; withhold time-restricted knowledge</option>
+            {p.events
+              .filter((e) => e.status === 'Canon')
+              .map((e) => (
+                <option value={e.id} key={e.id}>
+                  {e.title}
+                  {e.order === undefined ? ' (unordered)' : ''}
+                </option>
+              ))}
+          </select>
+        </Field>
+        <Field label="Source adventure (optional)">
+          <select
+            value={scene.adventureId || ''}
+            onChange={(e) => {
+              const a = p.adventures.find((a) => a.id === e.target.value)
+              update({ adventureId: a?.id, branchHeadId: a?.headId || undefined })
+            }}
+          >
+            <option value="">Independent manuscript</option>
+            {p.adventures.map((a) => (
+              <option key={a.id} value={a.id}>
+                {a.title}
+              </option>
+            ))}
+          </select>
+        </Field>
+        {scene.adventureId && (
+          <Field label="Scene branch point">
+            <select
+              value={scene.branchHeadId || ''}
+              onChange={(e) => update({ branchHeadId: e.target.value || undefined })}
+            >
+              <option value="">Before the first turn</option>
+              {p.adventures
+                .find((a) => a.id === scene.adventureId)
+                ?.turns.map((t, i) => (
+                  <option key={t.id} value={t.id}>
+                    Turn {i + 1}: {t.text.slice(0, 70)}
+                  </option>
+                ))}
+            </select>
+          </Field>
+        )}
+        <fieldset className="scene-participants">
+          <legend>Participants and references</legend>
+          {p.entities.map((e) => (
+            <label key={e.id}>
+              <input
+                type="checkbox"
+                checked={scene.entityIds.includes(e.id)}
+                onChange={(v) =>
+                  update({
+                    entityIds: v.target.checked
+                      ? [...scene.entityIds, e.id]
+                      : scene.entityIds.filter((id) => id !== e.id),
+                  })
+                }
+              />
+              {e.name}
+              <small>{e.type}</small>
+            </label>
+          ))}
+        </fieldset>
+        <Field label="Scene voice profile">
+          <select
+            value={scene.voiceProfileId || ''}
+            onChange={(e) => update({ voiceProfileId: e.target.value || undefined })}
+          >
+            <option value="">Project prose rules only</option>
+            {p.studio.profiles.map((v) => (
+              <option key={v.id} value={v.id}>
+                {v.name}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <p className="small muted">
+          Approved preferences guide prose. Private evidence never becomes character knowledge
+          merely by being included in author review.
+        </p>
+        <Button onClick={onClose}>Back to writing</Button>
+      </div>
+    </Dialog>
+  )
+}
 export function Write() {
   const store = useStore(),
     p = store.project!
@@ -97,6 +321,25 @@ export function Write() {
     [mention, setMention] = useState(''),
     [cursor, setCursor] = useState(0),
     [showMentions, setShowMentions] = useState(false)
+  const [assist, setAssist] = useState(false),
+    [setup, setSetup] = useState(false),
+    [history, setHistory] = useState(false),
+    [canon, setCanon] = useState(false),
+    [reviewId, setReviewId] = useState(''),
+    [findingId, setFindingId] = useState(''),
+    [selection, setSelection] = useState({ start: 0, end: 0 })
+  useEffect(() => {
+    setSelection({ start: 0, end: 0 })
+    setReviewId('')
+    setFindingId('')
+    setShowMentions(false)
+  }, [scene?.id])
+  const review = p.studio.runs.find(
+    (r) => r.id === reviewId && r.sceneId === scene?.id && r.kind === 'review',
+  )
+  const currentReview =
+    review && !runIsStale(p, review) && review.status === 'review' ? review : undefined
+  const inspected = p.entities.find((e) => e.id === inspect?.id)
   const editor = useRef<HTMLTextAreaElement>(null)
   const addScene = () => {
     const id = uid()
@@ -165,7 +408,7 @@ export function Write() {
     })
   }
   return (
-    <div className={`write-workspace ${focus ? 'focus-mode' : ''}`}>
+    <div className={`write-workspace ${focus ? 'focus-mode' : ''} ${assist ? 'studio-open' : ''}`}>
       <aside className="manuscript-sidebar">
         <div className="section-heading">
           <span className="eyebrow">Your manuscript</span>
@@ -175,27 +418,78 @@ export function Write() {
         </div>
         <h3>{p.title}</h3>
         <div className="scene-list">
-          {[...new Set(p.scenes.map((s) => s.chapter))].map((chapter) => (
-            <div key={chapter}>
-              <div className="chapter-label">
-                <BookOpen size={14} />
-                {chapter || 'Unsorted scenes'}
+          {[...new Set(p.scenes.map((s) => JSON.stringify([s.book, s.chapter])))]
+            .map((key) => JSON.parse(key) as [string, string])
+            .map(([book, chapter]) => (
+              <div key={JSON.stringify([book, chapter])}>
+                <div className="chapter-label">
+                  <BookOpen size={14} />
+                  {book !== p.title ? `${book} / ` : ''}
+                  {chapter || 'Unsorted scenes'}
+                </div>
+                {p.scenes
+                  .filter((s) => s.chapter === chapter && s.book === book)
+                  .map((s) => (
+                    <div className="scene-outline-row" key={s.id}>
+                      <button
+                        className={s.id === scene.id ? 'active' : ''}
+                        onClick={() => store.navigate('Write', s.id)}
+                      >
+                        <AlignLeft size={14} />
+                        <span>{s.title}</span>
+                        <small>{wordCount(s.text)}</small>
+                      </button>
+                      <div className="scene-order-actions">
+                        <button
+                          aria-label={`Move ${s.title} earlier`}
+                          disabled={
+                            p.scenes.filter((v) => v.chapter === s.chapter && v.book === s.book)[0]
+                              ?.id === s.id
+                          }
+                          onClick={() =>
+                            store.mutate((p) => {
+                              const peers = p.scenes.filter(
+                                (v) => v.chapter === s.chapter && v.book === s.book,
+                              )
+                              const previous = peers[peers.findIndex((v) => v.id === s.id) - 1]
+                              if (previous) {
+                                const a = p.scenes.findIndex((v) => v.id === s.id),
+                                  b = p.scenes.findIndex((v) => v.id === previous.id)
+                                ;[p.scenes[a], p.scenes[b]] = [p.scenes[b], p.scenes[a]]
+                              }
+                            })
+                          }
+                        >
+                          <ArrowUp size={11} />
+                        </button>
+                        <button
+                          aria-label={`Move ${s.title} later`}
+                          disabled={
+                            p.scenes
+                              .filter((v) => v.chapter === s.chapter && v.book === s.book)
+                              .at(-1)?.id === s.id
+                          }
+                          onClick={() =>
+                            store.mutate((p) => {
+                              const peers = p.scenes.filter(
+                                (v) => v.chapter === s.chapter && v.book === s.book,
+                              )
+                              const next = peers[peers.findIndex((v) => v.id === s.id) + 1]
+                              if (next) {
+                                const a = p.scenes.findIndex((v) => v.id === s.id),
+                                  b = p.scenes.findIndex((v) => v.id === next.id)
+                                ;[p.scenes[a], p.scenes[b]] = [p.scenes[b], p.scenes[a]]
+                              }
+                            })
+                          }
+                        >
+                          <ArrowDown size={11} />
+                        </button>
+                      </div>
+                    </div>
+                  ))}
               </div>
-              {p.scenes
-                .filter((s) => s.chapter === chapter)
-                .map((s) => (
-                  <button
-                    key={s.id}
-                    className={s.id === scene.id ? 'active' : ''}
-                    onClick={() => store.navigate('Write', s.id)}
-                  >
-                    <AlignLeft size={14} />
-                    <span>{s.title}</span>
-                    <small>{wordCount(s.text)}</small>
-                  </button>
-                ))}
-            </div>
-          ))}
+            ))}
         </div>
         <Button variant="ghost" size="sm" onClick={addScene}>
           <Plus size={14} />
@@ -244,7 +538,42 @@ export function Write() {
             <span className="small muted">Markdown</span>
           </div>
           <div className="button-row">
-            <Button size="sm" variant="ghost" onClick={() => setPreview(!preview)}>
+            <button
+              className="icon-button"
+              aria-label="Scene setup"
+              title="Scene setup"
+              onClick={() => setSetup(true)}
+            >
+              <SlidersHorizontal size={15} />
+            </button>
+            <button
+              className="icon-button"
+              aria-label="Manuscript history"
+              title="Manuscript history"
+              onClick={() => setHistory(true)}
+            >
+              <History size={15} />
+            </button>
+            <button
+              className="icon-button"
+              aria-label="Writing assistant"
+              title="Writing assistant"
+              aria-pressed={assist}
+              onClick={() => {
+                setAssist(!assist)
+                setFocus(false)
+              }}
+            >
+              <Sparkles size={15} />
+            </button>
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => {
+                setPreview(!preview)
+                setReviewId('')
+              }}
+            >
               <Eye size={15} />
               {preview ? 'Edit' : 'Read'}
             </Button>
@@ -269,7 +598,25 @@ export function Write() {
               if (e.target.value) update({ title: e.target.value })
             }}
           />
-          {preview ? (
+          {currentReview ? (
+            <>
+              <div className="review-mode-bar">
+                <span>Review highlights</span>
+                <Button size="sm" variant="ghost" onClick={() => setReviewId('')}>
+                  Return to editing
+                </Button>
+              </div>
+              <AnnotatedPassage
+                text={scene.text}
+                findings={currentReview.findings.filter((f) =>
+                  currentReview.layers.includes(f.layer),
+                )}
+                offset={currentReview.start}
+                onFinding={setFindingId}
+              />
+              <FindingList run={currentReview} onFinding={setFindingId} />
+            </>
+          ) : preview ? (
             <Prose text={scene.text} entities={p.entities} onEntity={setInspect} />
           ) : (
             <textarea
@@ -278,6 +625,12 @@ export function Write() {
               aria-label="Manuscript text"
               placeholder="The first sentence doesn’t have to be perfect. It only has to begin."
               value={scene.text}
+              onSelect={(event) =>
+                setSelection({
+                  start: event.currentTarget.selectionStart,
+                  end: event.currentTarget.selectionEnd,
+                })
+              }
               onChange={(event) => {
                 update({ text: event.target.value })
                 const pos = event.target.selectionStart
@@ -333,80 +686,195 @@ export function Write() {
           </span>
         </div>
       </section>
-      <aside className="writing-notes">
-        <div className="eyebrow">Beside the page</div>
-        <section>
-          <h3>In this scene</h3>
-          {references.map((e) => (
-            <button className="reference-entity" key={e.id} onClick={() => setInspect(e)}>
-              <EntityIcon type={e.type} small />
-              <span>{e.name}</span>
-              <ChevronRight size={14} />
+      {assist ? (
+        <aside className="writing-assistance" aria-label="Writing assistant panel">
+          <div className="assistant-panel-heading">
+            <span className="eyebrow">A little help, on your terms</span>
+            <button
+              className="icon-button"
+              aria-label="Close writing assistant"
+              onClick={() => setAssist(false)}
+            >
+              <X size={18} />
             </button>
-          ))}
-          {!references.length && (
-            <p className="small muted">Mention a world element with @ to keep it close.</p>
-          )}
-        </section>
-        <section>
-          <h3>A note to yourself</h3>
-          <textarea
-            aria-label="Scene notes"
-            rows={6}
-            value={scene.notes}
-            onChange={(e) => update({ notes: e.target.value })}
-            placeholder="What needs to happen here?"
+          </div>
+          <ManuscriptStudio
+            key={scene.id}
+            scene={scene}
+            selection={selection}
+            onReview={(id) => {
+              setReviewId(id)
+              setPreview(false)
+              setAssist(false)
+            }}
           />
-        </section>
-        <details>
-          <summary>Scene details</summary>
-          <div className="form-stack">
-            <Field label="Book">
-              <input value={scene.book} onChange={(e) => update({ book: e.target.value })} />
-            </Field>
-            <Field label="Chapter">
-              <input value={scene.chapter} onChange={(e) => update({ chapter: e.target.value })} />
-            </Field>
-            <Field label="Session word goal">
-              <input
-                type="number"
-                min={0}
-                max={10000000}
-                value={p.settings.wordGoal}
-                onChange={(e) =>
-                  store.mutate((p) => {
-                    p.settings.wordGoal = Number(e.target.value)
-                  })
-                }
-              />
-            </Field>
-          </div>
-        </details>
-        <div className="word-goal">
-          <span>
-            {Math.min(100, Math.round((wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100))}%
-            of your {p.settings.wordGoal.toLocaleString()} word goal
-          </span>
-          <div>
-            <i
-              style={{
-                width: `${Math.min(100, (wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100)}%`,
-              }}
+        </aside>
+      ) : (
+        <aside className="writing-notes">
+          <div className="eyebrow">Beside the page</div>
+          <section>
+            <h3>In this scene</h3>
+            <button className="text-button small" onClick={() => setSetup(true)}>
+              Choose participants and setting
+            </button>
+            {references.map((e) => (
+              <button className="reference-entity" key={e.id} onClick={() => setInspect(e)}>
+                <EntityIcon type={e.type} small />
+                <span>{e.name}</span>
+                <ChevronRight size={14} />
+              </button>
+            ))}
+            {!references.length && (
+              <p className="small muted">Mention a world element with @ to keep it close.</p>
+            )}
+          </section>
+          <section>
+            <h3>A note to yourself</h3>
+            <textarea
+              aria-label="Scene notes"
+              rows={6}
+              value={scene.notes}
+              onChange={(e) => update({ notes: e.target.value })}
+              placeholder="What needs to happen here?"
             />
+          </section>
+          <details>
+            <summary>Scene details</summary>
+            <div className="form-stack">
+              <Field label="Book">
+                <input value={scene.book} onChange={(e) => update({ book: e.target.value })} />
+              </Field>
+              <Field label="Chapter">
+                <input
+                  value={scene.chapter}
+                  onChange={(e) => update({ chapter: e.target.value })}
+                />
+              </Field>
+              <Field label="Session word goal">
+                <input
+                  type="number"
+                  min={0}
+                  max={10000000}
+                  value={p.settings.wordGoal}
+                  onChange={(e) =>
+                    store.mutate((p) => {
+                      p.settings.wordGoal = Number(e.target.value)
+                    })
+                  }
+                />
+              </Field>
+            </div>
+          </details>
+          <div className="word-goal">
+            <span>
+              {Math.min(
+                100,
+                Math.round((wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100),
+              )}
+              % of your {p.settings.wordGoal.toLocaleString()} word goal
+            </span>
+            <div>
+              <i
+                style={{
+                  width: `${Math.min(100, (wordCount(scene.text) / (p.settings.wordGoal || 1)) * 100)}%`,
+                }}
+              />
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
+      )}
+      {selection.end > selection.start && !currentReview && !preview && (
+        <button
+          className="selection-canon-button button button-secondary"
+          onClick={() => setCanon(true)}
+        >
+          Bring selected detail into world
+        </button>
+      )}
+      {setup && <SceneSetup scene={scene} onClose={() => setSetup(false)} />}
+      {history && <ManuscriptHistory scene={scene} onClose={() => setHistory(false)} />}
+      {canon && (
+        <CanonDialog
+          sceneId={scene.id}
+          quote={scene.text.slice(selection.start, selection.end)}
+          onClose={() => setCanon(false)}
+        />
+      )}
+      {currentReview && findingId && (
+        <FindingDialog run={currentReview} findingId={findingId} onClose={() => setFindingId('')} />
+      )}
       <Dialog
         open={!!inspect}
         onOpenChange={() => setInspect(null)}
         title={inspect?.name || 'World reference'}
         description={inspect?.type}
       >
-        {inspect && (
+        {inspected && (
           <>
-            <Prose text={inspect.summary} />
+            <Prose text={inspected.summary} />
+            <details>
+              <summary>Edit this world entry beside the manuscript</summary>
+              <Field label="Reference description">
+                <textarea
+                  rows={4}
+                  value={inspected.summary}
+                  maxLength={500000}
+                  onChange={(e) =>
+                    store.mutate((p) => {
+                      const entity = p.entities.find((v) => v.id === inspected.id)!
+                      entity.summary = e.target.value
+                      entity.updatedAt = now()
+                    })
+                  }
+                />
+              </Field>
+              <Field label="Reference private notes">
+                <textarea
+                  rows={3}
+                  value={inspected.notes}
+                  maxLength={500000}
+                  onChange={(e) =>
+                    store.mutate((p) => {
+                      const entity = p.entities.find((v) => v.id === inspected.id)!
+                      entity.notes = e.target.value
+                      entity.updatedAt = now()
+                    })
+                  }
+                />
+              </Field>
+              {Object.entries(inspected.fields).map(([key, value]) => (
+                <Field key={key} label={key}>
+                  <input
+                    value={value}
+                    maxLength={500}
+                    onChange={(e) =>
+                      store.mutate((p) => {
+                        p.entities.find((v) => v.id === inspected.id)!.fields[key] = e.target.value
+                      })
+                    }
+                  />
+                </Field>
+              ))}
+            </details>
+            <details>
+              <summary>Canonical facts and attributed beliefs</summary>
+              {p.facts
+                .filter((f) => f.subjectId === inspected.id && f.status === 'Canon')
+                .map((f) => (
+                  <p key={f.id}>
+                    <strong>{f.predicate}:</strong> {f.object} · {f.visibility}
+                  </p>
+                ))}
+              {p.knowledge
+                .filter((k) => k.entityId === inspected.id)
+                .map((k) => (
+                  <p key={k.id}>
+                    {k.stance}: {k.claim}
+                  </p>
+                ))}
+            </details>
             <div className="dialog-actions">
-              <Button variant="secondary" onClick={() => store.navigate('World', inspect.id)}>
+              <Button variant="secondary" onClick={() => store.navigate('World', inspected.id)}>
                 <Link2 size={15} />
                 Open in world
               </Button>

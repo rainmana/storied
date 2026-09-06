@@ -2,6 +2,8 @@
 
 Status: future scope, not a promise of implemented features or dates. Version 0.4 adds built-in color themes; narration, extension loading, and an in-app Help workspace remain future work.
 
+Version 0.6 now includes the manuscript and voice-profile workflows described in [MANUSCRIPT.md](MANUSCRIPT.md). Next refinements can include richer manuscript navigation, continuously updated review decorations, more sample formats, and per-specialist model choices. Keep sample evidence, fictional canon, and agent authority separate as those surfaces grow.
+
 ## Extensibility
 
 Add validated template/scenario/theme packs before a third-party code runtime. A small pack system is moderate work; a stable executable plugin platform is a much larger effort involving capability boundaries, compatibility, and recovery. The [extension proposal](EXTENSIONS.md) identifies suitable contribution points and the authority that stays in the core. Stabilize the existing editing, provider, and backup paths before building an ecosystem.

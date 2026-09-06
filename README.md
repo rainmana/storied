@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.5.1.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.6.0.zip).
+
+Version 0.6 adds the **manuscript studio** and **Your voice**: plan and order scenes, draft openings or dialogue, review exact passages with separate specialists, approve canon changes with retained history, and build editable voice preferences from your own writing samples. See the [manuscript guide](docs/MANUSCRIPT.md) and [specialist/voice architecture](docs/adr/0004-manuscript-and-voice-graphs.md).
 
 Version 0.5 adds **Explore** beside story-bible fields: start with your words, refine editable suggestions using world context, then insert or undo explicitly. Local and API models share prose preferences. See [field assistance and context scope](docs/AUTHORING.md).
 
@@ -35,7 +37,9 @@ Open the printed localhost URL. Choose **Create a world**, **Start writing**, **
 ## What is here
 
 - A composable story bible with 11 element types, custom attributes/templates, private notes, secrets, beliefs, relationships, images, and backlinks.
-- A Markdown manuscript editor with books, chapters, scenes, word counts, focus mode, and `@` references that open contextual cards.
+- A Markdown manuscript editor with ordered books/chapters/scenes, viewpoint and time setup, word counts, focus mode, editable `@` references, and restorable revisions.
+- Author-directed openings, continuations, dialogue, and passage revisions, followed by distinct continuity, prose-rule, and author-voice reviewers with source-linked highlights.
+- Local writing-sample profiles with exact excerpt evidence and author-approved preferences; samples stay separate from fictional canon.
 - Adventures with Do / Say / Story / Director intents, editable drafts, accept/retry, undo/redo, branches, bookmarks, annotations, and inspectable context.
 - Explicit review of proposed facts, events, relationships, and character knowledge. Narrative acceptance never silently changes canon.
 - Local text search and optional Transformers.js embeddings with pgvector retrieval, plus a timeline, relationship map, and world journal.
@@ -97,6 +101,7 @@ Use the example [static headers](public/_headers) when supported by your host. T
 - [Local models](docs/LOCAL_MODELS.md)
 - [API connections and model discovery](docs/PROVIDERS.md)
 - [Field assistance and prose preferences](docs/AUTHORING.md)
+- [Manuscripts, review highlights, and Your voice](docs/MANUSCRIPT.md)
 - [Appearance and color themes](docs/APPEARANCE.md)
 - [Roadmap: help, narration, and extensibility](docs/ROADMAP.md)
 - [Extension-system proposal](docs/EXTENSIONS.md)

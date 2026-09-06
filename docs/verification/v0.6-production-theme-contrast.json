@@ -1,0 +1,6614 @@
+{
+  "Midnight-settings": [
+    {
+      "text": "Home",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Make yourself at home.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Your tools, your worlds, your way of working.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "A different kind of light",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The same studio, in colors that feel right to you.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The original woodland studio. Soft greens and warm light.",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Deep blue, clear lettering, and a little lamplight.",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Warm paper, dark ink, and blue accents. A light studio.",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Stronger contrast. Charcoal, ivory, and amber.",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Try Ink for stronger contrast or Parchment for a light background. Sta",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Midnight selected. Remembered on this device.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small"
+    },
+    {
+      "text": "Choose your storyteller",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "On this device, on your own server, or with a provider you choose.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Writing, generation, and search stay on this device. Model downloads a",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Provider",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "API base URL",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "API key",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "The key lasts for this browser tab’s session, including reloads. A new",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Model ID",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Output limit",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Maximum output tokens",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "JSON output mode",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Generating a passage sends its compiled context; accepting it may send",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Your local creative tools",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Choose what to download. Everything they create stays with you.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "WebGPU available",
+      "ratio": 8.52465890380935,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [40, 61, 84],
+      "tag": "SPAN",
+      "classes": "badge badge-canon"
+    },
+    {
+      "text": "Qwen 2.5 · 0.5B",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A compact starting point. Fast on compatible devices; prose and extrac",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 10.931645943516262,
+      "foreground": "rgb(23, 32, 44)",
+      "background": [237, 207, 153],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "Qwen 2.5 · 1.5B",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "More room for nuance. A better storyteller on devices with enough grap",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 10.931645943516262,
+      "foreground": "rgb(23, 32, 44)",
+      "background": [237, 207, 153],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "A little help finding things",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "MiniLM L6 · semantic search · approximately 23 MB · Apache-2.0Find rel",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download search model",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "A world you can take with you",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The complete editable project, in one .storyworld file.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "8 world elements · 1 scenes · 1 adventures",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Export project",
+      "ratio": 10.931645943516262,
+      "foreground": "rgb(23, 32, 44)",
+      "background": [237, 207, 153],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Import project",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "Import .storyworld project",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": "sr-only"
+    },
+    {
+      "text": "World title",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "A few words about this world",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Genre or feeling",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Your storyteller’s guiding instructions",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Write with specificity and restraint. Leave room for the player to cho",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "A starting shape for your ideas",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Save a set of attributes for newly created world elements.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Template name",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Kind",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Attributes, separated by commas",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Save template",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Right here, on this device",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "57.3 MB used · 10.1 GB available to this origin",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Browser storage can be cleared by you or your browser. Export regularl",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Request persistent storage",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Delete local project",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Open source. Local by design. Made for the worlds only you can imagine",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open-source licenses · Download source",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Midnight-Home": [
+    {
+      "text": "Home",
+      "ratio": 10.225720513749494,
+      "foreground": "rgb(183, 196, 208)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "World",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Welcome back to your world.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Pick up a thread. See where it takes you.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Create something",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 10.97089249830998,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [32, 48, 71],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "A coastal town. A lighthouse gone silent. And the things the sea gives",
+      "ratio": 10.205346204055859,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [32, 48, 71],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Enter your world",
+      "ratio": 10.931645943516262,
+      "foreground": "rgb(23, 32, 44)",
+      "background": [237, 207, 153],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Pick up where you left off",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "MANUSCRIPTWhat the water remembersThe town was smaller than she rememb",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "continue-card"
+    },
+    {
+      "text": "What the water remembers",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ADVENTUREA light across the waterYou arrive in Bellwether at low tide.",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "continue-card adventure-card"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "In your world",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "View all",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "Mara ValeA cartographer returning to the coast after seven years away.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo SennThe last keeper of the Ninth Lantern. A patient man with salt-",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossA ferryperson who knows every channel through the tidal flats",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "BellwetherA small town arranged around a horseshoe harbor. At low tide",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Location",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Loose threads",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "What is behind the ninth window?",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "question-link"
+    },
+    {
+      "text": "Capture a question",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "The world remembers",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "1882The first channel is marked",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The first channel is marked",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1917The light goes out",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The light goes out",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1924A letter without a map",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "A letter without a map",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open timeline",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "You don’t have to know the whole story to write the next line.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Midnight-World": [
+    {
+      "text": "Home",
+      "ratio": 14.686889009354088,
+      "foreground": "rgb(238, 230, 219)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 9.881184456708013,
+      "foreground": "rgb(178, 193, 207)",
+      "background": [14.999999999999998, 21.999999999999996, 32],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Write",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "A world, taking shape.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "The people, places, and possibilities that make it yours.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New world element",
+      "ratio": 10.931645943516262,
+      "foreground": "rgb(23, 32, 44)",
+      "background": [237, 207, 153],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Everything8",
+      "ratio": 9.16412971676404,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [40, 61, 84],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Characters3",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Locations3",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Factions1",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Find world elements",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "CharacterMara ValeA cartographer returning to the coast after seven ye",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A cartographer returning to the coast after seven years away. She noti",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterIvo SennThe last keeper of the Ninth Lantern. A patient man w",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senn",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The last keeper of the Ninth Lantern. A patient man with salt-white ha",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterNera MossA ferryperson who knows every channel through the ti",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A ferryperson who knows every channel through the tidal flats. She rem",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationBellwetherA small town arranged around a horseshoe harbor. At ",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small town arranged around a horseshoe harbor. At low tide, an old r",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationThe Ninth LanternA decommissioned lighthouse on the headland. ",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A decommissioned lighthouse on the headland. Its nine windows look tow",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationGlasswater FlatsA silver stretch of tidal sand where the horiz",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Glasswater Flats",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A silver stretch of tidal sand where the horizon seems unusually close",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "FactionThe TidekeepersA loose association of navigators, fishers, and ",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-faction"
+    },
+    {
+      "text": "Faction",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Tidekeepers",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A loose association of navigators, fishers, and keepers. They maintain",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ItemThe Brass Sounding KeyA small brass key threaded on a faded blue c",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "entity-card card-item"
+    },
+    {
+      "text": "Item",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Brass Sounding Key",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small brass key threaded on a faded blue cord. A tide mark is etched",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Midnight-Write": [
+    {
+      "text": "Home",
+      "ratio": 10.600813865628615,
+      "foreground": "rgb(189, 199, 209)",
+      "background": [15, 22.000000000000004, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 11.689564936546397,
+      "foreground": "rgb(203, 208, 212)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 10.225720513749494,
+      "foreground": "rgb(183, 196, 208)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Play",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Add scene",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 14.949975846744165,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [15, 22, 32],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "What the water remembers86",
+      "ratio": 8.52465890380935,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [40, 61, 84],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Add a scene",
+      "ratio": 13.906770053739937,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export Markdown",
+      "ratio": 13.906770053739937,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export plain text",
+      "ratio": 13.906770053739937,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Bold",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Italic",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene setup",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Manuscript history",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Writing assistant",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Read",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Focus mode",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene title",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "INPUT",
+      "classes": "scene-title"
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "TEXTAREA",
+      "classes": "manuscript-editor"
+    },
+    {
+      "text": "In this scene",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Choose participants and setting",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "text-button small"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "A note to yourself",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Open with a discrepancy small enough to dismiss, and specific enough t",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Book",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Chapter",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Session word goal",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "INPUT",
+      "classes": ""
+    }
+  ],
+  "Midnight-Play": [
+    {
+      "text": "Home",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 14.243700268106927,
+      "foreground": "rgb(233, 227, 218)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 10.225720513749494,
+      "foreground": "rgb(183, 196, 208)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Let the next moment unfold.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "You are the character. You are still the author.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New adventure",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Context",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Do",
+      "ratio": 9.16412971676404,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [40, 61, 84],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Say",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Story",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Director",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Your next move",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "What matters in this scene?",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "TEXTAREA",
+      "ratio": 13.522647840623337,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [21, 32, 46],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Scene time",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "World changes",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "0",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The story can change the world.You decide what stays.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Review canon",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Story branches",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Accepted excerpts from this branch. Other branches stay separate.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Your first experience will be remembered here.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": "small preserve-lines"
+    },
+    {
+      "text": "Why does the AIknow this?",
+      "ratio": 13.258505226396663,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": "context-explainer"
+    },
+    {
+      "text": "Meet your storyteller.Download a small model once. Keep the imaginatio",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "model-callout"
+    },
+    {
+      "text": "Meet your storyteller.",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Download a small model once. Keep the imagination on your device.",
+      "ratio": 8.33009976013988,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [25, 36, 52],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Midnight-Relationships": [
+    {
+      "text": "Home",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 10.600813865628615,
+      "foreground": "rgb(189, 199, 209)",
+      "background": [15, 22.000000000000004, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.300761181844141,
+      "foreground": "rgb(210, 213, 213)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 9.881184456708013,
+      "foreground": "rgb(178, 193, 207)",
+      "background": [14.999999999999998, 21.999999999999996, 32],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Journal",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 9.680141750631387,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [15, 22, 32],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Follow the threads.",
+      "ratio": 14.253081925752829,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [19, 27, 38],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Every connection is another way into the story.",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Map",
+      "ratio": 9.16412971676404,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [40, 61, 84],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Connections",
+      "ratio": 9.228901426934234,
+      "foreground": "rgb(176, 191, 206)",
+      "background": [19, 27, 38],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Mara Valeborn inBellwether",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "born in",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senncares forThe Ninth Lantern",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "cares for",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Sennmember ofThe Tidekeepers",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "member of",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossnavigatesGlasswater Flats",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "navigates",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth LanternoverlooksBellwether",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "overlooks",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Valeold friend ofNera Moss",
+      "ratio": 12.864975888079098,
+      "foreground": "rgb(240, 232, 220)",
+      "background": [25, 36, 52],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "old friend of",
+      "ratio": 11.967260901052772,
+      "foreground": "rgb(217, 226, 239)",
+      "background": [25, 36, 52],
+      "tag": "SPAN",
+      "classes": "badge"
+    }
+  ],
+  "Parchment-settings": [
+    {
+      "text": "Home",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Make yourself at home.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Your tools, your worlds, your way of working.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "A different kind of light",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The same studio, in colors that feel right to you.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The original woodland studio. Soft greens and warm light.",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Deep blue, clear lettering, and a little lamplight.",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Warm paper, dark ink, and blue accents. A light studio.",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Stronger contrast. Charcoal, ivory, and amber.",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Try Ink for stronger contrast or Parchment for a light background. Sta",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Parchment selected. Remembered on this device.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small"
+    },
+    {
+      "text": "Choose your storyteller",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "On this device, on your own server, or with a provider you choose.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Writing, generation, and search stay on this device. Model downloads a",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Provider",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "API base URL",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "API key",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "The key lasts for this browser tab’s session, including reloads. A new",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Model ID",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Output limit",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Maximum output tokens",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "JSON output mode",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Generating a passage sends its compiled context; accepting it may send",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Your local creative tools",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Choose what to download. Everything they create stays with you.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "WebGPU available",
+      "ratio": 7.623169879485453,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [222, 210, 189],
+      "tag": "SPAN",
+      "classes": "badge badge-canon"
+    },
+    {
+      "text": "Qwen 2.5 · 0.5B",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A compact starting point. Fast on compatible devices; prose and extrac",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 7.268446697538495,
+      "foreground": "rgb(255, 250, 240)",
+      "background": [54, 87, 117],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "Qwen 2.5 · 1.5B",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "More room for nuance. A better storyteller on devices with enough grap",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 7.268446697538495,
+      "foreground": "rgb(255, 250, 240)",
+      "background": [54, 87, 117],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "A little help finding things",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "MiniLM L6 · semantic search · approximately 23 MB · Apache-2.0Find rel",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download search model",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "A world you can take with you",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The complete editable project, in one .storyworld file.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "8 world elements · 1 scenes · 1 adventures",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Export project",
+      "ratio": 7.268446697538495,
+      "foreground": "rgb(255, 250, 240)",
+      "background": [54, 87, 117],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Import project",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "Import .storyworld project",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": "sr-only"
+    },
+    {
+      "text": "World title",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "A few words about this world",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Genre or feeling",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Your storyteller’s guiding instructions",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Write with specificity and restraint. Leave room for the player to cho",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "A starting shape for your ideas",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Save a set of attributes for newly created world elements.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Template name",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Kind",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Attributes, separated by commas",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Save template",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Right here, on this device",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "58.1 MB used · 10.1 GB available to this origin",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Browser storage can be cleared by you or your browser. Export regularl",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Request persistent storage",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Delete local project",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Open source. Local by design. Made for the worlds only you can imagine",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open-source licenses · Download source",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Parchment-Home": [
+    {
+      "text": "Home",
+      "ratio": 5.717830057276385,
+      "foreground": "rgb(89, 80, 68)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "World",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Welcome back to your world.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Pick up a thread. See where it takes you.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Create something",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 10.277978954380757,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [233, 222, 201],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "A coastal town. A lighthouse gone silent. And the things the sea gives",
+      "ratio": 8.543448565905678,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [233, 222, 201],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Enter your world",
+      "ratio": 7.268446697538495,
+      "foreground": "rgb(255, 250, 240)",
+      "background": [54, 87, 117],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Pick up where you left off",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "MANUSCRIPTWhat the water remembersThe town was smaller than she rememb",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "continue-card"
+    },
+    {
+      "text": "What the water remembers",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ADVENTUREA light across the waterYou arrive in Bellwether at low tide.",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "continue-card adventure-card"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "In your world",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "View all",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "Mara ValeA cartographer returning to the coast after seven years away.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo SennThe last keeper of the Ninth Lantern. A patient man with salt-",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossA ferryperson who knows every channel through the tidal flats",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "BellwetherA small town arranged around a horseshoe harbor. At low tide",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Location",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Loose threads",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "What is behind the ninth window?",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "question-link"
+    },
+    {
+      "text": "Capture a question",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "The world remembers",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "1882The first channel is marked",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The first channel is marked",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1917The light goes out",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The light goes out",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1924A letter without a map",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "A letter without a map",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open timeline",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "You don’t have to know the whole story to write the next line.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Parchment-World": [
+    {
+      "text": "Home",
+      "ratio": 9.332636209374805,
+      "foreground": "rgb(53, 49, 44)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 5.717830057276385,
+      "foreground": "rgb(89, 80, 68)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Write",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "A world, taking shape.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "The people, places, and possibilities that make it yours.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New world element",
+      "ratio": 7.268446697538495,
+      "foreground": "rgb(255, 250, 240)",
+      "background": [54, 87, 117],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Everything8",
+      "ratio": 9.170861038444718,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [222, 210, 189],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Characters3",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Locations3",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Factions1",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Find world elements",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "CharacterMara ValeA cartographer returning to the coast after seven ye",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A cartographer returning to the coast after seven years away. She noti",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterIvo SennThe last keeper of the Ninth Lantern. A patient man w",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senn",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The last keeper of the Ninth Lantern. A patient man with salt-white ha",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterNera MossA ferryperson who knows every channel through the ti",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A ferryperson who knows every channel through the tidal flats. She rem",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationBellwetherA small town arranged around a horseshoe harbor. At ",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small town arranged around a horseshoe harbor. At low tide, an old r",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationThe Ninth LanternA decommissioned lighthouse on the headland. ",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A decommissioned lighthouse on the headland. Its nine windows look tow",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationGlasswater FlatsA silver stretch of tidal sand where the horiz",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Glasswater Flats",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A silver stretch of tidal sand where the horizon seems unusually close",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "FactionThe TidekeepersA loose association of navigators, fishers, and ",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-faction"
+    },
+    {
+      "text": "Faction",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Tidekeepers",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A loose association of navigators, fishers, and keepers. They maintain",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ItemThe Brass Sounding KeyA small brass key threaded on a faded blue c",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "entity-card card-item"
+    },
+    {
+      "text": "Item",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Brass Sounding Key",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small brass key threaded on a faded blue cord. A tide mark is etched",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Parchment-Write": [
+    {
+      "text": "Home",
+      "ratio": 6.082788616599553,
+      "foreground": "rgb(85, 76, 65)",
+      "background": [229, 218.00000000000003, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 6.936347996099504,
+      "foreground": "rgb(75, 68, 59)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 5.717830057276385,
+      "foreground": "rgb(89, 80, 68)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Play",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Add scene",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 9.905010568350836,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [229, 218, 199],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "What the water remembers86",
+      "ratio": 7.623169879485453,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [222, 210, 189],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Add a scene",
+      "ratio": 8.233423001843072,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export Markdown",
+      "ratio": 8.233423001843072,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export plain text",
+      "ratio": 8.233423001843072,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Bold",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Italic",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene setup",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Manuscript history",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Writing assistant",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Read",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Focus mode",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene title",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "INPUT",
+      "classes": "scene-title"
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "TEXTAREA",
+      "classes": "manuscript-editor"
+    },
+    {
+      "text": "In this scene",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Choose participants and setting",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "text-button small"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "A note to yourself",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Open with a discrepancy small enough to dismiss, and specific enough t",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Book",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Chapter",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Session word goal",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "INPUT",
+      "classes": ""
+    }
+  ],
+  "Parchment-Play": [
+    {
+      "text": "Home",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 9.332636209374805,
+      "foreground": "rgb(53, 49, 44)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 5.717830057276385,
+      "foreground": "rgb(89, 80, 68)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Let the next moment unfold.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "You are the character. You are still the author.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New adventure",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Context",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Do",
+      "ratio": 9.170861038444718,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [222, 210, 189],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Say",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Story",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Director",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Your next move",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "What matters in this scene?",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "TEXTAREA",
+      "ratio": 13.181836558035563,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [255, 250, 242],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Scene time",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "World changes",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "0",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The story can change the world.You decide what stays.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Review canon",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Story branches",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Accepted excerpts from this branch. Other branches stay separate.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Your first experience will be remembered here.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": "small preserve-lines"
+    },
+    {
+      "text": "Why does the AIknow this?",
+      "ratio": 9.452368869579644,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": "context-explainer"
+    },
+    {
+      "text": "Meet your storyteller.Download a small model once. Keep the imaginatio",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "model-callout"
+    },
+    {
+      "text": "Meet your storyteller.",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Download a small model once. Keep the imagination on your device.",
+      "ratio": 6.936830610672153,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [252, 247, 237],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Parchment-Relationships": [
+    {
+      "text": "Home",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 6.300629719034793,
+      "foreground": "rgb(82, 74, 63)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 7.4928243892293835,
+      "foreground": "rgb(70, 63, 55)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 5.460603340957294,
+      "foreground": "rgb(92, 83, 70)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Journal",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 5.356115125184421,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [229, 218, 199],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Follow the threads.",
+      "ratio": 11.3714324562431,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [242, 233, 217],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Every connection is another way into the story.",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Map",
+      "ratio": 9.170861038444718,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [222, 210, 189],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Connections",
+      "ratio": 6.149079897855934,
+      "foreground": "rgb(94, 84, 71)",
+      "background": [242, 233, 217],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Mara Valeborn inBellwether",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "born in",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senncares forThe Ninth Lantern",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "cares for",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Sennmember ofThe Tidekeepers",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "member of",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossnavigatesGlasswater Flats",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "navigates",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth LanternoverlooksBellwether",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "overlooks",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Valeold friend ofNera Moss",
+      "ratio": 12.828212034968436,
+      "foreground": "rgb(48, 45, 41)",
+      "background": [252, 247, 237],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "old friend of",
+      "ratio": 10.663299681750342,
+      "foreground": "rgb(64, 57, 47)",
+      "background": [252, 247, 237],
+      "tag": "SPAN",
+      "classes": "badge"
+    }
+  ],
+  "Ink-settings": [
+    {
+      "text": "Home",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Make yourself at home.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Your tools, your worlds, your way of working.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "A different kind of light",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The same studio, in colors that feel right to you.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The original woodland studio. Soft greens and warm light.",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Deep blue, clear lettering, and a little lamplight.",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Warm paper, dark ink, and blue accents. A light studio.",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Stronger contrast. Charcoal, ivory, and amber.",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": ""
+    },
+    {
+      "text": "Try Ink for stronger contrast or Parchment for a light background. Sta",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Ink selected. Remembered on this device.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small"
+    },
+    {
+      "text": "Choose your storyteller",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "On this device, on your own server, or with a provider you choose.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Writing, generation, and search stay on this device. Model downloads a",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Provider",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "API base URL",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "API key",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "The key lasts for this browser tab’s session, including reloads. A new",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Model ID",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Output limit",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Maximum output tokens",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "JSON output mode",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Generating a passage sends its compiled context; accepting it may send",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Your local creative tools",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Choose what to download. Everything they create stays with you.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "WebGPU available",
+      "ratio": 11.3915735682411,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [48, 48, 48],
+      "tag": "SPAN",
+      "classes": "badge badge-canon"
+    },
+    {
+      "text": "Qwen 2.5 · 0.5B",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A compact starting point. Fast on compatible devices; prose and extrac",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 12.882380071278305,
+      "foreground": "rgb(23, 20, 16)",
+      "background": [244, 213, 139],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "Qwen 2.5 · 1.5B",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "More room for nuance. A better storyteller on devices with enough grap",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download & load",
+      "ratio": 12.882380071278305,
+      "foreground": "rgb(23, 20, 16)",
+      "background": [244, 213, 139],
+      "tag": "BUTTON",
+      "classes": "button button-primary button-small"
+    },
+    {
+      "text": "A little help finding things",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "MiniLM L6 · semantic search · approximately 23 MB · Apache-2.0Find rel",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Download search model",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "A world you can take with you",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "The complete editable project, in one .storyworld file.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "8 world elements · 1 scenes · 1 adventures",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Export project",
+      "ratio": 12.882380071278305,
+      "foreground": "rgb(23, 20, 16)",
+      "background": [244, 213, 139],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Import project",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "Import .storyworld project",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": "sr-only"
+    },
+    {
+      "text": "World title",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "A few words about this world",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Genre or feeling",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Your storyteller’s guiding instructions",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Write with specificity and restraint. Leave room for the player to cho",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "A starting shape for your ideas",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Save a set of attributes for newly created world elements.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Template name",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Kind",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Attributes, separated by commas",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Save template",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Right here, on this device",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "58.1 MB used · 10.1 GB available to this origin",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Browser storage can be cleared by you or your browser. Export regularl",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Request persistent storage",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Delete local project",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Open source. Local by design. Made for the worlds only you can imagine",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open-source licenses · Download source",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Ink-Home": [
+    {
+      "text": "Home",
+      "ratio": 12.555083203742061,
+      "foreground": "rgb(211, 206, 196)",
+      "background": [10.999999999999998, 10.999999999999998, 10.999999999999998],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "World",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Welcome back to your world.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Pick up a thread. See where it takes you.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Create something",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 15.536905102403079,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [32, 32, 32],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "A coastal town. A lighthouse gone silent. And the things the sea gives",
+      "ratio": 14.063058343242997,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [32, 32, 32],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Enter your world",
+      "ratio": 12.882380071278305,
+      "foreground": "rgb(23, 20, 16)",
+      "background": [244, 213, 139],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Pick up where you left off",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "MANUSCRIPTWhat the water remembersThe town was smaller than she rememb",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "continue-card"
+    },
+    {
+      "text": "What the water remembers",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ADVENTUREA light across the waterYou arrive in Bellwether at low tide.",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "continue-card adventure-card"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "In your world",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "View all",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "Mara ValeA cartographer returning to the coast after seven years away.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo SennThe last keeper of the Ninth Lantern. A patient man with salt-",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossA ferryperson who knows every channel through the tidal flats",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Character",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "BellwetherA small town arranged around a horseshoe harbor. At low tide",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "recent-row"
+    },
+    {
+      "text": "Location",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Loose threads",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "What is behind the ninth window?",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "question-link"
+    },
+    {
+      "text": "Capture a question",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "The world remembers",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "1882The first channel is marked",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The first channel is marked",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1917The light goes out",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "The light goes out",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "1924A letter without a map",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "A letter without a map",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Open timeline",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "text-button"
+    },
+    {
+      "text": "You don’t have to know the whole story to write the next line.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Ink-World": [
+    {
+      "text": "Home",
+      "ratio": 18.44587139395779,
+      "foreground": "rgb(253, 247, 235)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 12.555083203742061,
+      "foreground": "rgb(211, 206, 196)",
+      "background": [10.999999999999998, 10.999999999999998, 10.999999999999998],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Write",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "A world, taking shape.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "The people, places, and possibilities that make it yours.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New world element",
+      "ratio": 12.882380071278305,
+      "foreground": "rgb(23, 20, 16)",
+      "background": [244, 213, 139],
+      "tag": "BUTTON",
+      "classes": "button button-primary"
+    },
+    {
+      "text": "Everything8",
+      "ratio": 12.585441457820949,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [48, 48, 48],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Characters3",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Locations3",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Factions1",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Find world elements",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "CharacterMara ValeA cartographer returning to the coast after seven ye",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A cartographer returning to the coast after seven years away. She noti",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterIvo SennThe last keeper of the Ninth Lantern. A patient man w",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senn",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "The last keeper of the Ninth Lantern. A patient man with salt-white ha",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "CharacterNera MossA ferryperson who knows every channel through the ti",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-character"
+    },
+    {
+      "text": "Character",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A ferryperson who knows every channel through the tidal flats. She rem",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationBellwetherA small town arranged around a horseshoe harbor. At ",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small town arranged around a horseshoe harbor. At low tide, an old r",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationThe Ninth LanternA decommissioned lighthouse on the headland. ",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A decommissioned lighthouse on the headland. Its nine windows look tow",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "LocationGlasswater FlatsA silver stretch of tidal sand where the horiz",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-location"
+    },
+    {
+      "text": "Location",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Glasswater Flats",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A silver stretch of tidal sand where the horizon seems unusually close",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "FactionThe TidekeepersA loose association of navigators, fishers, and ",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-faction"
+    },
+    {
+      "text": "Faction",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Tidekeepers",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A loose association of navigators, fishers, and keepers. They maintain",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "ItemThe Brass Sounding KeyA small brass key threaded on a faded blue c",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "entity-card card-item"
+    },
+    {
+      "text": "Item",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Brass Sounding Key",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "A small brass key threaded on a faded blue cord. A tide mark is etched",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Ink-Write": [
+    {
+      "text": "Home",
+      "ratio": 13.851258108777078,
+      "foreground": "rgb(221, 216, 205)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 14.713232555686236,
+      "foreground": "rgb(228, 222, 212)",
+      "background": [11.000000000000002, 11.000000000000002, 11.000000000000002],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 12.555083203742061,
+      "foreground": "rgb(211, 206, 196)",
+      "background": [10.999999999999998, 10.999999999999998, 10.999999999999998],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Add scene",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "The Quiet Tide",
+      "ratio": 18.768939126955843,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [11, 11, 11],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "What the water remembers86",
+      "ratio": 11.3915735682411,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [48, 48, 48],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Add a scene",
+      "ratio": 16.98849830410122,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export Markdown",
+      "ratio": 16.98849830410122,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Export plain text",
+      "ratio": 16.98849830410122,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Bold",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Italic",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene setup",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Manuscript history",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Writing assistant",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Read",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "Focus mode",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "icon-button"
+    },
+    {
+      "text": "Scene title",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "INPUT",
+      "classes": "scene-title"
+    },
+    {
+      "text": "The town was smaller than she remembered. Or perhaps she had spent sev",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "TEXTAREA",
+      "classes": "manuscript-editor"
+    },
+    {
+      "text": "In this scene",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Choose participants and setting",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "text-button small"
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "The Ninth Lantern",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "reference-entity"
+    },
+    {
+      "text": "A note to yourself",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Open with a discrepancy small enough to dismiss, and specific enough t",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Book",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Chapter",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    },
+    {
+      "text": "Session word goal",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "INPUT",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "INPUT",
+      "classes": ""
+    }
+  ],
+  "Ink-Play": [
+    {
+      "text": "Home",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 18.44587139395779,
+      "foreground": "rgb(253, 247, 235)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 12.555083203742061,
+      "foreground": "rgb(211, 206, 196)",
+      "background": [10.999999999999998, 10.999999999999998, 10.999999999999998],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Let the next moment unfold.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "You are the character. You are still the author.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "New adventure",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary"
+    },
+    {
+      "text": "A light across the water",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "H2",
+      "classes": ""
+    },
+    {
+      "text": "Context",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-ghost button-small"
+    },
+    {
+      "text": "You arrive in Bellwether at low tide. The harbor smells of wet rope an",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Do",
+      "ratio": 12.585441457820949,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [48, 48, 48],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Say",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Story",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Director",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Your next move",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "What matters in this scene?",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "TEXTAREA",
+      "ratio": 18.14480540264249,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [16, 16, 16],
+      "tag": "TEXTAREA",
+      "classes": ""
+    },
+    {
+      "text": "Mara Vale",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Bellwether",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Scene time",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "LABEL",
+      "classes": ""
+    },
+    {
+      "text": "Nera Moss",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "World changes",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "0",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The story can change the world.You decide what stays.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Review canon",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "button button-secondary button-small"
+    },
+    {
+      "text": "Story branches",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Accepted excerpts from this branch. Other branches stay separate.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small muted"
+    },
+    {
+      "text": "Your first experience will be remembered here.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": "small preserve-lines"
+    },
+    {
+      "text": "Why does the AIknow this?",
+      "ratio": 16.169427327507258,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": "context-explainer"
+    },
+    {
+      "text": "Meet your storyteller.Download a small model once. Keep the imaginatio",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "model-callout"
+    },
+    {
+      "text": "Meet your storyteller.",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "H3",
+      "classes": ""
+    },
+    {
+      "text": "Download a small model once. Keep the imagination on your device.",
+      "ratio": 10.879541730875218,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [26, 26, 26],
+      "tag": "P",
+      "classes": ""
+    }
+  ],
+  "Ink-Relationships": [
+    {
+      "text": "Home",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "World",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Write",
+      "ratio": 13.851258108777078,
+      "foreground": "rgb(221, 216, 205)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Play",
+      "ratio": 14.813107889020285,
+      "foreground": "rgb(228, 223, 212)",
+      "background": [11.000000000000002, 11.000000000000002, 11.000000000000002],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Timeline",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " nav-break"
+    },
+    {
+      "text": "Relationships",
+      "ratio": 12.55508320374206,
+      "foreground": "rgb(211, 206, 196)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": "active "
+    },
+    {
+      "text": "Journal",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Search⌘ K",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Your voice",
+      "ratio": 12.30371977989464,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [11, 11, 11],
+      "tag": "BUTTON",
+      "classes": " "
+    },
+    {
+      "text": "Saved on this device",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "SPAN",
+      "classes": "save-status save-saved"
+    },
+    {
+      "text": "Follow the threads.",
+      "ratio": 17.86402728453378,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [18, 18, 18],
+      "tag": "H1",
+      "classes": ""
+    },
+    {
+      "text": "Every connection is another way into the story.",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "P",
+      "classes": ""
+    },
+    {
+      "text": "Map",
+      "ratio": 12.585441457820949,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [48, 48, 48],
+      "tag": "BUTTON",
+      "classes": "active"
+    },
+    {
+      "text": "Connections",
+      "ratio": 11.710517273383285,
+      "foreground": "rgb(209, 204, 194)",
+      "background": [18, 18, 18],
+      "tag": "BUTTON",
+      "classes": ""
+    },
+    {
+      "text": "Mara Valeborn inBellwether",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "born in",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Senncares forThe Ninth Lantern",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "cares for",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Ivo Sennmember ofThe Tidekeepers",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "member of",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Nera MossnavigatesGlasswater Flats",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "navigates",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "The Ninth LanternoverlooksBellwether",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "overlooks",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    },
+    {
+      "text": "Mara Valeold friend ofNera Moss",
+      "ratio": 16.59640012361541,
+      "foreground": "rgb(255, 249, 237)",
+      "background": [26, 26, 26],
+      "tag": "BUTTON",
+      "classes": "connection-card"
+    },
+    {
+      "text": "old friend of",
+      "ratio": 15.022048579682039,
+      "foreground": "rgb(242, 238, 228)",
+      "background": [26, 26, 26],
+      "tag": "SPAN",
+      "classes": "badge"
+    }
+  ]
+}

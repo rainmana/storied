@@ -12,6 +12,8 @@ Catalog IDs are fixed in source. Sizes are estimates, not device guarantees. Web
 
 ## Using a model
 
+The same selected model also serves the manuscript writer, continuity/prose/voice reviewers, and sample analyst in separate contexts. On-device manuscript responses are compact: one draft paragraph or at most one finding/observation, with short fields and a 550-token generation cap. Oversized prompts pause with a context-limit explanation; they are not silently shortened or sent to a cloud model. The smallest Qwen model can return inaccurate or invalid reviews even under a response contract, so these remain editorial suggestions.
+
 1. Open Settings. Review model size and device support.
 2. Choose **Download & load** (or **Download search model**).
 3. Wait for a loaded/ready status. The progress message explicitly says only model assets are downloading.

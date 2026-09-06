@@ -206,8 +206,14 @@ export function workflowIsStale(p: Project, w: Workflow) {
 /** File import is a new external boundary, even if a saved revision number happens to match. */
 export function synchronizeImportedWorkflows(p: Project) {
   const pending = p.workflows.filter((w) => !['complete', 'discarded'].includes(w.status))
-  if (!pending.length) return
+  const studioPending = p.studio.runs.filter((r) => !['accepted', 'discarded'].includes(r.status))
+  if (!pending.length && !studioPending.length) return
   p.worldRevision++
+  for (const r of studioPending) {
+    r.status = 'repair'
+    r.error =
+      'This manuscript checkpoint was imported. Inspect and synchronize current sources before using it.'
+  }
   for (const w of pending)
     emitRepair(
       w,

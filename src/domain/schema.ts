@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { approvalSchema, workflowSchema } from './workflow-schema'
+import { studioSchema, emptyStudio } from './manuscript-schema'
 
 export const entityTypes = [
   'Character',
@@ -30,6 +31,7 @@ export const provenanceSchema = z
     proposalId: id.optional(),
     approvalId: id.optional(),
     workflowId: id.optional(),
+    manuscriptChangeId: id.optional(),
     worldRevision: z.number().int().nonnegative().optional(),
     note: short.default(''),
   })
@@ -124,6 +126,14 @@ export const sceneSchema = z
     text: prose,
     notes: prose,
     entityIds: ids,
+    purpose: short.optional(),
+    viewpointId: id.optional(),
+    locationId: id.optional(),
+    eventId: id.optional(),
+    adventureId: id.optional(),
+    branchHeadId: id.optional(),
+    perspective: z.enum(['first', 'third', 'omniscient']).optional(),
+    voiceProfileId: id.optional(),
     updatedAt: short,
   })
   .strict()
@@ -239,7 +249,8 @@ export const assetSchema = z
   .strict()
 export const projectSchema = z
   .object({
-    schemaVersion: z.literal(2),
+    schemaVersion: z.literal(3),
+    studio: studioSchema.default(emptyStudio),
     worldRevision: z.number().int().nonnegative().default(0),
     workflows: z.array(workflowSchema).max(10000).default([]),
     approvals: z.array(approvalSchema).max(100000).default([]),
@@ -291,7 +302,8 @@ export const uid = () => crypto.randomUUID()
 export const now = () => new Date().toISOString()
 export function newProject(title: string): Project {
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
+    studio: emptyStudio(),
     worldRevision: 0,
     workflows: [],
     approvals: [],

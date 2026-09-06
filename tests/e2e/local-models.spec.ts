@@ -201,6 +201,47 @@ test('real local models: cached offline generation, retry, extraction, semantic 
   console.info(
     'Real author suggestions generated, reviewed, and inserted with networking disabled.',
   )
+  await navigate(page, 'Write')
+  await page.getByLabel('Manuscript text', { exact: true }).fill('')
+  await page.getByRole('button', { name: 'Writing assistant', exact: true }).click()
+  for (const name of ['Story continuity', 'Prose rules', 'Your voice'])
+    await page
+      .getByRole('group', { name: 'Specialist reviews' })
+      .getByRole('checkbox', { name, exact: true })
+      .uncheck()
+  await page
+    .getByLabel('Direction for this passage')
+    .fill(
+      'Write one short paragraph: Mara waits for a ferry. Under 40 words. Keep all events ordinary.',
+    )
+  await page.getByRole('button', { name: 'Find a draft', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'Insert chosen draft' })).toBeEnabled({
+    timeout: 120000,
+  })
+  const manuscriptDraft = await page.getByLabel('Edit manuscript suggestion').inputValue()
+  expect(manuscriptDraft.length).toBeGreaterThan(20)
+  await expect(page.getByLabel('Manuscript text', { exact: true })).toHaveValue('')
+  await page.getByRole('button', { name: 'Insert chosen draft' }).click()
+  await page.getByLabel('Writing action').selectOption('review')
+  await page
+    .getByRole('group', { name: 'Specialist reviews' })
+    .getByRole('checkbox', { name: 'Story continuity', exact: true })
+    .check()
+  await page
+    .getByRole('group', { name: 'Specialist reviews' })
+    .getByRole('checkbox', { name: 'Prose rules', exact: true })
+    .check()
+  await page.getByRole('button', { name: 'Run specialist review' }).click()
+  await expect(
+    page
+      .getByRole('button', { name: 'Show passage highlights' })
+      .or(page.getByRole('button', { name: 'Resume saved step' })),
+  ).toBeVisible({ timeout: 120000 })
+  await expect(page.getByLabel('Manuscript text', { exact: true })).toHaveValue(manuscriptDraft)
+  await page.getByRole('button', { name: 'Close writing assistant' }).click()
+  console.info(
+    'Real manuscript draft accepted offline; specialist review finished or preserved an explicit validation pause.',
+  )
   await page.getByRole('button', { name: 'Settings', exact: true }).click()
   await saved(page)
   const downloading = page.waitForEvent('download')
@@ -210,6 +251,9 @@ test('real local models: cached offline generation, retry, extraction, semantic 
   const exported = JSON.parse(readFileSync(archive, 'utf8'))
   expect(exported.adventures[0].turns[0].text).toBe(accepted)
   expect(exported.proposals.some((p: { status: string }) => p.status === 'accepted')).toBe(true)
+  expect(exported.studio.runs[0].status).toBe('accepted')
+  expect(exported.studio.runs[0].steps[0].role).toBe('manuscript-writer')
+  expect(exported.studio.runs[1].steps[0].role).toBe('continuity-reviewer')
   await page.getByRole('button', { name: 'Delete local project', exact: true }).click()
   await page.getByRole('dialog').getByRole('textbox').fill('The Quiet Tide')
   await page.getByRole('button', { name: 'Delete project', exact: true }).click()
@@ -232,6 +276,9 @@ test('real local models: cached offline generation, retry, extraction, semantic 
         authorIdeas,
         authorAttemptErrors,
         authorAccepted,
+        manuscriptDraft,
+        manuscriptReview: exported.studio.runs[1],
+        offlineManuscript: true,
         offlineAuthoring: true,
         offlineInference: true,
         offlineSemanticSearch: true,

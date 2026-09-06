@@ -1,6 +1,8 @@
-# `.storyworld` format, version 2
+# `.storyworld` format, version 3
 
-The native file is UTF-8 JSON, with extension `.storyworld` and top-level `schemaVersion: 2`. The executable schemas are `src/domain/schema.ts` and `src/domain/workflow-schema.ts`. `parseProject` is the single import boundary. An alternate diagnostic `.json` extension accepts the same format. Version-1 exports migrate additively without changing existing IDs or creative content.
+The native file is UTF-8 JSON, with extension `.storyworld` and top-level `schemaVersion: 3`. The executable schemas are `src/domain/schema.ts`, `src/domain/workflow-schema.ts`, and `src/domain/manuscript-schema.ts`. `parseProject` is the single import boundary. An alternate diagnostic `.json` extension accepts the same format. Version-1 and version-2 exports migrate additively without changing existing IDs or creative content. Earlier app versions cannot read format 3.
+
+Format 3 adds `studio.samples`, `profiles`, `runs`, `revisions`, and `canonChanges`. Scenes can also reference a viewpoint, location, time, adventure branch, and voice profile. Samples retain their original text; traits retain exact source excerpts and approval state. Runs preserve input selections, source snapshots, distinct specialist requests/responses, grounded findings, and author decisions. Canon receipts preserve previous and new records. Credentials remain outside the project. Studio collections have schema bounds, and the existing 32 MiB total project limit still applies.
 
 | Field                                             | Preserved content                                                                                                      |
 | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |

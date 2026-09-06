@@ -65,7 +65,7 @@ export function relationKind(r: Relationship) {
 export function buildWorldGraph(p: Project): { nodes: GraphNode[]; edges: GraphEdge[] } {
   const nodes: GraphNode[] = [],
     edges: GraphEdge[] = []
-  const node = (kind: string, value: { id: string }) =>
+  const node = <T extends { id: string }>(kind: string, value: T) =>
     nodes.push({ id: `${kind}:${value.id}`, kind, sourceId: value.id, body: value })
   const edge = (from: string, kind: string, to: string, sourceId: string) =>
     edges.push({ id: JSON.stringify([from, kind, to, sourceId]), from, to, kind, sourceId })
@@ -100,6 +100,86 @@ export function buildWorldGraph(p: Project): { nodes: GraphNode[]; edges: GraphE
   for (const s of p.scenes) {
     node('scene', s)
     for (const id of s.entityIds) edge(`scene:${s.id}`, 'references', `entity:${id}`, s.id)
+    if (s.viewpointId) edge(`scene:${s.id}`, 'viewpoint', `entity:${s.viewpointId}`, s.id)
+    if (s.locationId) edge(`scene:${s.id}`, 'set-at', `entity:${s.locationId}`, s.id)
+    if (s.eventId) edge(`scene:${s.id}`, 'scene-time', `event:${s.eventId}`, s.id)
+    if (s.voiceProfileId)
+      edge(`scene:${s.id}`, 'uses-voice', `voice-profile:${s.voiceProfileId}`, s.id)
+  }
+  for (const profile of p.studio.profiles) {
+    node('voice-profile', profile)
+    for (const trait of profile.traits) {
+      node('voice-trait', trait)
+      edge(`voice-profile:${profile.id}`, trait.status, `voice-trait:${trait.id}`, trait.id)
+      for (const [index, e] of trait.evidence.entries()) {
+        const id = `${trait.id}:${index}`
+        node('voice-excerpt', { ...e, id })
+        edge(`voice-trait:${trait.id}`, 'supported-by', `voice-excerpt:${id}`, trait.id)
+        edge(`voice-excerpt:${id}`, 'quoted-from', `writing-sample:${e.sampleId}`, e.sampleId)
+      }
+    }
+  }
+  for (const sample of p.studio.samples) {
+    node('writing-sample', sample)
+    edge(
+      `writing-sample:${sample.id}`,
+      'sample-for',
+      `voice-profile:${sample.profileId}`,
+      sample.id,
+    )
+  }
+  for (const revision of p.studio.revisions) {
+    node('manuscript-revision', revision)
+    edge(`scene:${revision.sceneId}`, 'revision', `manuscript-revision:${revision.id}`, revision.id)
+  }
+  for (const run of p.studio.runs) {
+    node('manuscript-run', run)
+    for (const source of run.sources) {
+      const id = `${run.id}:${source.id}`
+      node('manuscript-source', { ...source, originalId: source.id, id })
+      edge(`manuscript-run:${run.id}`, 'compiled-from', `manuscript-source:${id}`, source.id)
+    }
+    if (run.sceneId) edge(`scene:${run.sceneId}`, 'reviewed-in', `manuscript-run:${run.id}`, run.id)
+    if (run.parentId)
+      edge(`manuscript-run:${run.parentId}`, 'repaired-by', `manuscript-run:${run.id}`, run.id)
+    let previous = `manuscript-run:${run.id}`
+    for (const step of run.steps) {
+      node('specialist-step', step)
+      edge(previous, 'next-step', `specialist-step:${step.id}`, step.id)
+      previous = `specialist-step:${step.id}`
+    }
+    for (const finding of run.findings) {
+      node('manuscript-finding', finding)
+      edge(`manuscript-run:${run.id}`, 'reports', `manuscript-finding:${finding.id}`, finding.id)
+      for (const id of finding.sourceIds)
+        edge(
+          `manuscript-finding:${finding.id}`,
+          'supported-by',
+          `manuscript-source:${run.id}:${id}`,
+          finding.id,
+        )
+    }
+  }
+  for (const change of p.studio.canonChanges) {
+    node('manuscript-approval', change)
+    edge(
+      `scene:${change.sceneId}`,
+      'author-approved',
+      `manuscript-approval:${change.id}`,
+      change.id,
+    )
+    if (change.runId)
+      edge(
+        `manuscript-run:${change.runId}`,
+        'source-review',
+        `manuscript-approval:${change.id}`,
+        change.id,
+      )
+    const target = `${change.kind}:${change.recordId}`
+    if (nodes.some((n) => n.id === target))
+      edge(`manuscript-approval:${change.id}`, 'establishes', target, change.id)
+    if (change.previousId && nodes.some((n) => n.id === `fact:${change.previousId}`))
+      edge(`manuscript-approval:${change.id}`, 'supersedes', `fact:${change.previousId}`, change.id)
   }
   for (const v of p.proposals) {
     node('proposal', v)
@@ -266,6 +346,8 @@ export function materialState(p: Project) {
     events: p.events,
     scenarios: p.scenarios,
     settings: p.settings,
+    voiceProfiles: p.studio.profiles,
+    writingSamples: p.studio.samples,
     scenes: p.scenes,
     adventures: p.adventures.map((a) => ({
       id: a.id,

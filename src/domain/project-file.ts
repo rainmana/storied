@@ -1,7 +1,13 @@
 import { projectSchema, type Project } from './schema'
+import { studioSchema } from './manuscript-schema'
 
 export const MAX_PROJECT_BYTES = 32 * 1024 * 1024
 export function restorableJSON(project: Project): string {
+  const studio = studioSchema.safeParse(project.studio)
+  if (!studio.success)
+    throw new Error(
+      `This change exceeds the saved manuscript format at ${studio.error.issues[0]?.path.join('.')}. The change was not applied; shorten this entry or export a backup before clearing history.`,
+    )
   const text = JSON.stringify(project)
   if (new TextEncoder().encode(text).byteLength > MAX_PROJECT_BYTES)
     throw new Error(
@@ -26,6 +32,11 @@ export function validateReferences(p: Project): Project {
     p.templates,
     p.workflows,
     p.approvals,
+    p.studio.samples,
+    p.studio.profiles,
+    p.studio.runs,
+    p.studio.revisions,
+    p.studio.canonChanges,
   ]) {
     if (new Set(collection.map((x) => x.id)).size !== collection.length)
       throw new Error('This project contains duplicate identifiers.')
@@ -57,7 +68,30 @@ export function validateReferences(p: Project): Project {
     if (k.learnedAtEventId && !p.events.some((e) => e.id === k.learnedAtEventId))
       throw new Error('Missing event reference.')
   })
-  p.scenes.forEach((s) => s.entityIds.forEach(requireEntity))
+  p.scenes.forEach((s) => {
+    s.entityIds.forEach(requireEntity)
+    if (s.viewpointId) {
+      requireEntity(s.viewpointId)
+      if (p.entities.find((e) => e.id === s.viewpointId)?.type !== 'Character')
+        throw new Error('A scene viewpoint must be a character.')
+    }
+    if (s.locationId) {
+      requireEntity(s.locationId)
+      if (p.entities.find((e) => e.id === s.locationId)?.type !== 'Location')
+        throw new Error('A scene setting must be a location.')
+    }
+    if (s.eventId && !p.events.some((e) => e.id === s.eventId))
+      throw new Error('Missing scene event.')
+    if (s.adventureId && !p.adventures.some((a) => a.id === s.adventureId))
+      throw new Error('Missing scene branch.')
+    if (
+      s.branchHeadId &&
+      !p.adventures.find((a) => a.id === s.adventureId)?.turns.some((t) => t.id === s.branchHeadId)
+    )
+      throw new Error('Missing manuscript branch head.')
+    if (s.voiceProfileId && !p.studio.profiles.some((v) => v.id === s.voiceProfileId))
+      throw new Error('Missing scene voice profile.')
+  })
   const checkScenario = (s: Project['scenarios'][number]) => {
     requireEntity(s.characterId)
     requireEntity(s.locationId)
@@ -131,6 +165,66 @@ export function validateReferences(p: Project): Project {
     if (!p.proposals.some((v) => v.id === approval.proposalId))
       throw new Error('Missing approval proposal reference.')
   })
+  for (const sample of p.studio.samples)
+    if (!p.studio.profiles.some((v) => v.id === sample.profileId))
+      throw new Error('Missing sample profile.')
+  for (const profile of p.studio.profiles) {
+    if (new Set(profile.traits.map((t) => t.id)).size !== profile.traits.length)
+      throw new Error('Duplicate voice trait.')
+    for (const trait of profile.traits)
+      for (const evidence of trait.evidence)
+        if (
+          !p.studio.samples.some(
+            (s) =>
+              s.id === evidence.sampleId &&
+              s.profileId === profile.id &&
+              s.text.includes(evidence.quote),
+          )
+        )
+          throw new Error('Voice evidence is not grounded in its sample.')
+  }
+  const earlierRuns = new Set<string>()
+  for (const run of p.studio.runs) {
+    if (run.sceneId && !p.scenes.some((s) => s.id === run.sceneId))
+      throw new Error('Missing manuscript run scene.')
+    if (run.profileId && !p.studio.profiles.some((v) => v.id === run.profileId))
+      throw new Error('Missing analysis profile.')
+    if (run.parentId && !earlierRuns.has(run.parentId)) throw new Error('Missing source run.')
+    earlierRuns.add(run.id)
+    if (run.start > run.end || run.end > run.sceneText.length)
+      throw new Error('Invalid manuscript selection.')
+    for (const items of [run.steps, run.findings, run.sources, run.boundaries, run.observations])
+      if (new Set(items.map((v) => v.id)).size !== items.length)
+        throw new Error('Duplicate manuscript evidence identifier.')
+    for (const f of run.findings) {
+      if (run.candidate.slice(f.start, f.end) !== f.quote)
+        throw new Error('Review annotation no longer matches its source passage.')
+      if (f.sourceIds.some((id) => !run.sources.some((s) => s.id === id)))
+        throw new Error('Missing reviewer source evidence.')
+      if (
+        f.layer === 'canon' &&
+        !f.sourceIds.some((id) =>
+          run.sources.some((s) => s.id === id && !['voice', 'sample'].includes(s.kind)),
+        )
+      )
+        throw new Error('Canon findings require world evidence.')
+      if (
+        f.layer === 'voice' &&
+        !f.sourceIds.some((id) => run.sources.some((s) => s.id === id && s.kind === 'voice'))
+      )
+        throw new Error('Voice findings require profile evidence.')
+    }
+    for (const observation of run.observations)
+      for (const e of observation.evidence)
+        if (
+          !run.sources.some(
+            (s) => s.id === e.sampleId && s.kind === 'sample' && s.text.includes(e.quote),
+          )
+        )
+          throw new Error('Analysis evidence is not in the inspected sample.')
+  }
+  for (const revision of p.studio.revisions)
+    if (!p.scenes.some((s) => s.id === revision.sceneId)) throw new Error('Missing revision scene.')
   return p
 }
 
@@ -158,6 +252,9 @@ export function parseProject(text: string): Project {
   // New checkpoints cannot be read by the old app, so the format version advances explicitly.
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 1)
     input = { ...input, schemaVersion: 2 }
+  // v3 adds manuscript review and voice evidence without altering existing prose or canon.
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 2)
+    input = { ...input, schemaVersion: 3 }
   const parsed = projectSchema.safeParse(input)
   if (!parsed.success)
     throw new Error(
@@ -169,7 +266,10 @@ export function serializeProject(project: Project): string {
   return restorableJSON(validateReferences(projectSchema.parse(project)))
 }
 export function manuscriptExport(p: Project, format: 'md' | 'txt'): string {
-  return p.scenes
+  const key = (s: Project['scenes'][number]) => JSON.stringify([s.book, s.chapter])
+  const chapters = [...new Set(p.scenes.map(key))]
+  return chapters
+    .flatMap((chapter) => p.scenes.filter((s) => key(s) === chapter))
     .map((s) =>
       format === 'md'
         ? `# ${s.book}\n\n## ${s.chapter}\n\n### ${s.title}\n\n${s.text}`

@@ -69,6 +69,7 @@ self.onmessage = async ({
     } else if (type === 'complete') {
       if (!engine) throw new Error('Load a local storyteller in Local models first.')
       gate.allowDownloads(false)
+      await engine.resetChat()
       const output = await engine.chat.completions.create({
         messages: [
           {
@@ -77,7 +78,12 @@ self.onmessage = async ({
           },
           { role: 'user', content: payload.prompt || '' },
         ],
-        temperature: payload.role === 'extractor' ? 0.1 : 0.8,
+        temperature:
+          payload.role === 'extractor' ||
+          payload.role?.includes('reviewer') ||
+          payload.role === 'voice-analyst'
+            ? 0.1
+            : 0.8,
         ...(payload.responseSchema
           ? {
               response_format: {
@@ -108,7 +114,13 @@ self.onmessage = async ({
     } else throw new Error('Unknown local model operation.')
     self.postMessage({ id, result })
   } catch (error) {
-    self.postMessage({ id, error: error instanceof Error ? error.message : String(error) })
+    const message =
+      error instanceof Error && error.name === 'ContextWindowSizeExceededError'
+        ? 'This request exceeds the local model’s 4,096-token context. Select a shorter passage, reduce linked scene participants, or shorten scene notes and directions. Your saved request is unchanged; no model fallback was used.'
+        : error instanceof Error
+          ? error.message
+          : String(error)
+    self.postMessage({ id, error: message })
   } finally {
     gate.allowDownloads(false)
     busy = false

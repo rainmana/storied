@@ -7,6 +7,7 @@ import '@fontsource/newsreader/400.css'
 import '@fontsource/newsreader/400-italic.css'
 import '@fontsource/newsreader/500.css'
 import './styles.css'
+import './manuscript.css'
 import App from './App'
 
 class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { error: string }> {

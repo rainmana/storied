@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import type { StudioRole } from '../domain/manuscript-schema'
 import { completeLocally, useModels } from './models'
 import { readProviderKey, useProviderSettings } from './provider-settings'
 import {
@@ -79,7 +80,7 @@ export async function listProviderModels(connection: Connection, key: string) {
 }
 export async function completeWithInference(
   prompt: string,
-  role: 'storyteller' | 'extractor' | 'summarizer' | 'worldbuilder' = 'storyteller',
+  role: 'storyteller' | 'extractor' | 'summarizer' | 'worldbuilder' | StudioRole = 'storyteller',
   schema?: Record<string, unknown>,
   expected = selectedInference(),
 ): Promise<string> {
