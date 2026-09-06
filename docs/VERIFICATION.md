@@ -1,5 +1,17 @@
 # Verification and MVP limits
 
+## Version 0.5.1 creation and scrolling fixes
+
+Deployed at **https://storied.alecakin.com**, deployment `b47e64b1d6cc4e45ad2ec5df7a85d7ef`. All **57 assets (51,564,215 bytes)** match the release build, including the source archive. Static-only hosting and existing privacy/security headers are verified in the [asset report](verification/v0.5.1-deployment-assets.json).
+
+All **19 ordinary browser workflows passed against the public origin** in 2.1 minutes, including the new creation/scroll regressions, offline restore, field assistance, provider fixtures, and themes. The hardware/model-download test was intentionally skipped. [Production results](verification/v0.5.1-production-browser-tests.json) record the run.
+
+The World creation dialog now inherits the selected entity type through both the header and empty-result actions. Everything retains Character as its default. A positioned workspace boundary contains hidden file controls that previously enlarged the outer document; scroll gestures stay within the workspace.
+
+Before the fix, the focused browser regressions reproduced Concept opening as Character and Settings extending the document to 1,765 pixels in a 900-pixel viewport and 2,625 pixels in a 660-pixel viewport. All three focused checks now pass: [local results](verification/v0.5.1-local-layout-tests.json). They cover six type filters, both creation buttons, actual Concept creation, desktop/mobile document bounds, scrolling to content ends, dialogs, and writing focus mode. An initial post-fix test scrolled the manuscript textarea instead of its enclosing workspace; the test now directs the gesture to the workspace edge.
+
+The production build (including TypeScript) and formatting checks pass. This patch changes UI creation context and CSS only; model runtimes were not rerun. The source archive is the packaging-time source/docs snapshot; subsequent live verification records remain in the workspace.
+
 ## Version 0.5 field assistance
 
 Deployed at **https://storied.alecakin.com**, deployment `018379eb59a24c6cb54f486f2769c2d9`. All **57 assets (51,515,393 bytes)** match the release build, including the source ZIP; static-only hosting and privacy/security headers remain active. [Asset verification](verification/v0.5-deployment-assets.json) was completed before the public browser run.

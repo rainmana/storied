@@ -696,8 +696,12 @@ kbd {
   gap: 6px;
 }
 .main-content {
+  /* Keep positioned controls, including hidden file inputs, inside this scroll area. */
+  position: relative;
   flex: 1;
+  min-height: 0;
   overflow: auto;
+  overscroll-behavior-y: contain;
   padding: 39px 40px 42px;
   outline: none;
   scrollbar-gutter: stable;

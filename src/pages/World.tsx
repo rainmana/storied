@@ -32,10 +32,10 @@ import { Badge, Empty, EntityIcon, Field, PageHeading } from '../components/comm
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 
-export function World({ onCreate }: { onCreate: () => void }) {
+export function World({ onCreate }: { onCreate: (type: EntityType) => void }) {
   const store = useStore(),
     p = store.project!
-  const [type, setType] = useState('All'),
+  const [type, setType] = useState<EntityType | 'All'>('All'),
     [query, setQuery] = useState('')
   const selected = p.entities.find((e) => e.id === store.selectedEntity)
   if (selected) return <EntityPage key={selected.id} entity={selected} />
@@ -44,6 +44,7 @@ export function World({ onCreate }: { onCreate: () => void }) {
       (type === 'All' || e.type === type) &&
       `${e.name} ${e.summary} ${e.tags.join(' ')}`.toLowerCase().includes(query.toLowerCase()),
   )
+  const createInSection = () => onCreate(type === 'All' ? 'Character' : type)
   return (
     <div>
       <PageHeading
@@ -51,14 +52,14 @@ export function World({ onCreate }: { onCreate: () => void }) {
         title="A world, taking shape."
         description="The people, places, and possibilities that make it yours."
         actions={
-          <Button onClick={onCreate}>
+          <Button onClick={createInSection}>
             <Plus size={16} /> New world element
           </Button>
         }
       />
       <div className="workspace-toolbar">
         <div className="tabs" role="group" aria-label="Filter world elements">
-          {['All', 'Character', 'Location', 'Faction'].map((t) => (
+          {(['All', 'Character', 'Location', 'Faction'] as const).map((t) => (
             <button key={t} className={type === t ? 'active' : ''} onClick={() => setType(t)}>
               {t === 'All' ? 'Everything' : `${t}s`}
               <span>
@@ -69,7 +70,7 @@ export function World({ onCreate }: { onCreate: () => void }) {
           <select
             aria-label="More entity types"
             value={['All', 'Character', 'Location', 'Faction'].includes(type) ? '' : type}
-            onChange={(e) => setType(e.target.value || 'All')}
+            onChange={(e) => setType((e.target.value as EntityType) || 'All')}
           >
             <option value="">More…</option>
             {entityTypes
@@ -126,7 +127,7 @@ export function World({ onCreate }: { onCreate: () => void }) {
               : 'Start with one person or one place. The connections will follow.'
           }
           action="Create a world element"
-          onAction={onCreate}
+          onAction={createInSection}
         />
       )}
     </div>

@@ -148,7 +148,7 @@ export default function App() {
   ]
   const pages: Record<Page, React.ReactNode> = {
     Home: <Home onCreate={(type) => setCreate(type || 'Character')} />,
-    World: <World onCreate={() => setCreate('Character')} />,
+    World: <World onCreate={setCreate} />,
     Write: <Write />,
     Play: <Play />,
     Timeline: <Timeline />,
@@ -241,7 +241,7 @@ export default function App() {
               <SettingsIcon size={17} />
               Settings
             </button>
-            <span>v0.5.0</span>
+            <span>v0.5.1</span>
           </div>
           <div className="sidebar-note">
             Your world. Your words.
