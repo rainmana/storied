@@ -1,0 +1,48 @@
+{
+  "repository": "https://github.com/rainmana/mcw-framework",
+  "revision": "8365d220f2676f248c934e20f23e427e01cf3ce8",
+  "framework": "0.2",
+  "constitution": "1.1",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "540ac5a25ae9d05a6c81555363428dfd35c9497d589139498fe1f40a7a9301b4"
+    },
+    {
+      "path": "docs/glossary.md",
+      "sha256": "db274bac07d212447cab71467fe1641fd01e41975e9fa8381cc66973126a89f5"
+    },
+    {
+      "path": "docs/constitution.md",
+      "sha256": "0e23f6fca847efb77a934600602aab2262b1ac928cde5721b106232914b6c8af"
+    },
+    {
+      "path": "docs/diagrams.md",
+      "sha256": "efde9220d59edd2981c8847166edef9303f2c9c7318202e010908ae56be0c105"
+    },
+    {
+      "path": "docs/failure_repair_mapping.md",
+      "sha256": "60b5644ec32bc46920194eb2775a2bae751cd5f4ba781157ea52769c507fd32f"
+    },
+    {
+      "path": "docs/system_prompt_derivation.md",
+      "sha256": "66c05ac53102afd811a601fe40d265ef893973a61935f3b5c32aea15ea0808d1"
+    },
+    {
+      "path": "docs/constitution_as_code.md",
+      "sha256": "13a9109255efe82ebbc908c3698c34281808a5ccbd36d05650a2059c2374b4c9"
+    },
+    {
+      "path": "docs/test_bed.md",
+      "sha256": "4db8c1fd2689b34c143247853066bc64b247c8491bbf68a2e21d20257f56d249"
+    },
+    {
+      "path": "governance/README.md",
+      "sha256": "27ae9bff189432b4bc09ca1156feb9495b210763984a298b66baf8aa854acbf1"
+    },
+    {
+      "path": "integrations/soulwindow-hearth/README.md",
+      "sha256": "93a2223be7374689de1494c7f6be4277b1332dbc541a497d371955f2dd0073c5"
+    }
+  ]
+}

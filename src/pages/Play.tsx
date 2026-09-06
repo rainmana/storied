@@ -20,8 +20,13 @@ import {
   X,
 } from 'lucide-react'
 import { useStore } from '../lib/store'
-import { completeLocally, embedTexts, extractProposals, useModels } from '../lib/models'
-import { compileContext, visibleEntities, type CompiledContext } from '../domain/context'
+import { useModels } from '../lib/models'
+import { compileContext, type CompiledContext } from '../domain/context'
+import { addBoundary, createWorkflow } from '../domain/coordination'
+import { acceptWorkflowNarrative } from '../domain/execution-graph'
+import { operationFindings, reviewTicket } from '../domain/canon-rules'
+import { runWorkflow, updateWorkflow } from '../lib/workflows'
+import { WorkflowPanel } from '../components/WorkflowPanel'
 import {
   addTurn,
   approveProposal,
@@ -33,7 +38,6 @@ import {
   undoTurn,
 } from '../domain/story'
 import { now, uid, type Adventure, type Proposal, type Scenario, type Turn } from '../domain/schema'
-import { database } from '../lib/database'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 import { Badge, Empty, Field, PageHeading } from '../components/common'
@@ -113,131 +117,97 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
     models = useModels()
   const [intent, setIntent] = useState<Turn['intent']>('Do'),
     [input, setInput] = useState(''),
-    [draft, setDraft] = useState(''),
-    [generating, setGenerating] = useState(false),
+    [working, setWorking] = useState(false),
     [error, setError] = useState(''),
     [context, setContext] = useState<CompiledContext | null>(null),
     [inspect, setInspect] = useState(false),
     [review, setReview] = useState(false),
     [edit, setEdit] = useState<Turn | null>(null),
     [annotation, setAnnotation] = useState<Turn | null>(null),
-    [draftInput, setDraftInput] = useState(''),
-    [draftIntent, setDraftIntent] = useState<Turn['intent']>('Do'),
-    [draftParent, setDraftParent] = useState<string | null>(null)
+    [initialGoal, setInitialGoal] = useState('')
   const path = branchPath(a),
-    pending = p.proposals.filter((v) => v.adventureId === a.id && v.status === 'pending')
+    ancestors = new Set(path.map((t) => t.id))
+  const workflow = p.workflows
+    .filter(
+      (w) =>
+        w.adventureId === a.id &&
+        w.status !== 'discarded' &&
+        (w.turnId ? ancestors.has(w.turnId) : w.parentId === a.headId),
+    )
+    .at(-1)
+  const draft = workflow?.draft || '',
+    draftIntent = workflow?.intent || intent
+  const generating = working || (workflow?.status === 'running' && models.busy)
+  const pending = p.proposals.filter(
+    (v) => v.adventureId === a.id && v.status === 'pending' && ancestors.has(v.turnId),
+  )
   const update = (fn: (a: Adventure) => void) =>
     store.mutate((p) => fn(p.adventures.find((v) => v.id === a.id)!))
   const character = p.entities.find((e) => e.id === a.scenario.characterId),
     location = p.entities.find((e) => e.id === a.scenario.locationId)
   const terminals = a.turns.filter((t) => !a.turns.some((child) => child.parentId === t.id))
-  async function generate(retry = false, continuation = false) {
-    setError('')
-    setGenerating(true)
-    const currentInput = retry
-      ? draftInput
-      : continuation
-        ? 'Continue the scene without deciding my character’s next action.'
-        : input
-    const currentIntent = retry ? draftIntent : continuation ? 'Director' : intent
+  async function resume(id: string) {
+    setWorking(true)
     try {
-      if (currentIntent === 'Story') {
-        setDraft(currentInput)
-        setDraftInput(currentInput)
-        setDraftIntent('Story')
-        setDraftParent(a.headId)
-        setContext(compileContext(p, a, currentInput, currentIntent))
-        return
-      }
-      if (!models.loadedId)
-        throw new Error(
-          'Choose a local storyteller in Local models, or use Story to write the next passage yourself.',
-        )
-      let semanticIds: string[] = []
-      if (models.embeddingReady) {
-        const [vector] = await embedTexts([currentInput])
-        semanticIds = (
-          await database.semantic(p.id, vector, {
-            allowedIds: visibleEntities(p, a.scenario.characterId).map((e) => e.id),
-          })
-        ).map((d) => d.id)
-      }
-      const compiled = compileContext(p, a, currentInput, currentIntent, 8500, semanticIds)
-      setContext(compiled)
-      setDraftInput(currentInput)
-      setDraftIntent(currentIntent)
-      setDraftParent(a.headId)
-      setDraft(await completeLocally(compiled.prompt))
-    } catch (e) {
-      setError(String(e))
+      await runWorkflow(p.id, id)
     } finally {
-      setGenerating(false)
+      setWorking(false)
     }
   }
-  function accept() {
-    if (a.headId !== draftParent) {
-      setError('The active branch changed. Retry from this point before accepting.')
+  async function generate(retry = false, continuation = false) {
+    setError('')
+    if (retry && workflow) {
+      updateWorkflow(workflow.id, (w) => {
+        if (w.draft) addBoundary(w, 'application', 'output', w.draft, 'draft-before-retry')
+        w.draft = ''
+        w.context = undefined
+        w.node = 'synchronizeCoordinationState'
+        w.status = 'ready'
+        w.model = models.loadedId
+        addBoundary(w, 'human', 'correction', 'Retry this draft from the same original input.')
+      })
+      await resume(workflow.id)
       return
     }
-    let turnId = ''
-    const projectId = p.id
-    store.mutate((p) => {
-      const adv = p.adventures.find((v) => v.id === a.id)!
-      const turn = addTurn(adv, {
-        text: draft,
-        input: draftInput,
-        intent: draftIntent,
-        model: draftIntent === 'Story' ? 'Author' : models.loadedId,
-        context: context?.prompt || '',
+    const currentInput = continuation
+      ? 'Continue the scene without deciding my character’s next action.'
+      : input
+    const currentIntent = continuation ? 'Director' : intent
+    const w = createWorkflow(
+      p,
+      a.id,
+      currentInput,
+      currentIntent,
+      models.loadedId,
+      initialGoal || undefined,
+    )
+    if (store.mutate((p) => p.workflows.push(w))) await resume(w.id)
+  }
+  async function accept() {
+    if (!workflow) return
+    if (
+      !store.mutate((p) => {
+        acceptWorkflowNarrative(p, workflow.id, draft)
       })
-      turnId = turn.id
-      p.memories.push({
-        id: uid(),
-        adventureId: a.id,
-        turnId: turn.id,
-        characterId: a.scenario.characterId,
-        text: turn.text.slice(0, 1200),
-        createdAt: now(),
-      })
-    })
-    setDraft('')
+    )
+      return
     setInput('')
     store.notify('Passage accepted. Your world’s canon is unchanged.')
-    if (models.loadedId && draftIntent !== 'Story') {
-      const snapshot = useStore.getState().project!
-      void extractProposals(
-        snapshot,
-        snapshot.adventures.find((v) => v.id === a.id)!,
-        turnId,
-      )
-        .then((proposals) => {
-          if (useStore.getState().project?.id === projectId) {
-            if (proposals.length) store.mutate((p) => p.proposals.push(...proposals))
-            store.notify(
-              proposals.length
-                ? `${proposals.length} suggested world changes are ready to review.`
-                : 'No durable changes suggested. Your passage is saved.',
-            )
-          }
-        })
-        .catch(() =>
-          store.notify(
-            'Automatic extraction could not finish. Your passage is saved; you can propose a change yourself.',
-          ),
-        )
-    }
+    await resume(workflow.id)
   }
   function propose(turn: Turn) {
     store.mutate((p) => p.proposals.push(newProposal(a, turn.id, turn.text.slice(0, 160))))
     setReview(true)
   }
   function contextOf(turn: Turn) {
-    setContext({
-      prompt: turn.context,
-      entries: [],
-      approximateTokens: Math.ceil(turn.context.length / 3),
-      withheld: 0,
-    })
+    setContext(
+      p.workflows.find((w) => w.id === turn.workflowId)?.context || {
+        prompt: turn.context,
+        entries: [],
+        approximateTokens: Math.ceil(turn.context.length / 3),
+        withheld: 0,
+      },
+    )
     setInspect(true)
   }
   return (
@@ -271,7 +241,10 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               variant="ghost"
               size="sm"
               onClick={() => {
-                setContext(compileContext(p, a, input, intent))
+                setContext(
+                  workflow?.context ||
+                    compileContext(p, a, input, intent, 8500, [], workflow?.coordination),
+                )
                 setInspect(true)
               }}
             >
@@ -365,12 +338,27 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               </span>
               <textarea
                 value={draft}
-                onChange={(e) => setDraft(e.target.value)}
+                onChange={(e) =>
+                  workflow &&
+                  updateWorkflow(workflow.id, (w) => {
+                    w.draft = e.target.value
+                  })
+                }
                 aria-label="Story draft"
+                maxLength={500000}
                 rows={Math.max(6, Math.min(18, draft.length / 70))}
               />
               <div className="draft-actions">
-                <Button size="sm" onClick={accept} disabled={!draft.trim() || generating}>
+                <Button
+                  size="sm"
+                  onClick={accept}
+                  disabled={
+                    !draft.trim() ||
+                    generating ||
+                    workflow?.status !== 'review' ||
+                    workflow?.node !== 'humanNarrativeReview'
+                  }
+                >
                   <Check size={15} />
                   Accept passage
                 </Button>
@@ -379,7 +367,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                     size="sm"
                     variant="secondary"
                     onClick={() => generate(true)}
-                    disabled={generating || models.busy}
+                    disabled={generating || models.busy || workflow?.status === 'repair'}
                   >
                     <RefreshCw size={14} />
                     Retry
@@ -388,7 +376,13 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                 <Button
                   size="sm"
                   variant="ghost"
-                  onClick={() => setDraft('')}
+                  onClick={() =>
+                    workflow &&
+                    updateWorkflow(workflow.id, (w) => {
+                      w.draft = ''
+                      w.status = 'discarded'
+                    })
+                  }
                   disabled={generating}
                 >
                   Discard
@@ -504,6 +498,26 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
         </div>
       </section>
       <aside className="story-aside">
+        {workflow ? (
+          <WorkflowPanel
+            key={workflow.id}
+            workflow={workflow}
+            onResume={() => resume(workflow.id)}
+            busy={generating}
+          />
+        ) : (
+          <details className="workflow-panel">
+            <summary>Story direction</summary>
+            <Field label="What matters in this scene?">
+              <textarea
+                value={initialGoal}
+                maxLength={500}
+                onChange={(e) => setInitialGoal(e.target.value)}
+                placeholder="A politically tense conversation without violence…"
+              />
+            </Field>
+          </details>
+        )}
         <section className="scene-context-card">
           <span className="eyebrow">In this moment</span>
           <div className="context-person">
@@ -527,6 +541,29 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               {location?.name} <ArrowRight size={13} />
             </button>
           </div>
+          <Field
+            label="Scene time"
+            hint="Ordered events gate discoveries and dated facts. Unknown time excludes dated secrets."
+          >
+            <select
+              value={a.currentEventId || ''}
+              onChange={(e) =>
+                update((a) => {
+                  a.currentEventId = e.target.value || undefined
+                })
+              }
+            >
+              <option value="">Unspecified</option>
+              {p.events
+                .filter((e) => e.status === 'Canon')
+                .map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.title}
+                    {e.order !== undefined ? ` · ${e.order}` : ' · order unknown'}
+                  </option>
+                ))}
+            </select>
+          </Field>
           <div className="scene-companions">
             <small>IN THE SCENE</small>
             {a.scenario.activeEntityIds.map((id) => (
@@ -598,7 +635,10 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
         <button
           className="context-explainer"
           onClick={() => {
-            setContext(compileContext(p, a, input, intent))
+            setContext(
+              workflow?.context ||
+                compileContext(p, a, input, intent, 8500, [], workflow?.coordination),
+            )
             setInspect(true)
           }}
         >
@@ -640,8 +680,31 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                 <strong>{entry.title}</strong>
               </div>
               <small>{entry.reason}</small>
+              {!!entry.sourceIds?.length && (
+                <small>
+                  Sources: {entry.sourceIds.join(', ')}
+                  {entry.truncated ? ' · excerpt' : ''}
+                </small>
+              )}
               <p>{entry.text}</p>
             </div>
+          ))}
+          {!!context?.excluded?.length && (
+            <details>
+              <summary>
+                Excluded by viewpoint, time, relevance, or budget ({context.excluded.length})
+              </summary>
+              {context.excluded.map((e, i) => (
+                <p key={i} className="small">
+                  {e.kind} · {e.id}: {e.reason}
+                </p>
+              ))}
+            </details>
+          )}
+          {context?.warnings?.map((warning) => (
+            <p className="error-message" key={warning}>
+              {warning}
+            </p>
           ))}
           <details open={!context?.entries.length}>
             <summary>Exact compiled prompt</summary>
@@ -872,6 +935,7 @@ function CanonReview({ adventure: a, onClose }: { adventure: Adventure; onClose:
     p = store.project!,
     pathIds = new Set(branchPath(a).map((t) => t.id))
   const proposals = p.proposals.filter((v) => v.adventureId === a.id)
+  const [acknowledged, setAcknowledged] = useState<Record<string, string>>({})
   const update = (id: string, patch: Partial<Proposal>) =>
     store.mutate((p) => {
       Object.assign(
@@ -897,126 +961,220 @@ function CanonReview({ adventure: a, onClose }: { adventure: Adventure; onClose:
             description="Use “Propose change” beneath an accepted passage, or let a local storyteller suggest changes after generation."
           />
         )}
-        {proposals.map((v) => (
-          <div className="proposal-card" key={v.id}>
-            <div className="proposal-header">
-              <Badge
-                variant={
-                  v.status === 'pending' ? 'proposed' : v.status === 'accepted' ? 'canon' : ''
-                }
-              >
-                {v.status}
-              </Badge>
-              <span className="small muted">
-                {pathIds.has(v.turnId)
-                  ? 'From this branch'
-                  : 'From another branch — review its source'}
-              </span>
-            </div>
-            <details className="small">
-              <summary>Read the source passage</summary>
-              <p>{a.turns.find((t) => t.id === v.turnId)?.text}</p>
-            </details>
-            <div className="field-row">
-              <Field label="Kind of change">
-                <select
-                  value={v.kind}
-                  disabled={v.status !== 'pending'}
-                  onChange={(e) => update(v.id, { kind: e.target.value as Proposal['kind'] })}
-                >
-                  <option value="event">Timeline event</option>
-                  <option value="fact">World fact / inventory / state</option>
-                  <option value="relationship">Relationship</option>
-                  <option value="knowledge">Something learned</option>
-                </select>
-              </Field>
-              <Field label="Who or what?">
-                <select
-                  value={v.subjectId}
-                  disabled={v.status !== 'pending'}
-                  onChange={(e) => update(v.id, { subjectId: e.target.value })}
-                >
-                  {p.entities.map((e) => (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-            </div>
-            {v.kind === 'relationship' && (
-              <Field label="Connected to">
-                <select
-                  value={v.targetId || ''}
-                  onChange={(e) => update(v.id, { targetId: e.target.value })}
-                  disabled={v.status !== 'pending'}
-                >
-                  <option value="">Choose an element</option>
-                  {p.entities.map((e) => (
-                    <option key={e.id} value={e.id}>
-                      {e.name}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-            )}
-            <Field label={v.kind === 'event' ? 'What happened?' : 'The detail'}>
-              <textarea
-                rows={2}
-                value={v.value}
-                maxLength={500}
-                onChange={(e) => update(v.id, { value: e.target.value })}
-                disabled={v.status !== 'pending'}
-              />
-            </Field>
-            <Field
-              label={
-                v.kind === 'event' ? 'Description' : 'Label (for example, owns, status, lives in)'
-              }
-            >
-              <input
-                value={v.predicate}
-                maxLength={500}
-                onChange={(e) => update(v.id, { predicate: e.target.value })}
-                disabled={v.status !== 'pending'}
-              />
-            </Field>
-            {v.kind !== 'event' && v.kind !== 'knowledge' && (
-              <Field label="Who can know this?">
-                <select
-                  value={v.visibility}
-                  disabled={v.status !== 'pending'}
-                  onChange={(e) =>
-                    update(v.id, { visibility: e.target.value as 'private' | 'public' })
+        {proposals.map((v) => {
+          const findings = v.status === 'pending' ? operationFindings(p, v) : []
+          const acknowledgementKey = JSON.stringify({
+            revision: p.worldRevision,
+            proposal: v,
+            findings,
+          })
+          const ticket = reviewTicket(
+            p,
+            v,
+            acknowledged[v.id] === acknowledgementKey ? findings.map((f) => f.id) : [],
+          )
+          return (
+            <div className="proposal-card" key={v.id}>
+              <div className="proposal-header">
+                <Badge
+                  variant={
+                    v.status === 'pending' ? 'proposed' : v.status === 'accepted' ? 'canon' : ''
                   }
                 >
-                  <option value="private">Only this viewpoint character</option>
-                  <option value="public">Public knowledge</option>
-                </select>
-              </Field>
-            )}
-            {v.status === 'pending' && (
-              <div className="button-row">
-                <Button
-                  size="sm"
-                  disabled={!v.value.trim() || (v.kind === 'relationship' && !v.targetId)}
-                  onClick={() => store.mutate((p) => approveProposal(p, v.id))}
-                >
-                  <Check size={15} />
-                  Accept into canon
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => update(v.id, { status: 'rejected' })}
-                >
-                  <X size={14} />
-                  Keep narrative-only
-                </Button>
+                  {v.status}
+                </Badge>
+                <span className="small muted">
+                  {pathIds.has(v.turnId)
+                    ? 'From this branch'
+                    : 'From another branch — review its source'}
+                </span>
               </div>
-            )}
-          </div>
-        ))}
+              <details className="small">
+                <summary>Read the source passage</summary>
+                <p>{a.turns.find((t) => t.id === v.turnId)?.text}</p>
+                {v.status === 'pending' && (
+                  <button
+                    className="text-button small"
+                    onClick={() => {
+                      store.mutate((p) =>
+                        forkAt(
+                          p.adventures.find((item) => item.id === a.id)!,
+                          v.turnId,
+                        ),
+                      )
+                      onClose()
+                    }}
+                  >
+                    Open source checkpoint
+                  </button>
+                )}
+              </details>
+              <div className="field-row">
+                <Field label="Kind of change">
+                  <select
+                    value={v.kind}
+                    disabled={v.status !== 'pending'}
+                    onChange={(e) => update(v.id, { kind: e.target.value as Proposal['kind'] })}
+                  >
+                    <option value="event">Timeline event</option>
+                    <option value="fact">World fact / inventory / state</option>
+                    <option value="relationship">Relationship</option>
+                    <option value="knowledge">Something learned</option>
+                  </select>
+                </Field>
+                <Field label="Who or what?">
+                  <select
+                    value={v.subjectId}
+                    disabled={v.status !== 'pending'}
+                    onChange={(e) => update(v.id, { subjectId: e.target.value })}
+                  >
+                    {p.entities.map((e) => (
+                      <option key={e.id} value={e.id}>
+                        {e.name}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              </div>
+              {v.kind === 'relationship' && (
+                <Field label="Connected to">
+                  <select
+                    value={v.targetId || ''}
+                    onChange={(e) => update(v.id, { targetId: e.target.value })}
+                    disabled={v.status !== 'pending'}
+                  >
+                    <option value="">Choose an element</option>
+                    {p.entities.map((e) => (
+                      <option key={e.id} value={e.id}>
+                        {e.name}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              )}
+              <Field label={v.kind === 'event' ? 'What happened?' : 'The detail'}>
+                <textarea
+                  rows={2}
+                  value={v.value}
+                  maxLength={500}
+                  onChange={(e) => update(v.id, { value: e.target.value })}
+                  disabled={v.status !== 'pending'}
+                />
+              </Field>
+              <Field
+                label={
+                  v.kind === 'event' ? 'Description' : 'Label (for example, owns, status, lives in)'
+                }
+              >
+                <input
+                  value={v.predicate}
+                  maxLength={500}
+                  onChange={(e) => update(v.id, { predicate: e.target.value })}
+                  disabled={v.status !== 'pending'}
+                />
+              </Field>
+              {v.kind !== 'event' && v.kind !== 'knowledge' && (
+                <Field label="Who can know this?">
+                  <select
+                    value={v.visibility}
+                    disabled={v.status !== 'pending'}
+                    onChange={(e) =>
+                      update(v.id, { visibility: e.target.value as 'private' | 'public' })
+                    }
+                  >
+                    <option value="private">Only this viewpoint character</option>
+                    <option value="public">Public knowledge</option>
+                  </select>
+                </Field>
+              )}
+              {v.status === 'pending' && (
+                <>
+                  {!!findings.length && (
+                    <div className="form-stack">
+                      <strong>Possible contradictions</strong>
+                      {findings.map((f) => (
+                        <p key={f.id} className="small">
+                          {f.message}
+                        </p>
+                      ))}
+                      <label className="checkbox-label">
+                        <input
+                          type="checkbox"
+                          checked={acknowledged[v.id] === acknowledgementKey}
+                          onChange={(e) =>
+                            setAcknowledged({
+                              ...acknowledged,
+                              [v.id]: e.target.checked ? acknowledgementKey : '',
+                            })
+                          }
+                        />
+                        Keep these deliberate or disputed accounts
+                      </label>
+                    </div>
+                  )}
+                  <div className="button-row">
+                    <Button
+                      size="sm"
+                      disabled={
+                        !v.value.trim() ||
+                        !pathIds.has(v.turnId) ||
+                        (v.kind === 'relationship' && !v.targetId) ||
+                        (!!findings.length && acknowledged[v.id] !== acknowledgementKey)
+                      }
+                      onClick={async () => {
+                        if (store.mutate((p) => approveProposal(p, v.id, ticket)) && v.workflowId)
+                          await runWorkflow(p.id, v.workflowId)
+                      }}
+                    >
+                      <Check size={15} />
+                      Accept into canon
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={async () => {
+                        const changed = store.mutate((p) => {
+                          const proposal = p.proposals.find((item) => item.id === v.id)!
+                          if (proposal.status !== 'pending') return
+                          p.approvals.push({
+                            id: uid(),
+                            proposalId: v.id,
+                            workflowId: v.workflowId,
+                            adventureId: a.id,
+                            turnId: v.turnId,
+                            actor: 'human',
+                            action: 'rejected',
+                            operation: JSON.stringify(proposal),
+                            worldRevision: p.worldRevision,
+                            coordinationVersion: ticket.coordinationVersion,
+                            createdAt: now(),
+                            resultIds: [],
+                            acknowledgedFindings: [],
+                          })
+                          proposal.status = 'rejected'
+                          const w = p.workflows.find((w) => w.id === v.workflowId)
+                          if (
+                            w &&
+                            w.proposalIds.every(
+                              (id) => p.proposals.find((v) => v.id === id)?.status !== 'pending',
+                            )
+                          ) {
+                            w.status = 'ready'
+                            w.node = 'updateMemory'
+                          }
+                        })
+                        if (changed && v.workflowId) await runWorkflow(p.id, v.workflowId)
+                      }}
+                    >
+                      <X size={14} />
+                      Keep narrative-only
+                    </Button>
+                  </div>
+                </>
+              )}
+            </div>
+          )
+        })}
       </div>
     </Dialog>
   )

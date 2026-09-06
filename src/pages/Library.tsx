@@ -33,7 +33,9 @@ export function Timeline() {
     [description, setDescription] = useState(''),
     [approximate, setApproximate] = useState(false),
     [participant, setParticipant] = useState(''),
-    [filter, setFilter] = useState('All')
+    [filter, setFilter] = useState('All'),
+    [order, setOrder] = useState(''),
+    [death, setDeath] = useState(false)
   const events = p.events
     .filter((e) => filter === 'All' || e.status === filter)
     .sort((a, b) => a.date.localeCompare(b.date, undefined, { numeric: true }))
@@ -110,6 +112,47 @@ export function Timeline() {
                   ))}
                 </select>
               </div>
+              <details className="small">
+                <summary>Chronology and consequences</summary>
+                <div className="field-row">
+                  <Field
+                    label={`World order of ${e.title}`}
+                    hint="Optional sequence number; does not interpret your date text."
+                  >
+                    <input
+                      type="number"
+                      value={e.order ?? ''}
+                      onChange={(v) =>
+                        store.mutate((p) => {
+                          p.events.find((x) => x.id === e.id)!.order =
+                            v.target.value === '' ? undefined : Number(v.target.value)
+                        })
+                      }
+                    />
+                  </Field>
+                  <Field label={`Death recorded at ${e.title}`}>
+                    <select
+                      value={e.deathOf?.[0] || ''}
+                      onChange={(v) =>
+                        store.mutate((p) => {
+                          p.events.find((x) => x.id === e.id)!.deathOf = v.target.value
+                            ? [v.target.value]
+                            : []
+                        })
+                      }
+                    >
+                      <option value="">No explicit death</option>
+                      {p.entities
+                        .filter((e) => e.type === 'Character')
+                        .map((e) => (
+                          <option key={e.id} value={e.id}>
+                            {e.name}
+                          </option>
+                        ))}
+                    </select>
+                  </Field>
+                </div>
+              </details>
             </div>
           </article>
         ))}
@@ -140,6 +183,8 @@ export function Timeline() {
                 date: date || 'Undated',
                 description,
                 approximate,
+                order: order === '' ? undefined : Number(order),
+                deathOf: death && participant ? [participant] : [],
                 entityIds: participant ? [participant] : [],
                 consequences: '',
                 status: 'Canon',
@@ -195,6 +240,26 @@ export function Timeline() {
               rows={4}
             />
           </Field>
+          <details>
+            <summary>Chronology and consequences</summary>
+            <Field
+              label="Order in the world"
+              hint="Optional sequence number. Larger numbers happen later; dates can remain approximate."
+            >
+              <input type="number" value={order} onChange={(e) => setOrder(e.target.value)} />
+            </Field>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={death}
+                disabled={
+                  !participant || p.entities.find((e) => e.id === participant)?.type !== 'Character'
+                }
+                onChange={(e) => setDeath(e.target.checked)}
+              />
+              This event records the connected character’s death
+            </label>
+          </details>
           <div className="dialog-actions">
             <Button>
               <Check size={16} />

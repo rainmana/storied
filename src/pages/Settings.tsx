@@ -473,7 +473,7 @@ export function Settings() {
           storied<span>✳</span>
         </span>
         <p>Open source. Local by design. Made for the worlds only you can imagine.</p>
-        <small>v0.1.0 · GPL-3.0-or-later · No accounts, analytics, or remote AI</small>
+        <small>v0.2.0 · GPL-3.0-or-later · No accounts, analytics, or remote AI</small>
         <p>
           <a
             href="/third-party-notices.txt"
@@ -484,7 +484,7 @@ export function Settings() {
             Open-source licenses
           </a>
           {' · '}
-          <a href="/storied-source-v0.1.0.zip" download className="text-button small">
+          <a href="/storied-source-v0.2.0.zip" download className="text-button small">
             Download source
           </a>
         </p>

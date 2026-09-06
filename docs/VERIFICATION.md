@@ -1,6 +1,6 @@
 # Verification and MVP limits
 
-## Public deployment verification
+## Version 0.1 public deployment verification
 
 The production site at **https://storied.alecakin.com** was verified on 2026-09-05 (America/Denver). **47 unit tests**, TypeScript, production build, and formatting passed. All **5 browser workflows passed against the public origin** in 58.1 seconds, including real cached Qwen/MiniLM inference, retry, extraction, semantic search, and project restore while the browser network was disabled. The hardware workflow took 35.2 seconds. These timings describe this device and run only.
 
@@ -87,7 +87,7 @@ Use a compatible WebGPU device with enough free graphics memory. Chromium can be
 - Automatic extraction supports facts, events, relationships, and knowledge about visible active entities. New entities are explicitly created in World. No automatic retcon or broad manuscript contradiction analysis; the current checks cover conflicting fact values and reversed birth/death years.
 - The relationship graph shows the first 18 entities; the complete relationship list remains available. World dates support free text and approximate dates, with natural text ordering rather than a custom calendar engine.
 - Local raster image/map attachment is available. Map pins survive native import/export; an interactive pin-placement/cartography editor is not included.
-- Browser storage persistence is a request to the browser, not an independent backup. Keep native exports. Unaccepted drafts are transient; accept a passage to preserve it in the adventure.
+- Browser storage persistence is a request to the browser, not an independent backup. Keep native exports. Version 0.2 preserves unaccepted drafts and exact boundary records in local workflow checkpoints and native exports; accepting a passage adds it to adventure history.
 
 ## Visual evidence
 

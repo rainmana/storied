@@ -34,7 +34,10 @@ async function document(project: string, id: string, kind = 'Character', tags = 
 describe('embedded relational persistence and vector boundaries', () => {
   it('applies the database migration idempotently', async () => {
     await db.exec(DATABASE_SCHEMA)
-    expect((await db.query('SELECT * FROM migrations')).rows).toEqual([{ version: 1 }])
+    expect((await db.query('SELECT * FROM migrations ORDER BY version')).rows).toEqual([
+      { version: 1 },
+      { version: 2 },
+    ])
   })
   it('rolls back an entire project mutation on failure', async () => {
     await expect(
@@ -103,7 +106,34 @@ describe('embedded relational persistence and vector boundaries', () => {
     expect(result.rows).toEqual([{ label: 'lives in' }])
   })
   it('deleting a project cascades derived rows without affecting other worlds', async () => {
+    await db.query('INSERT INTO world_nodes VALUES ($1,$2,$3,$4,$5)', [
+      'one',
+      'entity:person',
+      'entity',
+      'person',
+      {},
+    ])
+    await db.query('INSERT INTO world_edges VALUES ($1,$2,$3,$4,$5,$6)', [
+      'one',
+      'edge',
+      'entity:person',
+      'entity:place',
+      'connection',
+      'r1',
+    ])
+    await db.query('INSERT INTO workflow_checkpoints VALUES ($1,$2,$3,$4,$5,$6,$7)', [
+      'one',
+      'w1',
+      'a1',
+      null,
+      'humanNarrativeReview',
+      'review',
+      { input: 'Exact source', worldRevision: 3 },
+    ])
     await db.query('DELETE FROM projects WHERE id=$1', ['one'])
+    expect((await db.query('SELECT * FROM world_nodes')).rows).toEqual([])
+    expect((await db.query('SELECT * FROM world_edges')).rows).toEqual([])
+    expect((await db.query('SELECT * FROM workflow_checkpoints')).rows).toEqual([])
     expect((await db.query('SELECT id FROM documents WHERE project_id=$1', ['one'])).rows).toEqual(
       [],
     )

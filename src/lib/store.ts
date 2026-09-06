@@ -2,6 +2,8 @@ import { create } from 'zustand'
 import { database, acquireEditorLock } from './database'
 import { now, uid, type Project } from '../domain/schema'
 import { parseProject, restorableJSON } from '../domain/project-file'
+import { materialState } from '../domain/world-graph'
+import { synchronizeImportedWorkflows } from '../domain/coordination'
 
 export type Page =
   | 'Home'
@@ -27,7 +29,7 @@ type State = {
   toast: string
   boot: () => Promise<void>
   navigate: (page: Page, id?: string) => void
-  mutate: (fn: (p: Project) => void) => void
+  mutate: (fn: (p: Project) => void) => boolean
   openProject: (p: Project) => Promise<void>
   deleteProject: () => Promise<void>
   switchProject: (id: string) => Promise<void>
@@ -130,21 +132,26 @@ export const useStore = create<State>((set, get) => ({
     }),
   mutate: (fn) => {
     const current = get().project
-    if (!current) return
+    if (!current) return false
     const p = structuredClone(current)
     try {
       fn(p)
+      if (materialState(p) !== materialState(current)) p.worldRevision = current.worldRevision + 1
       p.updatedAt = now()
       // Never persist a world that this version cannot export and restore.
       restorableJSON(p)
       set({ project: p })
       scheduleSave(p)
+      return true
     } catch (error) {
       get().notify(error instanceof Error ? error.message : String(error))
+      return false
     }
   },
   openProject: async (p) => {
     await flushSaves()
+    p = structuredClone(p)
+    synchronizeImportedWorkflows(p)
     if (get().projects.some((v) => v.id === p.id))
       p = { ...p, id: uid(), title: `${p.title} (imported copy)` }
     await database.save(p)

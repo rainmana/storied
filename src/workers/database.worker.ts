@@ -4,6 +4,7 @@ import { projectSchema, type Project } from '../domain/schema'
 import { validateReferences, restorableJSON } from '../domain/project-file'
 import { searchDocuments } from '../domain/search'
 import { DATABASE_SCHEMA, SEMANTIC_QUERY } from '../lib/database-schema'
+import { buildWorldGraph } from '../domain/world-graph'
 
 const db = new PGlite({
   dataDir: 'idb://storied-v1',
@@ -34,6 +35,22 @@ async function handle(type: string, payload: unknown) {
         [p.id, JSON.stringify(searchDocuments(p))],
       )
       await tx.query('DELETE FROM relationships WHERE project_id=$1', [p.id])
+      const graph = buildWorldGraph(p)
+      await tx.query('DELETE FROM world_nodes WHERE project_id=$1', [p.id])
+      await tx.query(
+        `INSERT INTO world_nodes SELECT $1,x->>'id',x->>'kind',x->>'sourceId',x->'body' FROM jsonb_array_elements($2::jsonb) x`,
+        [p.id, JSON.stringify(graph.nodes)],
+      )
+      await tx.query('DELETE FROM world_edges WHERE project_id=$1', [p.id])
+      await tx.query(
+        `INSERT INTO world_edges SELECT $1,x->>'id',x->>'from',x->>'to',x->>'kind',x->>'sourceId' FROM jsonb_array_elements($2::jsonb) x`,
+        [p.id, JSON.stringify(graph.edges)],
+      )
+      await tx.query('DELETE FROM workflow_checkpoints WHERE project_id=$1', [p.id])
+      await tx.query(
+        `INSERT INTO workflow_checkpoints SELECT $1,x->>'id',x->>'adventureId',x->>'parentId',x->>'node',x->>'status',x FROM jsonb_array_elements($2::jsonb) x`,
+        [p.id, JSON.stringify(p.workflows)],
+      )
       await tx.query(
         `INSERT INTO relationships SELECT $1,x->>'id',x->>'from',x->>'to',x->>'label',x FROM jsonb_array_elements($2::jsonb) x`,
         [p.id, JSON.stringify(p.relationships)],

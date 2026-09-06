@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { approvalSchema, workflowSchema } from './workflow-schema'
 
 export const entityTypes = [
   'Character',
@@ -26,6 +27,10 @@ export const provenanceSchema = z
     kind: z.enum(['author', 'story', 'import']),
     adventureId: id.optional(),
     turnId: id.optional(),
+    proposalId: id.optional(),
+    approvalId: id.optional(),
+    workflowId: id.optional(),
+    worldRevision: z.number().int().nonnegative().optional(),
     note: short.default(''),
   })
   .strict()
@@ -73,6 +78,11 @@ export const relationshipSchema = z
     start: short,
     end: short,
     confidence: z.number().min(0).max(1),
+    relationType: z.enum(['connection', 'ownership', 'containment']).optional(),
+    validFrom: z.number().finite().optional(),
+    validUntil: z.number().finite().optional(),
+    establishedByEventId: id.optional(),
+    endedByEventId: id.optional(),
     provenance: provenanceSchema,
   })
   .strict()
@@ -85,6 +95,10 @@ export const factSchema = z
     status,
     visibility,
     knownTo: ids,
+    validFrom: z.number().finite().optional(),
+    validUntil: z.number().finite().optional(),
+    establishedByEventId: id.optional(),
+    endedByEventId: id.optional(),
     provenance: provenanceSchema,
   })
   .strict()
@@ -98,6 +112,7 @@ export const knowledgeSchema = z
     confidence: z.number().min(0).max(1),
     source: short,
     learnedAtEventId: id.optional(),
+    provenance: provenanceSchema.optional(),
   })
   .strict()
 export const sceneSchema = z
@@ -138,6 +153,8 @@ export const turnSchema = z
     context: prose,
     model: short,
     summary: prose,
+    summarySourceIds: ids.optional(),
+    workflowId: id.optional(),
   })
   .strict()
 export const adventureSchema = z
@@ -149,6 +166,7 @@ export const adventureSchema = z
     headId: id.nullable(),
     redoIds: ids,
     createdAt: short,
+    currentEventId: id.optional(),
   })
   .strict()
 export const eventSchema = z
@@ -157,6 +175,8 @@ export const eventSchema = z
     title: short.min(1),
     date: short,
     approximate: z.boolean(),
+    order: z.number().finite().optional(),
+    deathOf: ids.optional(),
     description: prose,
     locationId: id.optional(),
     entityIds: ids,
@@ -188,6 +208,7 @@ export const proposalSchema = z
     entityType: z.enum(entityTypes).optional(),
     visibility,
     status: z.enum(['pending', 'accepted', 'rejected']),
+    workflowId: id.optional(),
   })
   .strict()
 export const journalSchema = z
@@ -218,7 +239,10 @@ export const assetSchema = z
   .strict()
 export const projectSchema = z
   .object({
-    schemaVersion: z.literal(1),
+    schemaVersion: z.literal(2),
+    worldRevision: z.number().int().nonnegative().default(0),
+    workflows: z.array(workflowSchema).max(10000).default([]),
+    approvals: z.array(approvalSchema).max(100000).default([]),
     id,
     title: short.min(1),
     description: prose,
@@ -267,7 +291,10 @@ export const uid = () => crypto.randomUUID()
 export const now = () => new Date().toISOString()
 export function newProject(title: string): Project {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    worldRevision: 0,
+    workflows: [],
+    approvals: [],
     id: uid(),
     title: title.trim() || 'Untitled world',
     description: '',

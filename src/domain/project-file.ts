@@ -24,6 +24,8 @@ export function validateReferences(p: Project): Project {
     p.journal,
     p.assets,
     p.templates,
+    p.workflows,
+    p.approvals,
   ]) {
     if (new Set(collection.map((x) => x.id)).size !== collection.length)
       throw new Error('This project contains duplicate identifiers.')
@@ -99,6 +101,36 @@ export function validateReferences(p: Project): Project {
     if (e.locationId) requireEntity(e.locationId)
   })
   p.assets.forEach((a) => a.pins.forEach((pin) => requireEntity(pin.entityId)))
+  const requireEvent = (id?: string) => {
+    if (id && !p.events.some((e) => e.id === id))
+      throw new Error('Missing temporal event reference.')
+  }
+  for (const item of [...p.facts, ...p.relationships]) {
+    requireEvent(item.establishedByEventId)
+    requireEvent(item.endedByEventId)
+  }
+  p.events.forEach((e) => e.deathOf?.forEach(requireEntity))
+  p.adventures.forEach((a) => requireEvent(a.currentEventId))
+  for (const w of p.workflows) {
+    const a = p.adventures.find((a) => a.id === w.adventureId)
+    if (!a || (w.parentId && !a.turns.some((t) => t.id === w.parentId)))
+      throw new Error('Missing workflow branch reference.')
+    if (w.turnId) checkTurn(w.adventureId, w.turnId)
+    if (new Set(w.boundaries.map((b) => b.id)).size !== w.boundaries.length)
+      throw new Error('Duplicate boundary reference.')
+    for (const item of [...w.coordination.items, ...w.coordination.interpretations])
+      if (!w.boundaries.some((b) => b.id === item.sourceBoundaryId))
+        throw new Error('Missing coordination boundary source.')
+    w.proposalIds.forEach((id) => {
+      if (!p.proposals.some((v) => v.id === id && v.adventureId === w.adventureId))
+        throw new Error('Missing workflow proposal reference.')
+    })
+  }
+  p.approvals.forEach((approval) => {
+    checkTurn(approval.adventureId, approval.turnId)
+    if (!p.proposals.some((v) => v.id === approval.proposalId))
+      throw new Error('Missing approval proposal reference.')
+  })
   return p
 }
 
@@ -122,6 +154,10 @@ export function parseProject(text: string): Project {
     'project' in input
   )
     input = input.project
+  // Additive v1 -> v2 migration preserves every existing world and its branch tree.
+  // New checkpoints cannot be read by the old app, so the format version advances explicitly.
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 1)
+    input = { ...input, schemaVersion: 2 }
   const parsed = projectSchema.safeParse(input)
   if (!parsed.success)
     throw new Error(

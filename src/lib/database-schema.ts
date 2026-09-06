@@ -8,6 +8,12 @@ export const DATABASE_SCHEMA = `
   CREATE INDEX IF NOT EXISTS relation_from ON relationships(project_id,from_id);
   CREATE INDEX IF NOT EXISTS relation_to ON relationships(project_id,to_id);
   INSERT INTO migrations VALUES (1) ON CONFLICT DO NOTHING;
+  CREATE TABLE IF NOT EXISTS world_nodes (project_id text REFERENCES projects(id) ON DELETE CASCADE, id text, kind text NOT NULL, source_id text NOT NULL, body jsonb NOT NULL, PRIMARY KEY(project_id,id));
+  CREATE TABLE IF NOT EXISTS world_edges (project_id text REFERENCES projects(id) ON DELETE CASCADE, id text, from_id text NOT NULL, to_id text NOT NULL, kind text NOT NULL, source_id text NOT NULL, PRIMARY KEY(project_id,id));
+  CREATE INDEX IF NOT EXISTS world_edge_from ON world_edges(project_id,from_id,kind);
+  CREATE INDEX IF NOT EXISTS world_edge_to ON world_edges(project_id,to_id,kind);
+  CREATE TABLE IF NOT EXISTS workflow_checkpoints (project_id text REFERENCES projects(id) ON DELETE CASCADE, id text, adventure_id text, parent_id text, node text, status text, body jsonb NOT NULL, PRIMARY KEY(project_id,id));
+  INSERT INTO migrations VALUES (2) ON CONFLICT DO NOTHING;
 `
 export const SEMANTIC_QUERY = `
   SELECT d.*, 1-(e.embedding <=> $2::vector) AS similarity

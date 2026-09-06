@@ -2,6 +2,8 @@
 
 Storied follows a local-compute-web-app architecture: static assets, a browser UI, and browser-local computation and storage. A Vite preview server is a development convenience, not an application backend.
 
+Version 0.2 wraps this existing vertical slice in typed execution and world-graph boundaries. [ADR 0001](adr/0001-world-and-execution-graphs.md) specifies current node authority, temporal/epistemic rules, checkpoints, and validated approval. [ADR 0002](adr/0002-mcw-inspired-coordination.md) pins the canonical MCW revision and distinguishes application coordination records from the exploratory framework. The diagram below shows the underlying components, which remain in use.
+
 ```mermaid
 flowchart TD
   UI[React studio / Zustand] --> Domain[Zod-validated project operations]
@@ -22,7 +24,7 @@ flowchart TD
 
 ## Persistence and concurrency
 
-`src/domain/schema.ts` is the versioned domain contract. A complete project is stored as JSONB; relationships and searchable documents are transactionally projected into relational tables. Search embeddings live in a separate table and must match the document’s current source text before retrieval. Restoring a project does not require embeddings.
+`src/domain/schema.ts` and `workflow-schema.ts` are the versioned domain contracts. A complete project is stored as JSONB; relationships, world graph nodes/edges, workflow checkpoints, and searchable documents are transactionally projected into relational tables. Search embeddings live in a separate table and must match the document’s current source text before retrieval. Restoring a project does not require embeddings.
 
 The database worker serializes operations. The UI batches typing over 300 ms, maintains immutable snapshots, and uses monotonically advancing revisions so an older acknowledgement cannot claim a later edit was saved. Export uses the current in-memory project. Switching, deleting, or applying an application update flushes pending saves first. A failed save remains visible, with retry and export controls.
 

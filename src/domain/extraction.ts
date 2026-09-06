@@ -12,6 +12,15 @@ export function extractionEntities(p: Project, a: Adventure) {
 }
 export type ExtractionEntity = ReturnType<typeof extractionEntities>[number]
 
+export function extractionRequest(p: Project, a: Adventure, passage: string) {
+  const entities = extractionEntities(p, a)
+  return {
+    entities,
+    schema: extractionResponseSchema(entities),
+    prompt: `Extract 1 to 4 durable changes explicitly present in the passage. Use short entity handles exactly as listed: ${JSON.stringify(entities.map((e) => ({ id: e.handle, name: e.name })))}. A fact describes a changed possession or state; an event describes an action that occurred; knowledge means a character explicitly learned something; a relationship connects two listed entities. Use targetId "" except for relationships. Use a short predicate and a specific value describing the change. Do not invent death, knowledge, or new entities. Return {"proposals":[]} if nothing changed.\nPASSAGE:\n${passage.slice(0, 6000)}`,
+  }
+}
+
 export function extractionResponseSchema(entities: ExtractionEntity[]) {
   const handles = entities.map((e) => e.handle)
   return {

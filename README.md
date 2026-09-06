@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.1.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.2.0.zip).
+
+Version 0.2 adds locally saved story workflows, source-preserving direction and repair controls, temporal knowledge gates, graph consistency checks, and version-bound canon review. Existing projects migrate in place. See the [implementation delta](docs/UPGRADE_PLAN.md), [graph architecture ADR](docs/adr/0001-world-and-execution-graphs.md), and [MCW-informed coordination ADR](docs/adr/0002-mcw-inspired-coordination.md).
 
 Build a world, write within it, and step inside as a character. Storied keeps structured canon separate from narrative, character beliefs, and the things only the author knows. A local storyteller can propose the next passage. You decide what to accept and what becomes part of the world.
 

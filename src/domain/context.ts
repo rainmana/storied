@@ -1,12 +1,24 @@
 import type { Adventure, Entity, Project } from './schema'
 import { branchPath } from './story'
+import { knowledgeVisible, sourceOnBranch, temporallyVisible } from './world-graph'
+import type { CoordinationState } from './workflow-schema'
 
-export type ContextEntry = { kind: string; id: string; title: string; reason: string; text: string }
+export type ContextEntry = {
+  kind: string
+  id: string
+  title: string
+  reason: string
+  text: string
+  sourceIds?: string[]
+  truncated?: boolean
+}
 export type CompiledContext = {
   prompt: string
   entries: ContextEntry[]
   approximateTokens: number
   withheld: number
+  excluded?: { id: string; kind: string; reason: string }[]
+  warnings?: string[]
 }
 export const canSee = (
   item: { visibility: 'public' | 'private'; knownTo: string[] },
@@ -26,6 +38,7 @@ export function compileContext(
   intent = 'Do',
   budget = 10000,
   semanticIds: string[] = [],
+  coordination?: CoordinationState,
 ): CompiledContext {
   const characterId = a.scenario.characterId
   const visible = visibleEntities(p, characterId),
@@ -39,6 +52,8 @@ export function compileContext(
     (r) =>
       r.status === 'Canon' &&
       canSee(r, characterId) &&
+      (r.visibility === 'public' || sourceOnBranch(a, r.provenance)) &&
+      temporallyVisible(p, a, r) &&
       visibleIds.has(r.from) &&
       visibleIds.has(r.to),
   )
@@ -62,6 +77,8 @@ export function compileContext(
     .slice(0, 10)
   const selectedIds = new Set(selected.map((e) => e.id))
   const entries: ContextEntry[] = []
+  const excluded: NonNullable<CompiledContext['excluded']> = []
+  const warnings: string[] = []
   let used = 0
   const add = (
     kind: string,
@@ -70,12 +87,25 @@ export function compileContext(
     reason: string,
     text: string,
     max = 1400,
+    sourceIds = [id],
   ) => {
     const head = `\n[${kind}: ${title}]\n`,
       remaining = budget - used - head.length
-    if (remaining < 100) return
+    if (remaining < 100) {
+      excluded.push({ id, kind, reason: 'Context budget exhausted' })
+      return
+    }
     const content = text.slice(0, Math.min(max, remaining))
-    entries.push({ kind, id, title, reason, text: content })
+    const truncated = content.length < text.length
+    if (
+      truncated &&
+      ['Instructions', 'Coordination', 'Player', 'Knowledge', 'Fact'].includes(kind)
+    ) {
+      warnings.push(`${kind}: ${title} does not fit without losing distinctions.`)
+      excluded.push({ id, kind, reason: 'Complete record does not fit the context budget' })
+      return
+    }
+    entries.push({ kind, id, title, reason, text: content, sourceIds, truncated })
     used += head.length + content.length
   }
   add(
@@ -87,6 +117,25 @@ export function compileContext(
     2400,
   )
   add('Player', 'input', intent, 'Current player input', input, 1200)
+  if (coordination)
+    add(
+      'Coordination',
+      'direction',
+      'Your current direction',
+      'Explicit author direction; application coordination record, not fictional canon',
+      [
+        coordination.goal && `Goal: ${coordination.goal}`,
+        ...coordination.constraints.map((c) => `Constraint: ${c}`),
+        ...coordination.salient.map((c) => `Priority: ${c}`),
+        ...coordination.interpretations
+          .filter((i) => i.selected)
+          .map((i) => `Confirmed interpretation: ${i.text}`),
+      ]
+        .filter(Boolean)
+        .join('\n'),
+      2000,
+      coordination.items.filter((i) => i.active).map((i) => i.sourceBoundaryId),
+    )
   add(
     'Scenario',
     a.scenario.id,
@@ -104,7 +153,9 @@ export function compileContext(
         ? 'Your viewpoint character'
         : active.has(e.id)
           ? 'Present or connected to this scene'
-          : 'Relevant world knowledge',
+          : semanticIds.includes(e.id)
+            ? 'Semantic candidate, allowed by world and viewpoint rules'
+            : 'Relevant world knowledge',
       `${e.type}. ${e.summary}`,
       e.id === characterId ? 700 : 420,
     )
@@ -123,11 +174,20 @@ export function compileContext(
         .map((t) => t.text.slice(0, 160))
         .join('\n'),
       1000,
+      path
+        .slice(0, -4)
+        .slice(-8)
+        .map((t) => t.id),
     )
   for (const t of path.slice(-4))
     add('Recent turn', t.id, t.intent, 'On the current branch', `${t.input}\n${t.text}`, 650)
   const facts = p.facts.filter(
-    (f) => f.status === 'Canon' && canSee(f, characterId) && selectedIds.has(f.subjectId),
+    (f) =>
+      f.status === 'Canon' &&
+      canSee(f, characterId) &&
+      selectedIds.has(f.subjectId) &&
+      (f.visibility === 'public' || sourceOnBranch(a, f.provenance)) &&
+      temporallyVisible(p, a, f),
   )
   for (const f of facts.slice(0, 12))
     add(
@@ -136,9 +196,9 @@ export function compileContext(
       visible.find((e) => e.id === f.subjectId)!.name,
       f.visibility === 'public' ? 'Public canon' : 'Explicitly known to this character',
       `${f.predicate}: ${f.object}`,
-      350,
+      1100,
     )
-  for (const k of p.knowledge.filter((k) => k.entityId === characterId).slice(0, 12)) {
+  for (const k of p.knowledge.filter((k) => knowledgeVisible(p, a, k)).slice(0, 12)) {
     // Never dereference factId here: a mistaken belief must not disclose its hidden correction.
     add(
       'Knowledge',
@@ -146,7 +206,7 @@ export function compileContext(
       k.stance.replace('_', ' '),
       'This character’s own account; not a canon assertion',
       `${k.claim} (stance: ${k.stance}; confidence: ${k.confidence})`,
-      350,
+      650,
     )
   }
   for (const r of relationships
@@ -174,10 +234,45 @@ export function compileContext(
       250,
     )
   const prompt = entries.map((e) => `\n[${e.kind}: ${e.title}]\n${e.text}`).join('')
+  for (const f of p.facts)
+    if (!entries.some((e) => e.kind === 'Fact' && e.id === f.id))
+      excluded.push({
+        id: f.id,
+        kind: 'Fact',
+        reason:
+          f.status !== 'Canon'
+            ? 'Not accepted canon'
+            : !canSee(f, characterId)
+              ? 'Viewpoint lacks a knowledge grant'
+              : !temporallyVisible(p, a, f)
+                ? 'Outside known scene time, or chronology is unknown'
+                : !sourceOnBranch(a, f.provenance) && f.visibility === 'private'
+                  ? 'Grant belongs to another branch or adventure'
+                  : 'Outside selected context or budget',
+      })
+  for (const k of p.knowledge)
+    if (!knowledgeVisible(p, a, k))
+      excluded.push({
+        id: k.id,
+        kind: 'Knowledge',
+        reason: 'Different viewpoint/branch, or discovery has not occurred at this scene time',
+      })
+  for (const e of p.entities)
+    if (!visibleIds.has(e.id))
+      excluded.push({
+        id: e.id,
+        kind: 'Entity',
+        reason: 'Not canonical or not visible to this viewpoint',
+      })
+  for (const kind of ['Instructions', 'Player', ...(coordination ? ['Coordination'] : [])])
+    if (!entries.some((e) => e.kind === kind) && !warnings.some((w) => w.startsWith(kind)))
+      warnings.push(`${kind} could not be included in the context budget.`)
   return {
     prompt,
     entries,
     approximateTokens: Math.ceil(prompt.length / 3),
     withheld: p.facts.length - facts.length,
+    excluded,
+    warnings,
   }
 }

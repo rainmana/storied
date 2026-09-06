@@ -671,7 +671,10 @@ function AddDetail({
     [value, setValue] = useState(''),
     [target, setTarget] = useState(p.entities.find((e) => e.id !== entity.id)?.id || ''),
     [visibility, setVisibility] = useState<'public' | 'private'>('private'),
-    [stance, setStance] = useState<Knowledge['stance']>('believes')
+    [stance, setStance] = useState<Knowledge['stance']>('believes'),
+    [fromEvent, setFromEvent] = useState(''),
+    [untilEvent, setUntilEvent] = useState(''),
+    [relationType, setRelationType] = useState<Relationship['relationType']>('connection')
   function save(event: React.FormEvent) {
     event.preventDefault()
     store.mutate((p) => {
@@ -684,6 +687,8 @@ function AddDetail({
           visibility,
           knownTo: [],
           status: 'Canon',
+          establishedByEventId: fromEvent || undefined,
+          endedByEventId: untilEvent || undefined,
           provenance: { kind: 'author', note: '' },
         })
       if (kind === 'relationship')
@@ -697,6 +702,9 @@ function AddDetail({
           knownTo: [],
           status: 'Canon',
           confidence: 1,
+          relationType,
+          establishedByEventId: fromEvent || undefined,
+          endedByEventId: untilEvent || undefined,
           start: '',
           end: '',
           provenance: { kind: 'author', note: '' },
@@ -709,6 +717,7 @@ function AddDetail({
           stance,
           confidence: 0.8,
           source: label,
+          learnedAtEventId: fromEvent || undefined,
         })
     })
     onClose()
@@ -730,6 +739,50 @@ function AddDetail({
       description={`A new detail for ${entity.name}.`}
     >
       <form className="form-stack" onSubmit={save}>
+        <details>
+          <summary>Time and meaning (optional)</summary>
+          <div className="form-stack">
+            {kind === 'relationship' && (
+              <Field label="Relationship meaning">
+                <select
+                  value={relationType}
+                  onChange={(e) => setRelationType(e.target.value as Relationship['relationType'])}
+                >
+                  <option value="connection">A connection</option>
+                  <option value="ownership">This item is owned by the connected entity</option>
+                  <option value="containment">
+                    This location is inside the connected location
+                  </option>
+                </select>
+              </Field>
+            )}
+            <Field
+              label={kind === 'knowledge' ? 'Learned at' : 'Established at'}
+              hint="Ordered events allow the storyteller to exclude future discoveries."
+            >
+              <select value={fromEvent} onChange={(e) => setFromEvent(e.target.value)}>
+                <option value="">No temporal restriction</option>
+                {p.events.map((e) => (
+                  <option key={e.id} value={e.id}>
+                    {e.title}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            {kind !== 'knowledge' && (
+              <Field label="No longer valid at">
+                <select value={untilEvent} onChange={(e) => setUntilEvent(e.target.value)}>
+                  <option value="">No ending established</option>
+                  {p.events.map((e) => (
+                    <option key={e.id} value={e.id}>
+                      {e.title}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+            )}
+          </div>
+        </details>
         {kind === 'relationship' && (
           <Field label="Connected to">
             <select value={target} onChange={(e) => setTarget(e.target.value)} required>

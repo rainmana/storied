@@ -3785,3 +3785,43 @@ kbd {
     padding-bottom: 22px;
   }
 }
+.workflow-panel {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+  display: grid;
+  gap: 12px;
+}
+.workflow-panel summary {
+  cursor: pointer;
+  font-size: 12px;
+}
+.workflow-panel details > .form-stack {
+  margin-top: 12px;
+}
+.workflow-panel textarea {
+  width: 100%;
+}
+.workflow-panel pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.workflow-trace {
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  font-size: 11px;
+}
+.workflow-trace li > * {
+  display: block;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1000px) {
+  .workflow-panel {
+    grid-column: 1 / -1;
+  }
+}
