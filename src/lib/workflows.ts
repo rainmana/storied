@@ -1,7 +1,8 @@
 import { useStore, flushSaves } from './store'
-import { completeLocally, embedTexts, useModels } from './models'
+import { embedTexts, useModels } from './models'
+import { completeWithInference, selectedInference } from './inference'
 import { database } from './database'
-import { emitRepair, workflowIsStale } from '../domain/coordination'
+import { addBoundary, emitRepair, workflowIsStale } from '../domain/coordination'
 import { stepWorkflow, branchMatches } from '../domain/execution-graph'
 import type { Workflow } from '../domain/workflow-schema'
 
@@ -15,6 +16,7 @@ export async function runWorkflow(projectId: string, id: string) {
     return p
   }
   try {
+    const inference = selectedInference()
     for (let count = 0; count < 40; count++) {
       const p = project(),
         w = p.workflows.find((w) => w.id === id)
@@ -26,8 +28,15 @@ export async function runWorkflow(projectId: string, id: string) {
           if (
             ['storyteller', 'extractProposedChanges'].includes(next.node) &&
             next.intent !== 'Story'
-          )
-            next.model = useModels.getState().loadedId || next.model
+          ) {
+            next.model = inference.label || next.model
+            addBoundary(
+              next,
+              'application',
+              'directive',
+              `Inference request: ${inference.label || 'on-device model'} at ${inference.origin}. The selected connection has no authority to commit canon.`,
+            )
+          }
         })
       )
         break
@@ -37,7 +46,8 @@ export async function runWorkflow(projectId: string, id: string) {
         snapshot,
         snapshot.workflows.find((w) => w.id === id)!,
         {
-          complete: (prompt, role, schema) => completeLocally(prompt, role, schema),
+          complete: (prompt, role, schema) =>
+            completeWithInference(prompt, role, schema, inference),
           retrieve: useModels.getState().embeddingReady
             ? async (input, allowedIds) => {
                 const [vector] = await embedTexts([input])
@@ -47,6 +57,13 @@ export async function runWorkflow(projectId: string, id: string) {
         },
       )
       const current = project()
+      if (selectedInference().id !== inference.id)
+        emitRepair(
+          result.workflow,
+          'asymmetric-state',
+          'The storyteller connection changed during this step. Review its source and synchronize before continuing.',
+          'synchronize',
+        )
       // A user can edit while a worker runs. Preserve its output, then stop before review/commit.
       if (workflowIsStale(current, result.workflow) || !branchMatches(current, result.workflow))
         emitRepair(

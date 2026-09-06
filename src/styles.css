@@ -3825,3 +3825,66 @@ kbd {
     grid-column: 1 / -1;
   }
 }
+/* API connection controls keep the destination and credential choice visible. */
+.provider-current {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.provider-current p {
+  margin: 6px 0 0;
+}
+.provider-form {
+  padding-top: 20px;
+}
+.provider-checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.provider-checkbox input {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  margin-top: 3px;
+}
+.provider-disclosure {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.provider-disclosure p {
+  font-size: 13px;
+  line-height: 1.7;
+}
+.provider-settings code,
+.provider-current,
+.inference-notice {
+  overflow-wrap: anywhere;
+}
+.inference-notice {
+  padding: 10px 14px;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  line-height: 1.65;
+}
+.provider-settings details > summary {
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .provider-current {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .provider-form .settings-fields {
+    grid-template-columns: 1fr;
+  }
+}

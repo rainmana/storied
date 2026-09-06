@@ -1,6 +1,6 @@
 # Architecture
 
-Storied follows a local-compute-web-app architecture: static assets, a browser UI, and browser-local computation and storage. A Vite preview server is a development convenience, not an application backend.
+Storied follows a local-first web-app architecture: static assets, a browser UI, local project storage/search, and browser-local inference by default. Version 0.3 adds optional direct provider connections at the existing completion port; see [ADR 0003](adr/0003-optional-inference-providers.md). A Vite preview server is a development convenience, not an application backend.
 
 Version 0.2 wraps this existing vertical slice in typed execution and world-graph boundaries. [ADR 0001](adr/0001-world-and-execution-graphs.md) specifies current node authority, temporal/epistemic rules, checkpoints, and validated approval. [ADR 0002](adr/0002-mcw-inspired-coordination.md) pins the canonical MCW revision and distinguishes application coordination records from the exploratory framework. The diagram below shows the underlying components, which remain in use.
 
@@ -11,10 +11,13 @@ flowchart TD
   DB --> SQL[Project JSONB / relationship projections / documents]
   DB --> Vectors[pgvector derived index]
   UI --> Compiler[Deterministic viewpoint context compiler]
-  Compiler --> LLM[WebLLM worker / WebGPU]
+  Compiler --> Inference[Selected completion port]
+  Inference --> LLM[WebLLM worker / WebGPU by default]
+  Inference --> API[Optional direct API / local server]
   LLM --> Draft[Editable draft]
+  API --> Draft
   Draft --> Accept[Author accepts narrative]
-  Accept --> Extractor[Local extraction role]
+  Accept --> Extractor[Extraction role through selected connection]
   Extractor --> Review[Author reviews proposed changes]
   Review --> Domain
   UI --> Embed[Transformers.js worker / CPU WASM]

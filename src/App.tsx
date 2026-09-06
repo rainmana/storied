@@ -27,7 +27,7 @@ import {
 } from 'lucide-react'
 import { registerSW } from 'virtual:pwa-register'
 import { useStore, flushSaves, type Page } from './lib/store'
-import { useModels } from './lib/models'
+import { useInferenceStatus } from './lib/inference'
 import { download } from './lib/utils'
 import { serializeProject } from './domain/project-file'
 import type { EntityType } from './domain/schema'
@@ -57,7 +57,7 @@ type InstallEvent = Event & {
 }
 export default function App() {
   const store = useStore(),
-    model = useModels()
+    inference = useInferenceStatus()
   const [create, setCreate] = useState<EntityType | null>(null),
     [newWorld, setNewWorld] = useState(false),
     [palette, setPalette] = useState(false),
@@ -225,9 +225,13 @@ export default function App() {
               <Sparkles size={17} />
             </span>
             <span>
-              <strong>Local storyteller</strong>
+              <strong>{inference.remote ? 'Connected storyteller' : 'Local storyteller'}</strong>
               <small>
-                {model.loadedId ? 'Ready when you are' : 'A little imagination, on device'}
+                {inference.remote
+                  ? inference.label
+                  : inference.ready
+                    ? 'Ready when you are'
+                    : 'A little imagination, on device'}
               </small>
             </span>
             <ChevronRight size={14} />
@@ -237,7 +241,7 @@ export default function App() {
               <SettingsIcon size={17} />
               Settings
             </button>
-            <span>v0.2</span>
+            <span>v0.3</span>
           </div>
           <div className="sidebar-note">
             Your world. Your words.
@@ -295,11 +299,15 @@ export default function App() {
             )}
             <button
               className="privacy-pill"
-              title="Your world, writing, AI generation, and search stay on this device."
+              title={
+                inference.remote
+                  ? `AI context is sent to ${inference.origin}. Project storage and search stay in this browser.`
+                  : 'Your world, writing, AI generation, and search stay on this device.'
+              }
               onClick={() => store.project && store.navigate('Settings')}
             >
               <ShieldCheck size={14} />
-              <span>Local</span>
+              <span>{inference.remote ? 'API connected' : 'Local'}</span>
             </button>
             <button
               className="icon-button command-trigger"

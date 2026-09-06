@@ -22,7 +22,7 @@ The connected Cloudflare API can also use the official [asset upload session flo
 
 ## Headers and privacy
 
-`public/_headers` supplies the CSP, no-referrer policy, MIME protection, disabled device capabilities, and service-worker update policy. WASM and worker files retain their correct content types.
+`public/_headers` supplies the CSP, no-referrer policy, MIME protection, disabled device capabilities, and service-worker update policy. WASM and worker files retain their correct content types. Version 0.3 permits HTTPS and loopback HTTP connections for optional browser-direct inference. The application requires an explicit connection choice before sending AI context; the broader CSP is a network permission envelope, not a per-provider consent mechanism. No provider proxy or server-side API secret is deployed. See [provider setup](PROVIDERS.md).
 
 The `no-transform` cache directive prevents Cloudflare JavaScript Detection injection. A hostname-specific configuration rule disables automatic Web Analytics/RUM, Zaraz, and Rocket Loader for Storied. The app’s CSP remains strict; injected scripts are removed at the hosting layer instead of being allowed to execute.
 
@@ -35,7 +35,7 @@ A separate Cloudflare response-header rule removes `NEL` and `Report-To` **only 
 - Configuration ruleset: `97e16fa216654a33838e7d5fa0fa2dd1`
 - Script-injection configuration rule: `346e582d4e824580b4ff778a18b109f1`
 
-Each build includes `storied-source-v0.2.0.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
+Each build includes `storied-source-v0.3.0.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
 
 ## Verify the live origin
 

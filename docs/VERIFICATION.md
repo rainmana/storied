@@ -1,5 +1,19 @@
 # Verification and MVP limits
 
+## Version 0.3 optional inference verification
+
+Version 0.3 is deployed at **https://storied.alecakin.com**, deployment `2b64473d8381426faa96e62dd8be15cf`. All **56 assets (48,496,036 bytes)** match the tested build, including the GPL source ZIP. Cloudflare confirms an assets-only service without an application module and with observability disabled. Privacy/security headers remain active. The in-app browser upgraded from v0.2 to v0.3 through **Update ready**, retained its existing world, displayed every provider choice, and reported no console warnings/errors. [Asset verification](verification/v0.3-deployment-assets.json) records hashes and response headers. The published source ZIP contains the packaging-time source/documentation snapshot; subsequent deployment verification records remain in the workspace.
+
+All **11 browser workflows also passed against the public origin**, in approximately 1.9 minutes. This includes the HTTPS-site-to-loopback HTTP connection with actual CORS/local-network permission, both provider workflows, and real cached Qwen/MiniLM generation, retry, extraction, semantic search, and restore while offline. [Production model observations](verification/v0.3-production-model-evidence.json) and the [complete production test project](verification/v0.3-production-offline-model-world.storyworld) preserve the original demo/test fiction and generated results. As in previous runs, the accepted model passage was human-edited before canon review.
+
+Verified locally on 2026-09-05 (America/Denver): **96 unit tests and all 11 browser workflows pass**, along with TypeScript, production build, and formatting. The full browser suite completed in approximately 1.5 minutes on this device. Provider contracts cover OpenAI Responses, Anthropic Messages, and OpenAI-compatible Chat Completions, with presets for OpenRouter, Venice, LM Studio, Ollama, and custom endpoints.
+
+The provider browser workflows verify explicit opt-in, model-list lookup, generation and extraction through the selected endpoint, exclusion of hidden story facts, human canon approval, destination/model provenance, session-key reload, key exclusion from project exports, opt-in persistent keys and removal, safe HTTP errors, and no automatic retries. A real HTTP server bound to loopback exercises actual browser CORS and local-network permissions without intercepting requests; manual Story mode sends it no narrative. Protocol replies and credentials are synthetic: these tests do **not** verify live paid-provider accounts, model quality, account-specific CORS, or billing. See [provider setup and limits](PROVIDERS.md).
+
+The default local path also passed real cached Qwen/MiniLM generation, retry, extraction, semantic search, and native restore with networking disabled. Evidence: [local model observations](verification/v0.3-local-model-evidence.json) and [complete offline test project](verification/v0.3-offline-model-world.storyworld). The original world/execution/coordination regression cases continue to pass. API inference changes the selected completion transport, not canon authority, project persistence, or local search. [ADR 0003](adr/0003-optional-inference-providers.md) records the architecture and broader CSP connection envelope.
+
+![Provider settings at mobile width](screenshots/providers-mobile.png)
+
 ## Version 0.2 architecture verification
 
 The upgrade is deployed at **https://storied.alecakin.com**. All eight browser workflows have passed against the public origin. Real Qwen/MiniLM generation, retry, extraction, semantic search, and native restore ran with networking disabled after explicit model downloads. There were zero requests during offline work and no uncaught page errors. The public tests now explicitly wait for the large WASM app cache to report readiness before going offline; a completed database save alone does not establish offline readiness.

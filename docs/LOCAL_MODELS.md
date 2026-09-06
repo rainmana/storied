@@ -1,6 +1,6 @@
 # Local models
 
-Storied ships no model weights and never silently starts a download. All inference happens in dedicated browser workers. Writing and worldbuilding are immediately usable without a model.
+Storied ships no model weights and never silently starts a download. On-device inference happens in dedicated browser workers. Writing and worldbuilding are immediately usable without a model. Optional [API and local-server connections](PROVIDERS.md) are configured separately. To return from an API connection, choose **Use on-device inference** in Settings; loading a browser model alone does not switch your selected connection.
 
 | Role                                  | Runtime                    | Initial model                     | Approximate requirements                                     |
 | ------------------------------------- | -------------------------- | --------------------------------- | ------------------------------------------------------------ |

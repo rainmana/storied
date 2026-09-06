@@ -56,7 +56,7 @@ export function WorkflowPanel({
       <div className="section-heading">
         <h3>Story process</h3>
         <span className="small muted">
-          {busy ? 'Working locally' : w.status === 'complete' ? 'Saved' : 'Checkpoint saved'}
+          {busy ? 'Working' : w.status === 'complete' ? 'Saved' : 'Checkpoint saved'}
         </span>
       </div>
       {w.status === 'failed' ? (
@@ -67,7 +67,7 @@ export function WorkflowPanel({
           <p className="small muted">
             {w.turnId
               ? 'Your accepted passage is safe. Retry resumes the failed step.'
-              : 'Your original input is saved. Load a local model or correct the limit, then retry.'}
+              : 'Your original input is saved. Check the selected storyteller in Settings or correct the limit, then retry.'}
           </p>
           <Button
             size="sm"

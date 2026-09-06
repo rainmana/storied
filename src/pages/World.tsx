@@ -27,7 +27,7 @@ import {
   type Relationship,
 } from '../domain/schema'
 import { useStore } from '../lib/store'
-import { completeLocally, useModels } from '../lib/models'
+import { completeWithInference, useInferenceStatus } from '../lib/inference'
 import { Badge, Empty, EntityIcon, Field, PageHeading } from '../components/common'
 import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
@@ -135,7 +135,7 @@ export function World({ onCreate }: { onCreate: () => void }) {
 function EntityPage({ entity: e }: { entity: Entity }) {
   const store = useStore(),
     p = store.project!,
-    model = useModels()
+    inference = useInferenceStatus()
   const [adding, setAdding] = useState<'fact' | 'relationship' | 'knowledge' | null>(null),
     [fieldName, setFieldName] = useState(''),
     [aiText, setAiText] = useState(''),
@@ -152,7 +152,7 @@ function EntityPage({ entity: e }: { entity: Entity }) {
     setBusy(true)
     try {
       setAiText(
-        await completeLocally(
+        await completeWithInference(
           `Help the author deepen this fictional ${e.type}. Give three distinct possibilities and one useful unanswered question. Do not assert new canon.\nName: ${e.name}\nSummary: ${e.summary}\nAuthor notes: ${e.notes}`,
           'worldbuilder',
         ),
@@ -535,17 +535,23 @@ function EntityPage({ entity: e }: { entity: Entity }) {
         <Button
           variant="secondary"
           onClick={help}
-          disabled={!model.loadedId || busy || model.busy}
+          disabled={!inference.ready || busy || inference.busy}
           title={
-            !model.loadedId
-              ? 'Load a local storyteller to explore possibilities'
+            !inference.ready
+              ? 'Choose a storyteller in Settings to explore possibilities'
               : 'Get editable suggestions'
           }
         >
           <Sparkles size={16} />
-          {busy ? 'Thinking locally…' : 'Explore possibilities'}
+          {busy ? 'Thinking…' : 'Explore possibilities'}
         </Button>
       </div>
+      {inference.remote && (
+        <p className="inference-notice small">
+          Explore possibilities sends this entity’s name, description, and author notes to{' '}
+          {inference.origin}.
+        </p>
+      )}
       <div className="entity-status-row">
         <label>
           World status

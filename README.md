@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.2.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.3.0.zip).
+
+Version 0.3 adds optional OpenAI, Anthropic, OpenRouter, Venice, LM Studio, Ollama, and custom API connections. On-device inference remains the default. Configure your own endpoint/key/model in **Settings → Choose your storyteller**; see [provider setup and key handling](docs/PROVIDERS.md).
 
 Version 0.2 adds locally saved story workflows, source-preserving direction and repair controls, temporal knowledge gates, graph consistency checks, and version-bound canon review. Existing projects migrate in place. See the [implementation delta](docs/UPGRADE_PLAN.md), [graph architecture ADR](docs/adr/0001-world-and-execution-graphs.md), and [MCW-informed coordination ADR](docs/adr/0002-mcw-inspired-coordination.md).
 
@@ -50,7 +52,7 @@ See [local models](docs/LOCAL_MODELS.md) for hardware, downloads, roles, and tro
 
 ## Your work stays yours
 
-The URL installs the application; the browser runs it; your device stores the world. There is no application server, hosted database, login, telemetry, or analytics. Runtime network access is limited to static application assets, updates, and user-requested model assets. Story text travels between browser workers, never to a remote inference service.
+The URL installs the application; the browser runs it; your device stores the world. There is no application server, hosted database, Storied login, telemetry, or analytics. In default on-device mode, network activity is limited to application assets/updates and explicit model downloads. An explicitly selected API connection sends the relevant AI context directly to that endpoint. Project storage and search remain local. Cloud-provider charges and policies apply. Keys stay outside native exports, with session storage by default and optional unencrypted persistent storage.
 
 Wait for **Ready for offline use** after the first production launch. The static app/runtime cache is approximately 45 MB uncompressed, before optional models. Development mode does not install a service worker.
 
@@ -81,7 +83,7 @@ The opt-in hardware test uses real Qwen/MiniLM downloads and disables browser ne
 
 The personal deployment uses Cloudflare Workers Static Assets with no server-side application module. Configuration is in `wrangler.jsonc`; see [deployment and live verification](docs/DEPLOYMENT.md).
 
-Deploy only `dist/` on a static HTTPS host. There are no environment variables or API keys. Serve `.wasm` as `application/wasm` and `.mjs` as JavaScript. The current build targets an origin root (`/`); a subdirectory deployment needs the Vite base, PWA scope, asset paths, and CSP tested together. Preserve the same origin to retain access to existing browser data.
+Deploy only `dist/` on a static HTTPS host. No server environment variables or shared API keys are needed; optional provider keys are entered by users in their browsers. Serve `.wasm` as `application/wasm` and `.mjs` as JavaScript. The current build targets an origin root (`/`); a subdirectory deployment needs the Vite base, PWA scope, asset paths, and CSP tested together. Preserve the same origin to retain access to existing browser data.
 
 Use the example [static headers](public/_headers) when supported by your host. The HTML also supplies a restrictive CSP. `frame-ancestors` requires an HTTP response header.
 

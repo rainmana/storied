@@ -20,9 +20,9 @@ import {
   X,
 } from 'lucide-react'
 import { useStore } from '../lib/store'
-import { useModels } from '../lib/models'
+import { cancelInference, useInferenceStatus } from '../lib/inference'
 import { compileContext, type CompiledContext } from '../domain/context'
-import { addBoundary, createWorkflow } from '../domain/coordination'
+import { addBoundary, createWorkflow, workflowIsStale } from '../domain/coordination'
 import { acceptWorkflowNarrative } from '../domain/execution-graph'
 import { operationFindings, reviewTicket } from '../domain/canon-rules'
 import { runWorkflow, updateWorkflow } from '../lib/workflows'
@@ -114,7 +114,7 @@ export function Play() {
 function AdventureView({ adventure: a }: { adventure: Adventure }) {
   const store = useStore(),
     p = store.project!,
-    models = useModels()
+    inference = useInferenceStatus()
   const [intent, setIntent] = useState<Turn['intent']>('Do'),
     [input, setInput] = useState(''),
     [working, setWorking] = useState(false),
@@ -137,7 +137,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
     .at(-1)
   const draft = workflow?.draft || '',
     draftIntent = workflow?.intent || intent
-  const generating = working || (workflow?.status === 'running' && models.busy)
+  const generating = working || (workflow?.status === 'running' && inference.busy)
   const pending = p.proposals.filter(
     (v) => v.adventureId === a.id && v.status === 'pending' && ancestors.has(v.turnId),
   )
@@ -163,7 +163,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
         w.context = undefined
         w.node = 'synchronizeCoordinationState'
         w.status = 'ready'
-        w.model = models.loadedId
+        w.model = inference.label
         addBoundary(w, 'human', 'correction', 'Retry this draft from the same original input.')
       })
       await resume(workflow.id)
@@ -178,7 +178,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
       a.id,
       currentInput,
       currentIntent,
-      models.loadedId,
+      inference.label,
       initialGoal || undefined,
     )
     if (store.mutate((p) => p.workflows.push(w))) await resume(w.id)
@@ -367,7 +367,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
                     size="sm"
                     variant="secondary"
                     onClick={() => generate(true)}
-                    disabled={generating || models.busy || workflow?.status === 'repair'}
+                    disabled={generating || inference.busy || workflow?.status === 'repair'}
                   >
                     <RefreshCw size={14} />
                     Retry
@@ -394,7 +394,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
             <div className="generating" role="status">
               <span className="breathing-dot" />
               Your storyteller is finding the next words…
-              <button className="text-button" onClick={() => models.cancel()}>
+              <button className="text-button" onClick={cancelInference}>
                 <Square size={12} />
                 Stop
               </button>
@@ -461,13 +461,13 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
           />
           <div className="composer-bottom">
             <span className="small muted">
-              {models.loadedId ? (
+              {inference.ready ? (
                 <>
                   <span className="tiny-dot" />
-                  Local storyteller ready
+                  {inference.remote ? inference.label : 'Local storyteller ready'}
                 </>
               ) : (
-                'Write freely, or load a local storyteller'
+                'Write freely, or choose a storyteller in Settings'
               )}{' '}
               · Ctrl ↵
             </span>
@@ -475,7 +475,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               <Button
                 size="sm"
                 variant="ghost"
-                disabled={!models.loadedId || !!draft || models.busy}
+                disabled={!inference.ready || !!draft || inference.busy}
                 onClick={() => generate(false, true)}
               >
                 Continue
@@ -483,13 +483,19 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
               <Button
                 size="sm"
                 onClick={() => generate()}
-                disabled={!input.trim() || !!draft || generating || models.busy}
+                disabled={!input.trim() || !!draft || generating || inference.busy}
               >
                 {intent === 'Story' ? 'Review passage' : 'Send'}
                 <Send size={14} />
               </Button>
             </div>
           </div>
+          {inference.remote && (
+            <p className="inference-notice small">
+              AI actions send context to {inference.origin}. Accepting an AI passage also requests
+              extraction there. Story mode stays local.
+            </p>
+          )}
           {error && (
             <p className="error-message" role="alert">
               {error}
@@ -578,7 +584,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
             <h3>World changes</h3>
             <Badge variant={pending.length ? 'proposed' : ''}>{pending.length}</Badge>
           </div>
-          {models.busy && !generating && <p role="status">Looking for changes worth keeping…</p>}
+          {inference.busy && !generating && <p role="status">Looking for changes worth keeping…</p>}
           <p>
             The story can change the world.
             <br />
@@ -650,7 +656,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
           </span>
           <ArrowRight size={14} />
         </button>
-        {!models.loadedId && (
+        {!inference.ready && (
           <button className="model-callout" onClick={() => store.navigate('Settings')}>
             <Sparkles size={19} />
             <h3>Meet your storyteller.</h3>
@@ -962,6 +968,16 @@ function CanonReview({ adventure: a, onClose }: { adventure: Adventure; onClose:
           />
         )}
         {proposals.map((v) => {
+          const sourceWorkflow = p.workflows.find((w) => w.id === v.workflowId)
+          const workflowReady =
+            !v.workflowId ||
+            !!(
+              sourceWorkflow &&
+              sourceWorkflow.status === 'review' &&
+              sourceWorkflow.node === 'humanCanonReview' &&
+              !workflowIsStale(p, sourceWorkflow) &&
+              !sourceWorkflow.signals.some((s) => !s.resolved)
+            )
           const findings = v.status === 'pending' ? operationFindings(p, v) : []
           const acknowledgementKey = JSON.stringify({
             revision: p.worldRevision,
@@ -1116,6 +1132,7 @@ function CanonReview({ adventure: a, onClose }: { adventure: Adventure; onClose:
                     <Button
                       size="sm"
                       disabled={
+                        !workflowReady ||
                         !v.value.trim() ||
                         !pathIds.has(v.turnId) ||
                         (v.kind === 'relationship' && !v.targetId) ||

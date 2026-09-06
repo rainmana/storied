@@ -177,7 +177,9 @@ export function Welcome({ onNewWorld }: { onNewWorld: () => void }) {
           }}
         />
       </div>
-      <p className="welcome-footnote">No account. No cloud. Just you and your imagination.</p>
+      <p className="welcome-footnote">
+        No account required. Local by default. Your imagination, your choice.
+      </p>
     </div>
   )
 }
