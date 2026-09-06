@@ -1,0 +1,15 @@
+name: Creative workflow idea
+description: Suggest a better way to create, write, or play locally.
+body:
+  - type: textarea
+    attributes:
+      label: What are you trying to create?
+      description: Describe the creative workflow and where it gets difficult.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What would help?
+      description: Explain the behavior you would like. Ideas should respect local-only computation and author control of canon.
+    validations:
+      required: true

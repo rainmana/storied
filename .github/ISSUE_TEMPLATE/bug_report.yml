@@ -1,0 +1,24 @@
+name: Bug report
+description: Something interrupted your writing or worldbuilding.
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Describe the expected behavior and what happened instead. Do not include private creative work.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: A small reproduction
+      description: Use the demo world or a disposable project if possible.
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Browser, operating system, and app version
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Was the app offline? Was a local model loaded? Remove private text from screenshots and logs.

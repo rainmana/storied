@@ -1,0 +1,16 @@
+{
+  "browser": "msedge",
+  "first": "You ask Ivo Senn, who is known to you and I have only met once, about the use of this particular piece of blue cord.\nIvo Senn: “Well, my friend, what’s this for?”\nNera Moss holds out her hand, shaking it gently. She asks, \"What is it used for?\"\nIgo Senn looks at her with an odd look, his eyes locked on her with a curious gaze that he doesn’t share. He takes a deep breath, his voice low and mysterious, before speaking, \"This is a fishing line.\"",
+  "retry": "You step onto your ferry, and the harbor of Bellwether gently sways under your feet. The blue cord you received earlier has been passed along by Nera Moss, who holds it between her fingers. You walk closer to her, looking around at the small town before you.\n\n\"Where are we going?\" Mara Vale asks curiously, her eyes wide with curiosity about what will happen as she watches you navigate through the world. She is unsure of what might come next, but something tells her that this journey was destined for their destination - a place of mystery and intrigue. As you pass through the small town, Mara's words grow more compelling and you feel like they're part of an ancient prophecy waiting to be fulfilled.",
+  "accepted": "Nera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.",
+  "extracted": [
+    "pendingFrom this branchRead the source passageNera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.Kind of changeTimeline eventWorld fact / inventory / stateRelationshipSomething learnedWho or what?Mara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyConnected toChoose an elementMara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyThe detailBellwetherLabel (for example, owns, status, lives in)Who can know this?Only this viewpoint characterPublic knowledgeAccept into canonKeep narrative-only",
+    "pendingFrom this branchRead the source passageNera Moss gives Mara Vale the blue cord. Mara ties the blue cord around her wrist. Nera and Mara depart Bellwether aboard the ferry.Kind of changeTimeline eventWorld fact / inventory / stateRelationshipSomething learnedWho or what?Mara ValeIvo SennNera MossBellwetherThe Ninth LanternGlasswater FlatsThe TidekeepersThe Brass Sounding KeyThe detailblue cordLabel (for example, owns, status, lives in)Accept into canonKeep narrative-only"
+  ],
+  "offlineInference": true,
+  "offlineSemanticSearch": true,
+  "offlineRestore": true,
+  "modelAssetRequests": 31,
+  "requestsDuringOfflineWork": 0,
+  "pageErrors": []
+}

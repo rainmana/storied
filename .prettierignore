@@ -1,0 +1,11 @@
+dist
+node_modules
+package-lock.json
+public
+docs/screenshots
+test-results
+playwright-report
+LICENSE
+.serena
+.deploy
+.wrangler
