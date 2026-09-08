@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.7.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.8.0.zip).
+
+Version 0.8 adds optional portable rule layers: inspect and install a data-only ruleset, explicitly activate it in Play, and save bounded entity values at a branch position and time. Freeform Play and all authoring surfaces remain first-class over the same world. See the [rules guide](docs/RULES.md) and [Product Constitution](docs/PRODUCT_CONSTITUTION.md).
 
 Version 0.7 adds opt-in local practice sessions and history, character interviews and staged scenes, and selected conversation excerpts that can be kept exactly or adapted into a manuscript. See [Practice and conversations](docs/PRACTICE.md).
 

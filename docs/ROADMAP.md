@@ -1,5 +1,9 @@
 # Development roadmap
 
+The [Product Constitution](PRODUCT_CONSTITUTION.md) governs this roadmap: the world is the shared durable object, and World Builder, Play, Manuscript, Journal, Practice, and canon/knowledge tools remain first-class. Future Author, Explorer, or GM lenses change presentation, not project types or underlying data. Rules are optional properties of a world or experience.
+
+Version 0.8 implements the minimum rule-layer proof in [RULES.md](RULES.md) and [ADR 0005](adr/0005-optional-declarative-rule-layers.md): portable data definitions, explicit enablement/activation, bounded entity state, branch/time snapshots, and self-contained recovery. It does not implement game resolution, simulated parties, live table, or a general engine.
+
 Status: future scope, not a promise of implemented features or dates. Version 0.4 adds built-in color themes; narration, extension loading, and an in-app Help workspace remain future work.
 
 Version 0.6 now includes the manuscript and voice-profile workflows described in [MANUSCRIPT.md](MANUSCRIPT.md). Next refinements can include richer manuscript navigation, continuously updated review decorations, more sample formats, and per-specialist model choices. Keep sample evidence, fictional canon, and agent authority separate as those surfaces grow.
@@ -10,10 +14,10 @@ Version 0.7 implements the first practice/conversation slice described in [PRACT
 
 The following records the September 6 discussion as proposals, not approved implementation specifications. Prioritize one complete creative workflow over adding many separate workspaces.
 
-1. Establish real writing sessions and connect character conversations in Play to manuscript scenes. Exercise that workflow with a sustained piece of writing.
-2. Add contextual offline Help and a small declarative starter/world pack format. Build optional encouragement on the session history once its measurements are trustworthy.
-3. Prototype offline merge early, before further persistence contracts harden. Select a production sync approach only after migration, recovery, and conflicting edits have been demonstrated.
-4. Evaluate one small optional game ruleset, then broader rule packs. Executable extensions and long-form narration remain later phases.
+1. Exercise the implemented practice, conversation-to-manuscript, and tiny rule layers with sustained creative work; try an independently authored ruleset before adding operations.
+2. Add contextual offline Help and a small declarative starter/world pack format. Build optional encouragement on trustworthy session measurements.
+3. Prototype offline merge before further persistence contracts harden; require migration, recovery, and conflicting-edit evidence before selecting production sync.
+4. Prove one bounded check and resource receipt, then evaluate a modest original TTRPG use case. Composition, executable extensions, and long-form narration remain later phases.
 
 Session history is a relatively small addition; a dependable dialogue-to-scene workflow and validated content packs are moderate features. Robust multi-device sync and a general TTRPG rules platform are substantial architectural phases. These relative estimates are not delivery dates.
 
@@ -48,6 +52,12 @@ Extend the declarative [pack proposal](EXTENSIONS.md) to cover a small premise/s
 Start by creating a separate project from a pack. Preview scope, content/spoiler guidance, author, license, and compatible format versions. Give each installation its own identities while preserving internal references, source package/version, and attribution. Keep templates distinct from instantiated characters and adventures. Existing-project imports and pack upgrades need a later merge preview; neither may overwrite the author's canon or active campaign silently. Projects remain readable and editable after a pack is removed.
 
 ## Optional game mechanics and campaign-to-book writing — TODO
+
+The manual numeric-state foundation is implemented in v0.8. Rulesets, reusable content, and instantiated worlds remain distinct. Reusable definitions use `.storysystem`; complete worlds use `.storyworld`; a possible `.storypack` remains a proposal. Future sheets/facets attach to world entities without replacing the fictional ontology with game-specific types. One active ruleset avoids inventing composition semantics; compatibility, dependencies, namespaces, conflicts, and explicit upgrades remain future designs.
+
+Simulation is broader than TTRPG rules: hard magic, economies, physics, survival, and other constraints may apply to the same world. Freeform, advisory, and deterministic participation are conceptual levels, not permanent UI contracts. Future simulated inhabitants need identity, goals, actual knowledge and beliefs, time/branch context, relationships, and provenance. Rehearsals test alternatives without silently promoting them. Larger prompts cannot substitute for these boundaries.
+
+Live Table is an additive way to record human-supplied actions and outcomes, not a new product center. Future module/campaign authorship should draw on locations, clues, participants, branches, rules dependencies, and reviewable discoveries from the same world. Neither Manuscript nor Journal becomes a transcript export or a DM-only notes tool. Selected play material may eventually feed Journal, canonical events, and module material through explicit acceptance, preserving sources rather than flattening history.
 
 Explore a small deterministic rules module for dice, checks, hit points, inventory, conditions, and limited resources such as spell slots. Choose a modest initial ruleset; broad compatibility with arbitrary TTRPG systems is a separate effort. Rule packs need explicit versions, supported operations, and appropriate content licenses; do not assume permission to redistribute a commercial game's rules or world.
 

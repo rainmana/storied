@@ -2,6 +2,7 @@ import { z } from 'zod'
 import { approvalSchema, workflowSchema } from './workflow-schema'
 import { studioSchema, emptyStudio } from './manuscript-schema'
 import { activitySchema, emptyActivity, practiceModes } from './practice-schema'
+import { mechanicsSchema, ruleSystemsSchema } from './rules-schema'
 
 export const entityTypes = [
   'Character',
@@ -155,6 +156,7 @@ export const scenarioSchema = z
 export const turnSchema = z
   .object({
     id,
+    mechanics: mechanicsSchema.optional(),
     parentId: id.nullable(),
     intent: z.enum(['Do', 'Say', 'Story', 'Director']),
     input: prose,
@@ -172,6 +174,8 @@ export const turnSchema = z
 export const adventureSchema = z
   .object({
     id,
+    activeRuleSystemId: id.optional(),
+    mechanics: mechanicsSchema.optional(),
     title: short,
     scenario: scenarioSchema,
     turns: z.array(turnSchema).max(100000),
@@ -251,7 +255,8 @@ export const assetSchema = z
   .strict()
 export const projectSchema = z
   .object({
-    schemaVersion: z.literal(4),
+    schemaVersion: z.literal(5),
+    ruleSystems: ruleSystemsSchema.default([]),
     activity: activitySchema.default(emptyActivity),
     studio: studioSchema.default(emptyStudio),
     worldRevision: z.number().int().nonnegative().default(0),
@@ -305,7 +310,8 @@ export const uid = () => crypto.randomUUID()
 export const now = () => new Date().toISOString()
 export function newProject(title: string): Project {
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
+    ruleSystems: [],
     activity: emptyActivity(),
     studio: emptyStudio(),
     worldRevision: 0,

@@ -1,0 +1,89 @@
+{
+  "checkedAt": "2026-09-08T02:15:51.679Z",
+  "url": "https://storied.alecakin.com",
+  "upload": {
+    "result": {
+      "created_on": "2026-09-06T02:33:33.900944Z",
+      "modified_on": "2026-09-08T02:15:25.124462Z",
+      "id": "storied",
+      "tag": "615c84410a7041b2b0348abddc028d72",
+      "tags": null,
+      "deployment_id": "53c82abea6594d26972623b56371a16c",
+      "tail_consumers": null,
+      "logpush": false,
+      "observability": {
+        "enabled": false,
+        "head_sampling_rate": null
+      },
+      "has_assets": true,
+      "has_modules": false,
+      "etag": "",
+      "handlers": ["fetch"],
+      "last_deployed_from": "",
+      "compatibility_date": "2026-09-05",
+      "usage_model": "standard",
+      "startup_time_ms": 0
+    },
+    "success": true,
+    "errors": [],
+    "messages": [],
+    "status": 200
+  },
+  "hosting": [
+    {
+      "kind": "settings",
+      "result": {
+        "placement": {},
+        "compatibility_date": "2026-09-05",
+        "compatibility_flags": [],
+        "usage_model": "standard",
+        "tags": [],
+        "tail_consumers": [],
+        "logpush": false,
+        "annotations": {
+          "workers/triggered_by": "upload"
+        },
+        "bindings": []
+      },
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "status": 200
+    },
+    {
+      "kind": "deployments",
+      "result": {
+        "id": "ccc7b410-9877-456f-8553-e970696b9ec9",
+        "source": "api",
+        "strategy": "percentage",
+        "author_email": "w.alec.akin@gmail.com",
+        "annotations": {
+          "workers/message": "Automatic deployment on upload.",
+          "workers/triggered_by": "upload"
+        },
+        "versions": [
+          {
+            "version_id": "53c82abe-a659-4d26-9726-23b56371a16c",
+            "percentage": 100
+          }
+        ],
+        "created_on": "2026-09-08T02:15:25.124462Z"
+      },
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "status": 200
+    },
+    {
+      "kind": "subdomain",
+      "result": {
+        "enabled": false,
+        "previews_enabled": false
+      },
+      "success": true,
+      "errors": [],
+      "messages": [],
+      "status": 200
+    }
+  ]
+}

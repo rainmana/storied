@@ -2,9 +2,11 @@ import { projectSchema, type Project } from './schema'
 import { studioSchema } from './manuscript-schema'
 import { activitySchema } from './practice-schema'
 import { branchPath } from './story'
+import { validateProjectRules } from './rules'
 
 export const MAX_PROJECT_BYTES = 32 * 1024 * 1024
 export function restorableJSON(project: Project): string {
+  validateProjectRules(project)
   const activity = activitySchema.safeParse(project.activity)
   if (!activity.success)
     throw new Error(
@@ -23,6 +25,7 @@ export function restorableJSON(project: Project): string {
   return text
 }
 export function validateReferences(p: Project): Project {
+  validateProjectRules(p)
   for (const collection of [
     p.entities,
     p.relationships,
@@ -300,6 +303,9 @@ export function parseProject(text: string): Project {
   // v4 adds opt-in practice history and source-linked conversation excerpts.
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 3)
     input = { ...input, schemaVersion: 4 }
+  // v5 adds optional rules; existing adventures and turns stay unchanged, with mechanics off.
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 4)
+    input = { ...input, schemaVersion: 5 }
   const parsed = projectSchema.safeParse(input)
   if (!parsed.success)
     throw new Error(

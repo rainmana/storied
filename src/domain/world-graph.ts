@@ -72,6 +72,37 @@ export function buildWorldGraph(p: Project): { nodes: GraphNode[]; edges: GraphE
   const turnKey = (adventureId: string | undefined, turnId: string) =>
     `turn:${JSON.stringify([adventureId, turnId])}`
   for (const e of p.entities) node('entity', e)
+  for (const binding of p.ruleSystems)
+    node('rule-system', { ...binding, id: binding.definition.id })
+  for (const a of p.adventures)
+    for (const position of [a, ...a.turns])
+      for (const frame of position.mechanics || []) {
+        const id = JSON.stringify([
+          a.id,
+          position === a ? null : position.id,
+          frame.system.id,
+          frame.eventId,
+        ])
+        node('mechanical-state', {
+          ...frame,
+          id,
+          adventureId: a.id,
+          turnId: position === a ? null : position.id,
+        })
+        for (const item of frame.entities)
+          edge(
+            `mechanical-state:${id}`,
+            'mechanical-facet-not-canon',
+            `entity:${item.entityId}`,
+            id,
+          )
+        if (position !== a)
+          edge(turnKey(a.id, position.id), 'mechanical-snapshot', `mechanical-state:${id}`, id)
+        if (frame.eventId)
+          edge(`mechanical-state:${id}`, 'scoped-to-time', `event:${frame.eventId}`, id)
+        if (p.ruleSystems.some((s) => s.definition.id === frame.system.id))
+          edge(`mechanical-state:${id}`, 'defined-by', `rule-system:${frame.system.id}`, id)
+      }
   for (const r of p.relationships) {
     node('relationship', r)
     edge(`entity:${r.from}`, relationKind(r), `entity:${r.to}`, r.id)
@@ -350,13 +381,17 @@ export function materialState(p: Project) {
     writingSamples: p.studio.samples,
     scenes: p.scenes,
     conversationClips: p.studio.clips,
+    ruleSystems: p.ruleSystems,
     adventures: p.adventures.map((a) => ({
       id: a.id,
+      activeRuleSystemId: a.activeRuleSystemId,
+      mechanics: a.mechanics,
       scenario: a.scenario,
       currentEventId: a.currentEventId,
       headId: a.headId,
       turns: a.turns.map((t) => ({
         id: t.id,
+        mechanics: t.mechanics,
         parentId: t.parentId,
         text: t.text,
         input: t.input,

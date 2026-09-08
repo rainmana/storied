@@ -46,6 +46,7 @@ import { Badge, Empty, Field, PageHeading } from '../components/common'
 import { Prose } from './Write'
 import { SessionPanel } from '../components/Practice'
 import { ConversationBridge } from '../components/ConversationBridge'
+import { PlayRules } from '../components/Rules'
 import { practiceLabels, practiceModes, type PracticeMode } from '../domain/practice-schema'
 
 export function Play() {
@@ -622,6 +623,7 @@ function AdventureView({ adventure: a }: { adventure: Adventure }) {
             ))}
           </div>
         </section>
+        <PlayRules adventure={a} busy={generating || !!draft} />
         {!interview && (
           <section className="story-world-changes">
             <div className="section-heading">

@@ -35,7 +35,7 @@ A separate Cloudflare response-header rule removes `NEL` and `Report-To` **only 
 - Configuration ruleset: `97e16fa216654a33838e7d5fa0fa2dd1`
 - Script-injection configuration rule: `346e582d4e824580b4ff778a18b109f1`
 
-Each build includes `storied-source-v0.7.0.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
+Each build includes `storied-source-v0.8.0.zip`, a deterministic archive of the matching source, lockfile, build scripts, licenses, documentation, and original test fixtures. It excludes local credentials, `.git`, dependencies, build outputs, and deployment state. Settings links to the source download; it is not automatically precached.
 
 ## Verify the live origin
 

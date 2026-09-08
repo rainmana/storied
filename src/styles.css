@@ -1,6 +1,30 @@
 @import 'tailwindcss';
 @import './themes.css';
 
+.rule-binding {
+  margin-block: 14px;
+  padding-block: 12px;
+  border-top: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+.rule-panel summary {
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.rule-values > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 4px;
+}
+.rule-values dd {
+  text-align: right;
+  margin: 0;
+}
+.rule-history {
+  margin-top: 18px;
+}
+
 @theme {
   --font-sans: 'DM Sans', sans-serif;
   --font-serif: 'Newsreader', Georgia, serif;

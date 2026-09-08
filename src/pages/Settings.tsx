@@ -25,6 +25,7 @@ import { Button } from '../components/ui/button'
 import { Dialog } from '../components/ui/dialog'
 import { ProviderSettings } from '../components/ProviderSettings'
 import { AppearanceSettings } from '../components/AppearanceSettings'
+import { RuleSettings } from '../components/Rules'
 
 export function Settings() {
   const store = useStore(),
@@ -78,6 +79,7 @@ export function Settings() {
       />
       <AppearanceSettings />
       <ProviderSettings />
+      <RuleSettings key={p?.id} />
       <section className="settings-section" id="local-models">
         <div className="settings-section-title">
           <Cpu size={22} />
@@ -478,7 +480,7 @@ export function Settings() {
         </span>
         <p>Open source. Local by design. Made for the worlds only you can imagine.</p>
         <small>
-          v0.7.0 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
+          v0.8.0 · GPL-3.0-or-later · No Storied accounts or analytics · Optional API connections
         </small>
         <p>
           <a
@@ -490,7 +492,7 @@ export function Settings() {
             Open-source licenses
           </a>
           {' · '}
-          <a href="/storied-source-v0.7.0.zip" download className="text-button small">
+          <a href="/storied-source-v0.8.0.zip" download className="text-button small">
             Download source
           </a>
         </p>

@@ -1,5 +1,7 @@
 # A staged extension system
 
+Version 0.8 implements a narrow **declarative ruleset** contract, documented in [RULES.md](RULES.md) and [ADR 0005](adr/0005-optional-declarative-rule-layers.md). This refines the earlier pack-first sequence: prove data validation and portable entity state before a broader reusable content format. Rulesets are reusable definitions; content packs are reusable creative material; `.storyworld` is the instantiated world. The remaining plugin/content-pack APIs below are proposals. No executable extension loader is implemented.
+
 Status: design proposal, not an implemented plugin API. The core remains the authority over project integrity, secret visibility, persistence, and canonical changes.
 
 Storied is a good candidate for extensions because it already separates structured world state, the context compiler, inference transports, and reviewable execution steps. The current TypeScript interfaces are internal implementation details, however. `GraphPorts` is not yet a stable public API, and entity types, panel kinds, and workflow nodes are closed schema enums. Arbitrary new kinds need a deliberate schema migration and fallback rendering; importing JavaScript is not currently supported.

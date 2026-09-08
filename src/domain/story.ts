@@ -8,6 +8,7 @@ import {
   type Turn,
 } from './schema'
 import { graphFindings } from './world-graph'
+import { mechanicalPosition } from './rules'
 import {
   CanonCommitGraph,
   validateCanonCommit,
@@ -43,11 +44,16 @@ export function startAdventure(scenario: Scenario): Adventure {
 }
 export function addTurn(
   a: Adventure,
-  turn: Omit<Turn, 'id' | 'parentId' | 'createdAt' | 'bookmark' | 'annotation' | 'summary'>,
+  turn: Omit<
+    Turn,
+    'id' | 'parentId' | 'createdAt' | 'bookmark' | 'annotation' | 'summary' | 'mechanics'
+  >,
 ): Turn {
   const path = branchPath(a)
   const next: Turn = {
     ...turn,
+    // Inherit a copy of author state; generated text cannot supply or change mechanics.
+    mechanics: structuredClone(mechanicalPosition(a).mechanics),
     id: uid(),
     parentId: a.headId,
     createdAt: now(),

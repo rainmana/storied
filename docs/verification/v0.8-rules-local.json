@@ -1,0 +1,225 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\walec\\Development\\storied\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/e2e/rules.spec.ts",
+      "--reporter=list,json"
+    ],
+    "configFile": "C:\\Users\\walec\\Development\\storied\\playwright.config.ts",
+    "rootDir": "C:/Users/walec/Development/storied/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/walec/Development/storied/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/walec/Development/storied/tests/e2e",
+        "testIgnore": [],
+        "testMatch": ["**/*.@(spec|test).?(c|m)[jt]s?(x)"],
+        "timeout": 90000
+      }
+    ],
+    "quiet": false,
+    "reporter": [["list"], ["json"]],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": {
+      "command": "npm run preview -- --port 4173 --strictPort",
+      "url": "http://127.0.0.1:4173",
+      "reuseExistingServer": true
+    }
+  },
+  "suites": [
+    {
+      "title": "rules.spec.ts",
+      "file": "rules.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "rules are opt-in, validate before installation, persist explicit entity state, and survive offline export and restore",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5930,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:04:23.640Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947b461d8505a22fe31-ffba472cc373007d2155",
+          "file": "rules.spec.ts",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "manual freeform passages carry independent state copies and disabling or removing a rule preserves narrative and snapshots on mobile",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6592,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:04:30.233Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "5947b461d8505a22fe31-df53c47c494e771d1f66",
+          "file": "rules.spec.ts",
+          "line": 108,
+          "column": 1
+        },
+        {
+          "title": "invalid rule files do not change the world and a missing installed binding stays readable without executing",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23477,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Play rules' })\nExpected substring: \u001b[32m\"Unavailable\"\u001b[39m\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'Play rules' }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Play rules' })\u001b[22m\n\u001b[2m    2 × locator resolved to <section aria-label=\"Play rules\" class=\"scene-context-card rule-panel\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"Rules · Small stepsRules for this experienceOff — freeformSmall stepsOne ruleset at a time. Selecting Off preserves every saved value.These values belong to this branch position and scene time. You set them explicitly; the storyteller neither sees them nor changes them.Mara ValeResolve4Energy1 / 6Reach6Edit mechanical stateSaved mechanical snapshotsSmall steps · 1.0.0Unspecified time · Beginning of this adventureMara ValeResolve4Energy1 / 6Reach6Recorded author edit · 2026-09-08T02:04:39.425Z\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Play rules' })\nExpected substring: \u001b[32m\"Unavailable\"\u001b[39m\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'Play rules' }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Play rules' })\u001b[22m\n\u001b[2m    2 × locator resolved to <section aria-label=\"Play rules\" class=\"scene-context-card rule-panel\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"Rules · Small stepsRules for this experienceOff — freeformSmall stepsOne ruleset at a time. Selecting Off preserves every saved value.These values belong to this branch position and scene time. You set them explicitly; the storyteller neither sees them nor changes them.Mara ValeResolve4Energy1 / 6Reach6Edit mechanical stateSaved mechanical snapshotsSmall steps · 1.0.0Unspecified time · Beginning of this adventureMara ValeResolve4Energy1 / 6Reach6Recorded author edit · 2026-09-08T02:04:39.425Z\"\u001b[22m\n\n    at C:\\Users\\walec\\Development\\storied\\tests\\e2e\\rules.spec.ts:182:23",
+                    "location": {
+                      "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\rules.spec.ts",
+                      "column": 23,
+                      "line": 182
+                    },
+                    "snippet": "  180 |     })\n  181 |   await nav(page, 'Play')\n> 182 |   await expect(panel).toContainText('Unavailable')\n      |                       ^\n  183 |   await expect(\n  184 |     page.getByRole('button', { name: 'Edit mechanical state', exact: true }),\n  185 |   ).toHaveCount(0)"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\rules.spec.ts",
+                        "column": 23,
+                        "line": 182
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('region', { name: 'Play rules' })\nExpected substring: \u001b[32m\"Unavailable\"\u001b[39m\nTimeout: 20000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByRole('region', { name: 'Play rules' }) with timeout 20000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('region', { name: 'Play rules' })\u001b[22m\n\u001b[2m    2 × locator resolved to <section aria-label=\"Play rules\" class=\"scene-context-card rule-panel\">…</section>\u001b[22m\n\u001b[2m      - unexpected value \"Rules · Small stepsRules for this experienceOff — freeformSmall stepsOne ruleset at a time. Selecting Off preserves every saved value.These values belong to this branch position and scene time. You set them explicitly; the storyteller neither sees them nor changes them.Mara ValeResolve4Energy1 / 6Reach6Edit mechanical stateSaved mechanical snapshotsSmall steps · 1.0.0Unspecified time · Beginning of this adventureMara ValeResolve4Energy1 / 6Reach6Recorded author edit · 2026-09-08T02:04:39.425Z\"\u001b[22m\n\n\n  180 |     })\n  181 |   await nav(page, 'Play')\n> 182 |   await expect(panel).toContainText('Unavailable')\n      |                       ^\n  183 |   await expect(\n  184 |     page.getByRole('button', { name: 'Edit mechanical state', exact: true }),\n  185 |   ).toHaveCount(0)\n    at C:\\Users\\walec\\Development\\storied\\tests\\e2e\\rules.spec.ts:182:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-09-08T02:04:36.832Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\rules-invalid-rule-files-d-4bf47--readable-without-executing\\test-failed-1.png"
+                    },
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\rules-invalid-rule-files-d-4bf47--readable-without-executing\\test-failed-2.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\rules-invalid-rule-files-d-4bf47--readable-without-executing\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\walec\\Development\\storied\\test-results\\rules-invalid-rule-files-d-4bf47--readable-without-executing\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\walec\\Development\\storied\\tests\\e2e\\rules.spec.ts",
+                    "column": 23,
+                    "line": 182
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "5947b461d8505a22fe31-96cefe849ba0282becfa",
+          "file": "rules.spec.ts",
+          "line": 150,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-09-08T02:04:20.922Z",
+    "duration": 40580.264,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

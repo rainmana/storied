@@ -1,5 +1,21 @@
 # Verification and MVP limits
 
+## Version 0.8 optional rule layers
+
+This release adds an explicit import, enable, activate, and author-edit flow for bounded declarative rules over existing entities. [The implementation report](V0.8_REPORT.md), [guide](RULES.md), and [ADR 0005](adr/0005-optional-declarative-rule-layers.md) define the scope. Format 4 migrates additively to 5 with rules off. Mechanical state remains separate from prose, canon, and character knowledge; the model cannot see or change it in this slice.
+
+**147 unit tests across 11 files pass**, including malformed rules, one-hop dependency validation, numeric bounds, explicit activation, branch/time isolation, stale saves, removal and exact reinstallation, missing-system import validation, typed projections, and unchanged model context. `npm run check` and the production build pass; the build retains the existing upstream PGlite eval warnings.
+
+All **32 ordinary local browser workflows pass** in 2.7 minutes: [full local results](verification/v0.8-local-browser-tests.json). The optional hardware/model-download workflow is skipped. All three new rules workflows pass independently in 18.4 seconds: [focused results](verification/v0.8-rules-final-local.json). The [initial focused run](verification/v0.8-rules-local.json) retains one failure caused by navigating before asynchronous project import completed; adding an import-completion wait fixed the test. The browser checks cover save/reload, offline export/import, opt-in activation, independent branch copies, narrative preservation after removal, invalid-file rejection, unavailable installations, and mobile layout. The [mobile rules screenshot](screenshots/rules-mobile.png) was visually inspected.
+
+Deployed at **https://storied.alecakin.com**, Worker version `53c82abe-a659-4d26-9726-23b56371a16c`, rollout `ccc7b410-9877-456f-8553-e970696b9ec9` at 100%. All **57 assets (52,675,923 bytes)** match the release build, including its source ZIP: [asset hashes and headers](verification/v0.8-deployment-assets.json), [hosting receipt](verification/v0.8-hosting.json). Hosting remains assets-only, with no application bindings or observability and without browser error-reporting headers. Deployment used Cloudflare's [direct asset upload flow](https://developers.cloudflare.com/workers/static-assets/direct-upload/), preserving the existing custom domain and disabled workers.dev/previews.
+
+The isolated live update reached v0.8.0 and displayed the prior accepted passage, but its raw JSON comparison stopped at entity records. A local service-worker replay from committed v0.7 (`c582b94`) to the deployed v0.8 build reproduced the cause: custom-field keys changed from `Role, Pronouns, Desire` to `Role, Desire, Pronouns` during database persistence. Entity contents were deeply equal. The corrected comparison preserved all 16 tested record collections, manuscript studio, project identity, and offline reopening, with rules empty and off: [upgrade evidence and key-order diagnosis](verification/v0.8-in-place-upgrade.json). This replay is local evidence, not a completed live-origin record comparison.
+
+All **32 ordinary public browser workflows passed** in 3.6 minutes: [production results](verification/v0.8-production-browser-tests.json). The optional hardware/model-download workflow was skipped. Screenshots were refreshed from this run. TypeScript, production build, formatting, and diff whitespace checks pass. The [changed-file manifest](verification/v0.8-changed-files.json) includes source, documentation, screenshots, and receipts.
+
+The source ZIP is the packaging-time snapshot; subsequent live receipts and screenshots remain in the workspace. No new real-model or paid-provider quality result is claimed.
+
 ## Version 0.7 practice and conversation sources
 
 Deployed at **https://storied.alecakin.com**, Worker version `800d0a8b-7017-421e-9b7a-d05dc34739a5`, rollout `50b28779-3fe4-44bb-9269-f8b9f61a1d92` at 100%. All **57 assets (52,548,264 bytes)** match the tested release, including the source ZIP: [asset hashes and headers](verification/v0.7-deployment-assets.json), [hosting receipt](verification/v0.7-hosting.json). Hosting remains assets-only, with no application bindings or observability, and without browser error-reporting headers.
