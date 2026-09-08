@@ -1,0 +1,487 @@
+{
+  "url": "https://storied.alecakin.com",
+  "checkedAt": "2026-09-08T03:08:10.664Z",
+  "deploymentId": "cb22bbfd591a4427a6fab6af5b911083",
+  "staticOnly": true,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "public, max-age=0, must-revalidate, no-transform",
+    "cf-cache-status": "HIT",
+    "cf-ray": "a37abf48dcda7621-SEA",
+    "connection": "close",
+    "content-security-policy": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https: http://localhost:* http://127.0.0.1:* http://[::1]:*; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+    "content-type": "text/html",
+    "date": "Tue, 08 Sep 2026 03:08:11 GMT",
+    "etag": "\"88e184902a3a970f646039f727f93fd1\"",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+    "referrer-policy": "no-referrer",
+    "server": "cloudflare",
+    "x-content-type-options": "nosniff"
+  },
+  "assets": [
+    {
+      "path": "/assets/__vite-browser-external-0i9PDRRl.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 113,
+      "sha256": "cb0c1c072bb4aeaaca6dc84695841e4fd1855077824e482d2d5cce43c594713f",
+      "verified": true
+    },
+    {
+      "path": "/assets/database.worker-CKMgDAak.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 747504,
+      "sha256": "859d71455a8169908379dbc8d37316aade7fdfed307ec74e39465f2d3a19bcd0",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-400-normal-BwCSEQnW.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 18356,
+      "sha256": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-400-normal-CW0RaeGs.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 14200,
+      "sha256": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-500-normal-B9HHJjqV.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 14304,
+      "sha256": "19bf1984956517c35c2bd35b6cdedac12a21d6fcd3596c614ecdfb88b648909d",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-500-normal-Dr3UlScf.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 18520,
+      "sha256": "7deb957e430b780ee3272d801af4f9f2211b1330ec40a312a8f25309eacb4034",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-600-normal-Aqo67rzb.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 14144,
+      "sha256": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-600-normal-BmdmIIQ2.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 18320,
+      "sha256": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-400-normal-BjWJ59Pq.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 9976,
+      "sha256": "3d63423c3204f61bb196d1ae3729b7f2871d87abd4403d198f4810923888c016",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-400-normal-BtiwyxMk.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 7364,
+      "sha256": "962730c6ff7595f9499b0d963a3bccb2139d793f0fb31fbd87aed1881c020e0a",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-500-normal-BJfUCQsA.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 7432,
+      "sha256": "e0a1d21584ba00798a3dbe90ef5f8a162741d454f52ab66630f9dc41da372b3d",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-500-normal-DR84L5F-.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 10068,
+      "sha256": "e1f67472aa96c6f60969c696ba8a9d36ed8ea26c2ff5c3e27ee29c664911575d",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-600-normal-4vooXBpG.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 7420,
+      "sha256": "6406eb05e2eb50779cb95ee8745c98ad23cce7e67d752822782453da7f6b4491",
+      "verified": true
+    },
+    {
+      "path": "/assets/dm-sans-latin-ext-600-normal-DRtaDpgU.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 10024,
+      "sha256": "f70e6bb2170e2ab7bfc23a021af0663dce4df0b502173c9c5135015d7fed457a",
+      "verified": true
+    },
+    {
+      "path": "/assets/embeddings.worker-DaiXLMRr.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 885457,
+      "sha256": "a36cf3f513183194f7cdd0adf169a8756269cf8f1c4d9f0ae5d8825058865a77",
+      "verified": true
+    },
+    {
+      "path": "/assets/index-B_S04rpz.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 702259,
+      "sha256": "c54dbd53b8133126d5293de2223607f1805307b15db87c987de97deed41e6b02",
+      "verified": true
+    },
+    {
+      "path": "/assets/index-BM78euF2.css",
+      "status": 200,
+      "type": "text/css",
+      "bytes": 94200,
+      "sha256": "71950166ab30d855252ca05090e05c38bc2a49c3b65477b0e9e2c881634b36e9",
+      "verified": true
+    },
+    {
+      "path": "/assets/initdb-DwLcS450.wasm",
+      "status": 200,
+      "type": "application/wasm",
+      "bytes": 395242,
+      "sha256": "4c8988dca3b2f0bbfd23a0714023e4822a2909ead01804f37acffd9ff3ca9f8a",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-400-italic-CEihAR-f.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 24340,
+      "sha256": "fa9b900403949d9a723106752a5c8ad2797012a0c9057427b1da2db72d552148",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-400-italic-CNZoH1hn.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 30876,
+      "sha256": "ab00ea8fdff77ad93c0c1e71ec9404366e166ff26346064605cbfba34b9b46bc",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-400-normal-BFBkh4jY.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 22480,
+      "sha256": "e66067814f1c672d33a457e4f4d102c818b481420e2234cf685ebdbf2f443904",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-400-normal-gRTjlS2D.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 28288,
+      "sha256": "76e600318cebb11dd31d917fe621d2b79cfa4be0830d035fcb125f9db44e69c9",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-500-normal-B66TYsaK.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 23624,
+      "sha256": "5613e2fc8377392c02e8ac9d55014689fb5320a5f2a7be55e8088a314728ac2c",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-500-normal-DFwuUcdu.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 29636,
+      "sha256": "37855d65f9af181a63471d3f56e734bcf9e620b43671762f3518c4e9d2ae125e",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-400-italic-BMTE_bNQ.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 15228,
+      "sha256": "b775f4faa4ffd1bbb36db8c9504c95af98d82e37209f3a6253915c7cae919d6a",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-400-italic-qdgKLcPG.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 19812,
+      "sha256": "b775ddf12ec400d5a87d26a8f83771ae3f01a6766488fd24f13bd31efb5c11f9",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-400-normal-DYA1XoQK.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 18376,
+      "sha256": "71a53423ccc6b2a1d7d73c8ade3979b824cb7e7de056765efdc31ac954aa5894",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-400-normal-svq1FPys.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 14212,
+      "sha256": "9d9350535facb67450976945ae249ab8ade73e4909deb3deaa756caa5e7dbb59",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-500-normal-BNHmvKvI.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 15068,
+      "sha256": "9b553af5de5ebba87ea66530fa0cc05a3e5ed68c4a051915af0bc21188a9df9c",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-latin-ext-500-normal-CZruMFou.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 19296,
+      "sha256": "43c90337b564275ddc4d97f22779a1bf8830d93a9e04aa6258ecd01e5a895e4f",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-400-italic-bZegYFuM.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 5556,
+      "sha256": "f7e98aa7b0c65d422b06851f7a5f148dca71df9083f19f0ed0ca888bc96055ad",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-400-italic-QbB8kb5s.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 7184,
+      "sha256": "26b6547a8d0e5aacf0ad0ca8472336e579a3a4aac59f2fbcdb473f0f31ede33b",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-400-normal-BekUZro8.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 6972,
+      "sha256": "550fc5405146a355fd5e59dc9e75fd781af5ece5536e3e67fd57977c7b3754e4",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-400-normal-DdKr49mV.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 5428,
+      "sha256": "8c86fceeb18a3edd641e9102f47450eebde912a3501368671b161e82fbf26e19",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-500-normal-BEAbKU8A.woff",
+      "status": 200,
+      "type": "font/woff",
+      "bytes": 7036,
+      "sha256": "30c1ddd70569e361b96928029c4e7b769467f3cbf31422ab6020c14ce10f743f",
+      "verified": true
+    },
+    {
+      "path": "/assets/newsreader-vietnamese-500-normal-CL6a8tp2.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 5436,
+      "sha256": "f950f15b6fab6593349cdad92849419530bd4305d9a2edd4145cfc42d0c2c5a1",
+      "verified": true
+    },
+    {
+      "path": "/assets/nodefs-CUxyQeY2.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 556,
+      "sha256": "4372de144257648ef77a57e412e28a9773efcd8c62aca55dd8383cabc93018a5",
+      "verified": true
+    },
+    {
+      "path": "/assets/opfs-ahp-BPuKbRJx.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 10014,
+      "sha256": "5c464c4426a3ed06549f800d77af90c4d27a065013a4655644ed11815bd3d945",
+      "verified": true
+    },
+    {
+      "path": "/assets/ort-wasm-simd-threaded.jsep-B0T3yYHD.wasm",
+      "status": 200,
+      "type": "application/wasm",
+      "bytes": 21596019,
+      "sha256": "c46655e8a94afc45338d4cb2b840475f88e5012d524509916e505079c00bfa39",
+      "verified": true
+    },
+    {
+      "path": "/assets/ort-wasm-simd-threaded.jsep-B0TxsgQ-.mjs",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 44484,
+      "sha256": "08fb86ec433c78bfb032c5d84a68b8e8e5a8d81268fa39e24314179a5767a5b9",
+      "verified": true
+    },
+    {
+      "path": "/assets/pglite-DgipwPsY.wasm",
+      "status": 200,
+      "type": "application/wasm",
+      "bytes": 10088161,
+      "sha256": "356b89f6fcb2ab3a397bec4128327b67b7137ec2a900b13251dade81bcbc0ef0",
+      "verified": true
+    },
+    {
+      "path": "/assets/pglite-n8RDJ3Sw.data",
+      "status": 200,
+      "type": "application/octet-stream",
+      "bytes": 6295316,
+      "sha256": "c574cc331d96e33311470ec57bf58c579d972c111dbd9c0ab54bb42d79ec4c0d",
+      "verified": true
+    },
+    {
+      "path": "/assets/rolldown-runtime-CbXtAM7H.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 589,
+      "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a",
+      "verified": true
+    },
+    {
+      "path": "/assets/storyteller.worker-qNZgAxms.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 6016567,
+      "sha256": "0a9c5f7491d0a1da8bcc6bda97e90ce66cba42b1ac886b0da48e00cd1d6973eb",
+      "verified": true
+    },
+    {
+      "path": "/assets/vector.tar-DveqyHs9.gz",
+      "status": 200,
+      "type": "application/gzip",
+      "bytes": 46549,
+      "sha256": "881caf1c550dc4ecde6bfae95018d90684c6a61189273f13e0071595819513a2",
+      "verified": true
+    },
+    {
+      "path": "/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 5653,
+      "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "verified": true
+    },
+    {
+      "path": "/icon-192.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1205,
+      "sha256": "c6c4fb8946706b37fbd16b2d8f739b842b4bbbf4691c51021c5b168c514b6df8",
+      "verified": true
+    },
+    {
+      "path": "/icon-512.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 4328,
+      "sha256": "68557f5009d719a7c168d74cdf7915f703d659dcd70c2a452462b5bfb6c78e63",
+      "verified": true
+    },
+    {
+      "path": "/icon.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "bytes": 335,
+      "sha256": "ffefdd68e5214373048ceea9701b5a9194de7bc649d7ff00cae0d3f59766b222",
+      "verified": true
+    },
+    {
+      "path": "/index.html",
+      "status": 200,
+      "type": "text/html",
+      "bytes": 1148,
+      "sha256": "1dd19c5d6ca5c311acdfa25da519da843b3b56477beac4f48738021b016fbcbd",
+      "verified": true
+    },
+    {
+      "path": "/manifest.webmanifest",
+      "status": 200,
+      "type": "application/manifest+json",
+      "bytes": 411,
+      "sha256": "c0ca07af0429f6eac391a1190dd59ae4fded31b2eeb90e35dacbef006c794b01",
+      "verified": true
+    },
+    {
+      "path": "/quiet-tide.svg",
+      "status": 200,
+      "type": "image/svg+xml",
+      "bytes": 2978,
+      "sha256": "5b3b3782861a2ee323e80f8349e4372151656b58761f457e04ec282049852cb1",
+      "verified": true
+    },
+    {
+      "path": "/rules/lantern-crossing.storysystem",
+      "status": 200,
+      "type": "application/octet-stream",
+      "bytes": 835,
+      "sha256": "1383117f2381478c8ec34077c234d2f39b194927cdeb1868a27e6d309ffab1ed",
+      "verified": true
+    },
+    {
+      "path": "/storied-source-v0.9.0.zip",
+      "status": 200,
+      "type": "application/octet-stream",
+      "bytes": 5240969,
+      "sha256": "06796e0d03d1fef9c08e671860aa03afcca5a6bd09e6fc3aac2826584d41260f",
+      "verified": true
+    },
+    {
+      "path": "/sw.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 3739,
+      "sha256": "3674d50e92696324cf36d785bfe35f4e3d9af87fe73d3d133f0ce7655bc63990",
+      "verified": true
+    },
+    {
+      "path": "/theme-init.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 569,
+      "sha256": "9d3d169af70b37ed533cb8c287b1d29ae2572eb895f86722bfd857bcc5928850",
+      "verified": true
+    },
+    {
+      "path": "/third-party-notices.txt",
+      "status": 200,
+      "type": "text/plain",
+      "bytes": 274093,
+      "sha256": "95c71c2515ee2607058fea0ee2f9b155f43a91dc8853f450e9089119f1dfbd25",
+      "verified": true
+    },
+    {
+      "path": "/workbox-2fbc6a65.js",
+      "status": 200,
+      "type": "application/javascript",
+      "bytes": 15026,
+      "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e",
+      "verified": true
+    }
+  ]
+}

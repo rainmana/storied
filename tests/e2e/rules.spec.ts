@@ -70,7 +70,7 @@ test('rules are opt-in, validate before installation, persist explicit entity st
   await expect(page.getByLabel('Rules for this experience')).toHaveValue(exampleRuleSystem.id)
   await expect(panel).toContainText('3 / 6')
   const data = await exportWorld(page, info.outputPath('rules.storyworld'))
-  expect(data.schemaVersion).toBe(5)
+  expect(data.schemaVersion).toBe(6)
   expect(data.adventures[0].mechanics[0].entities[0].values).toEqual({ resolve: 4, energy: 3 })
   for (const key of [
     'entities',

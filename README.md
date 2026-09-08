@@ -2,7 +2,9 @@
 
 **A world of your own.** A private, local-first writing and interactive storytelling studio.
 
-**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.8.0.zip).
+**Live app:** [storied.alecakin.com](https://storied.alecakin.com). [Download the matching source](https://storied.alecakin.com/storied-source-v0.9.0.zip).
+
+Version 0.9 adds **Lantern crossing**, a standalone ruleset, and one author-initiated check with reviewed stakes, an optional resource cost, and saved branch history. Rolls and costs stay separate from prose and canon. [Try a crossing](docs/RULES.md#rehearse-a-crossing).
 
 Version 0.8 adds optional portable rule layers: inspect and install a data-only ruleset, explicitly activate it in Play, and save bounded entity values at a branch position and time. Freeform Play and all authoring surfaces remain first-class over the same world. See the [rules guide](docs/RULES.md) and [Product Constitution](docs/PRODUCT_CONSTITUTION.md).
 

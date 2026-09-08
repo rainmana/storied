@@ -81,7 +81,7 @@ describe('manuscript graph boundaries', () => {
     const { p } = fixture(),
       legacy = { ...p, schemaVersion: 2, studio: undefined }
     const restored = parseProject(JSON.stringify(legacy))
-    expect(restored.schemaVersion).toBe(5)
+    expect(restored.schemaVersion).toBe(6)
     expect(restored.scenes).toEqual(p.scenes)
     expect(restored.facts).toEqual(p.facts)
     expect(restored.adventures).toEqual(p.adventures)

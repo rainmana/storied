@@ -102,6 +102,29 @@ export function buildWorldGraph(p: Project): { nodes: GraphNode[]; edges: GraphE
           edge(`mechanical-state:${id}`, 'scoped-to-time', `event:${frame.eventId}`, id)
         if (p.ruleSystems.some((s) => s.definition.id === frame.system.id))
           edge(`mechanical-state:${id}`, 'defined-by', `rule-system:${frame.system.id}`, id)
+        for (const check of frame.checks || []) {
+          const checkId = JSON.stringify([id, check.id])
+          node('mechanical-check', { ...check, id: checkId, receiptId: check.id })
+          edge(
+            `mechanical-state:${id}`,
+            'records-check-not-canon',
+            `mechanical-check:${checkId}`,
+            check.id,
+          )
+          edge(
+            `mechanical-check:${checkId}`,
+            'mechanical-subject',
+            `entity:${check.input.entityId}`,
+            check.id,
+          )
+          if (check.sourceTurnId)
+            edge(
+              `mechanical-check:${checkId}`,
+              'originated-at',
+              turnKey(a.id, check.sourceTurnId),
+              check.id,
+            )
+        }
       }
   for (const r of p.relationships) {
     node('relationship', r)

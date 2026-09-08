@@ -1,5 +1,21 @@
 # Verification and MVP limits
 
+## Version 0.9 reusable rules and checks
+
+This release adds the standalone Lantern crossing ruleset and one author-initiated d6-plus-attribute check with reviewed stakes, an optional attempt cost, and fixed branch history. [The report](V0.9_REPORT.md), [guide](RULES.md), and [ADR 0006](adr/0006-author-initiated-check-receipts.md) define its boundaries. Format 5 migrates additively to 6, preserving existing installed/active rules and state. Model perception and canon authority remain unchanged.
+
+**158 unit tests across 12 files pass.** TypeScript and the production build pass; the existing upstream PGlite eval warnings remain. All **six focused rules/check browser workflows pass** in 1.0 minute: [focused browser results](verification/v0.9-checks-local.json). They exercise review cancellation, cost preview and application, fixed results across offline reload/import, offline ruleset download, independent reuse in two worlds, branch copies, corrupted-receipt rejection, and unavailable installations. [Desktop review](screenshots/check-review.png) and [mobile history](screenshots/check-history-mobile.png) were visually inspected.
+
+All **35 ordinary local browser workflows pass** in 4.6 minutes: [full local results](verification/v0.9-local-browser-tests.json). The optional hardware/model-download workflow is skipped.
+
+Deployed at **https://storied.alecakin.com**, Worker version `cb22bbfd-591a-4427-a6fa-b6af5b911083`, rollout `afbf8bf3-58e0-4935-9f77-4e38d4eaea7a` at 100%. All **58 assets (52,923,295 bytes)** match the tested release, including the new ruleset and 5,240,969-byte source archive: [asset hashes and headers](verification/v0.9-deployment-assets.json), [hosting receipt](verification/v0.9-hosting.json). Deployment used the existing Cloudflare [direct asset upload flow](https://developers.cloudflare.com/workers/static-assets/direct-upload/). Hosting remains assets-only with empty bindings, disabled observability/workers.dev/previews, and no browser error-reporting headers.
+
+An isolated browser completed the **live service-worker update from v0.8 to v0.9**, preserving project identity, all 18 deeply compared collections, existing manuscript and accepted passage, active rules, and branch state through format 5 → 6. Offline reload retained both writing and mechanical values; no checks were created automatically. [Live upgrade evidence](verification/v0.9-in-place-upgrade.json). The preparation helper's initial Settings selector incorrectly assumed Settings was inside the main navigation group; it was corrected before deployment. Record comparison uses structural equality, avoiding the prior release's JSON key-order issue.
+
+All **35 ordinary public browser workflows passed** in 5.4 minutes: [production results](verification/v0.9-production-browser-tests.json). The optional hardware/model-download workflow was skipped. Screenshots were refreshed from this run. Formatting and diff whitespace checks pass. [The changed-file manifest](verification/v0.9-changed-files.json) enumerates application, test, documentation, screenshot, and verification changes.
+
+The corresponding source ZIP is the packaging-time snapshot; subsequent live receipts remain in the workspace. No paid-provider or new real-model quality result is claimed.
+
 ## Version 0.8 optional rule layers
 
 This release adds an explicit import, enable, activate, and author-edit flow for bounded declarative rules over existing entities. [The implementation report](V0.8_REPORT.md), [guide](RULES.md), and [ADR 0005](adr/0005-optional-declarative-rule-layers.md) define the scope. Format 4 migrates additively to 5 with rules off. Mechanical state remains separate from prose, canon, and character knowledge; the model cannot see or change it in this slice.

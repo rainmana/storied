@@ -61,7 +61,7 @@ describe('local practice history', () => {
         studio: { ...p.studio, clips: undefined },
       }
     const result = parseProject(JSON.stringify(legacy))
-    expect(result.schemaVersion).toBe(5)
+    expect(result.schemaVersion).toBe(6)
     expect(result.activity).toEqual({ enabled: false, sessions: [] })
     expect(result.studio.clips).toEqual([])
     expect(result.scenes).toEqual(p.scenes)

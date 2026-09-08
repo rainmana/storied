@@ -378,7 +378,7 @@ describe('execution authority, checkpoints, and approval', () => {
       worldRevision: undefined,
     }
     expect(parseProject(JSON.stringify(legacy))).toMatchObject({
-      schemaVersion: 5,
+      schemaVersion: 6,
       workflows: [],
       approvals: [],
       worldRevision: 0,

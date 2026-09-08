@@ -64,7 +64,7 @@ test('a real session starts at zero, pauses, saves time and separate history, an
   await expect(page.getByRole('heading', { name: 'Time with your story.' })).toBeVisible()
   await page.screenshot({ path: 'docs/screenshots/practice-progress.png', animations: 'disabled' })
   const data = await exported(page, info.outputPath('practice.storyworld'))
-  expect(data.schemaVersion).toBe(5)
+  expect(data.schemaVersion).toBe(6)
   expect(data.activity.sessions[0].status).toBe('paused')
   expect(data.activity.sessions[0].days[0].author.added).toBe(3)
   expect(data.activity.sessions[0].days[0].milliseconds).toBeGreaterThanOrEqual(5000)

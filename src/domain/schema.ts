@@ -255,7 +255,7 @@ export const assetSchema = z
   .strict()
 export const projectSchema = z
   .object({
-    schemaVersion: z.literal(5),
+    schemaVersion: z.literal(6),
     ruleSystems: ruleSystemsSchema.default([]),
     activity: activitySchema.default(emptyActivity),
     studio: studioSchema.default(emptyStudio),
@@ -310,7 +310,7 @@ export const uid = () => crypto.randomUUID()
 export const now = () => new Date().toISOString()
 export function newProject(title: string): Project {
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     ruleSystems: [],
     activity: emptyActivity(),
     studio: emptyStudio(),

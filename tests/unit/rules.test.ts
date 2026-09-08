@@ -21,6 +21,7 @@ import {
   mechanicalFrame,
   saveMechanicalValues,
   derivedRuleValue,
+  mechanicalTicket,
 } from '../../src/domain/rules'
 
 function setup() {
@@ -34,15 +35,7 @@ function enable(p: Project) {
   activateRuleSystem(p, p.adventures[0].id, exampleRuleSystem.id)
 }
 function ticket(p: Project) {
-  const a = p.adventures[0],
-    system = activeRuleSystem(p, a)!
-  return {
-    projectId: p.id,
-    system: JSON.stringify(system),
-    headId: a.headId,
-    eventId: a.currentEventId,
-    frame: JSON.stringify(mechanicalFrame(a, system.id) || null),
-  }
+  return mechanicalTicket(p, p.adventures[0])
 }
 function save(p: Project, resolve = 3, energy = 5) {
   const a = p.adventures[0]
@@ -60,7 +53,7 @@ describe('portable declarative rule layers', () => {
   it('migrates format 4 additively and leaves every existing surface and adventure untouched', () => {
     const old = { ...createDemo(), schemaVersion: 4, ruleSystems: undefined }
     const p = parseProject(JSON.stringify(old))
-    expect(p.schemaVersion).toBe(5)
+    expect(p.schemaVersion).toBe(6)
     expect(p.ruleSystems).toEqual([])
     for (const key of [
       'entities',
@@ -125,7 +118,15 @@ describe('portable declarative rule layers', () => {
         a.id,
         entityId,
         { resolve: 1, energy: 1 },
-        { projectId: p.id, system: '', headId: a.headId, frame: 'null' },
+        {
+          projectId: p.id,
+          adventureId: a.id,
+          worldRevision: p.worldRevision,
+          system: '',
+          headId: a.headId,
+          eventId: a.currentEventId,
+          frame: 'null',
+        },
       ),
     ).toThrow('activate')
     activateRuleSystem(p, a.id, exampleRuleSystem.id)

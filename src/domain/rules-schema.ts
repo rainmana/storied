@@ -74,12 +74,43 @@ export const ruleSystemsSchema = z
   .array(z.object({ definition: ruleSystemSchema, enabled: z.boolean() }).strict())
   .max(8)
 const id = z.string().min(1).max(100)
+const direction = z.string().trim().min(1).max(1000)
+export const checkInputSchema = z
+  .object({
+    entityId: id,
+    attributeId: key,
+    target: z.number().int().min(-1_000_000).max(1_000_006),
+    approach: direction,
+    onSuccess: direction,
+    onSetback: direction,
+    cost: z.object({ resourceId: key, amount: integer.positive() }).strict().optional(),
+  })
+  .strict()
+export const mechanicalCheckSchema = z
+  .object({
+    id,
+    method: z.literal('d6-plus-attribute-v1'),
+    sourceTurnId: id.nullable(),
+    entityName: z.string().min(1).max(500),
+    input: checkInputSchema,
+    before: z.record(key, integer),
+    after: z.record(key, integer),
+    die: z.number().int().min(1).max(6),
+    modifier: integer,
+    total: z.number().int().min(-1_000_000).max(1_000_006),
+    outcome: z.enum(['met', 'missed']),
+    actor: z.literal('author'),
+    createdAt: z.string().datetime(),
+  })
+  .strict()
 export const mechanicsSchema = z
   .array(
     z
       .object({
         system: ruleSystemSchema,
         eventId: id.optional(),
+        // ponytail: copy bounded receipts with existing snapshots; shared immutable history needs a later migration if archives grow too large.
+        checks: z.array(mechanicalCheckSchema).max(100).optional(),
         entities: z
           .array(
             z
@@ -98,3 +129,5 @@ export const mechanicsSchema = z
   .max(32)
 export type RuleSystem = z.infer<typeof ruleSystemSchema>
 export type MechanicalFrame = z.infer<typeof mechanicsSchema>[number]
+export type CheckInput = z.infer<typeof checkInputSchema>
+export type MechanicalCheck = z.infer<typeof mechanicalCheckSchema>

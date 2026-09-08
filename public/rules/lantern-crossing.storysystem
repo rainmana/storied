@@ -1,0 +1,15 @@
+{
+  "format": "storied-system",
+  "schemaVersion": 1,
+  "id": "storied.lantern-crossing",
+  "version": "1.0.0",
+  "name": "Lantern crossing",
+  "description": "A small coastal journey: find a safe route while the tide rises. For a first rehearsal, try Footing against target 6 and agree to spend 1 Supply on the attempt. Describe success and a setback before rolling. These are suggestions for an experience, never facts about a world.",
+  "author": "Storied contributors",
+  "license": "CC0-1.0",
+  "fields": [
+    { "id": "wayfinding", "label": "Wayfinding", "kind": "number", "min": 0, "max": 4, "initial": 1 },
+    { "id": "supplies", "label": "Supplies", "kind": "resource", "max": 4, "initial": 3 },
+    { "id": "footing", "label": "Footing", "kind": "derived", "operation": "add", "attribute": "wayfinding", "amount": 1 }
+  ]
+}

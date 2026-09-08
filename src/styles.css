@@ -24,6 +24,11 @@
 .rule-history {
   margin-top: 18px;
 }
+.check-result {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
 
 @theme {
   --font-sans: 'DM Sans', sans-serif;

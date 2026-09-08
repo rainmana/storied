@@ -4,20 +4,22 @@ The [Product Constitution](PRODUCT_CONSTITUTION.md) governs this roadmap: the wo
 
 Version 0.8 implements the minimum rule-layer proof in [RULES.md](RULES.md) and [ADR 0005](adr/0005-optional-declarative-rule-layers.md): portable data definitions, explicit enablement/activation, bounded entity state, branch/time snapshots, and self-contained recovery. It does not implement game resolution, simulated parties, live table, or a general engine.
 
+Version 0.9 adds a second original standalone ruleset, Lantern crossing, and one explicit d6-plus-attribute check with reviewed stakes, an optional attempt cost, and validated receipts copied with branch state. Two-world reuse and offline recovery are exercised. AI narration of results, external-creator evaluation, and additional check policies remain future work. See [ADR 0006](adr/0006-author-initiated-check-receipts.md).
+
 Status: future scope, not a promise of implemented features or dates. Version 0.4 adds built-in color themes; narration, extension loading, and an in-app Help workspace remain future work.
 
 Version 0.6 now includes the manuscript and voice-profile workflows described in [MANUSCRIPT.md](MANUSCRIPT.md). Next refinements can include richer manuscript navigation, continuously updated review decorations, more sample formats, and per-specialist model choices. Keep sample evidence, fictional canon, and agent authority separate as those surfaces grow.
 
-Version 0.7 implements the first practice/conversation slice described in [PRACTICE.md](PRACTICE.md): real sessions with local history, interviews and staged scenes, exact conversation clips, and source-aware manuscript adaptation. Rewards, prose statistics, NPC instantiation, packs, mechanics, and sync remain future work.
+Version 0.7 implements the first practice/conversation slice described in [PRACTICE.md](PRACTICE.md): real sessions with local history, interviews and staged scenes, exact conversation clips, and source-aware manuscript adaptation. Rewards, prose statistics, NPC instantiation, packs, and sync remain future work.
 
 ## Proposed priorities
 
 The following records the September 6 discussion as proposals, not approved implementation specifications. Prioritize one complete creative workflow over adding many separate workspaces.
 
-1. Exercise the implemented practice, conversation-to-manuscript, and tiny rule layers with sustained creative work; try an independently authored ruleset before adding operations.
+1. Exercise the implemented practice, conversation-to-manuscript, and check workflows with sustained creative work and external creators. Next, project one explicitly selected outcome into a carefully scoped narration request, retaining author acceptance and knowledge boundaries.
 2. Add contextual offline Help and a small declarative starter/world pack format. Build optional encouragement on trustworthy session measurements.
 3. Prototype offline merge before further persistence contracts harden; require migration, recovery, and conflicting-edit evidence before selecting production sync.
-4. Prove one bounded check and resource receipt, then evaluate a modest original TTRPG use case. Composition, executable extensions, and long-form narration remain later phases.
+4. Evaluate a modest original TTRPG use case using the implemented bounded check and resource receipt. Add another operation only for a demonstrated gap. Composition, executable extensions, and long-form narration remain later phases.
 
 Session history is a relatively small addition; a dependable dialogue-to-scene workflow and validated content packs are moderate features. Robust multi-device sync and a general TTRPG rules platform are substantial architectural phases. These relative estimates are not delivery dates.
 

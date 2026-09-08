@@ -1,5 +1,7 @@
 # A staged extension system
 
+Version 0.9 proves reuse with the standalone Lantern crossing file under the unchanged `.storysystem` format. A fixed application-owned check consumes its numeric fields; files do not supply executable checks or formulas. [ADR 0006](adr/0006-author-initiated-check-receipts.md) records this boundary.
+
 Version 0.8 implements a narrow **declarative ruleset** contract, documented in [RULES.md](RULES.md) and [ADR 0005](adr/0005-optional-declarative-rule-layers.md). This refines the earlier pack-first sequence: prove data validation and portable entity state before a broader reusable content format. Rulesets are reusable definitions; content packs are reusable creative material; `.storyworld` is the instantiated world. The remaining plugin/content-pack APIs below are proposals. No executable extension loader is implemented.
 
 Status: design proposal, not an implemented plugin API. The core remains the authority over project integrity, secret visibility, persistence, and canonical changes.

@@ -306,6 +306,9 @@ export function parseProject(text: string): Project {
   // v5 adds optional rules; existing adventures and turns stay unchanged, with mechanics off.
   if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 4)
     input = { ...input, schemaVersion: 5 }
+  // v6 adds optional check receipts inside existing mechanical snapshots; old rules and state stay unchanged.
+  if (input && typeof input === 'object' && 'schemaVersion' in input && input.schemaVersion === 5)
+    input = { ...input, schemaVersion: 6 }
   const parsed = projectSchema.safeParse(input)
   if (!parsed.success)
     throw new Error(
